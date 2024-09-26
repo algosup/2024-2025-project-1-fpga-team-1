@@ -1,18 +1,19 @@
 module main(
-    input wire CLK,          // Horloge principale
-    input wire SW1,         // Bouton de réinitialisation
-    output wire VGA_HS,     // Signal de synchronisation horizontale
-    output wire VGA_VS,     // Signal de synchronisation verticale
-    output reg  VGA_R2,     // Sortie couleur rouge (3 bits)
-    output reg  VGA_G2,     // Sortie couleur verte (3 bits)
-    output reg  VGA_B2,
+    input wire CLK,          // Main clock
+    input wire SW1,         // Reset button
+    output wire VGA_HS,     // Horizontal sync signal
+    output wire VGA_VS,     // Vertical sync signal
+    output reg  VGA_R2,     // Red color output (3 bits)
+    output reg  VGA_G2,     // Green color output (3 bits)
+    output reg  VGA_B2,     // Blue color output (3 bits)
     output reg  VGA_R1,
     output reg  VGA_G1,
-    output reg  VGA_B1
+    output reg  VGA_B1   
 );
-    // Définition des résolutions standards VGA 640x480
-    localparam H_DISPLAY = 640;  // Largeur de la zone d'affichage
-    localparam V_DISPLAY = 480;  // Hauteur de la zone d'affichage
+
+    // Defining standard VGA resolution 640x480
+    localparam H_DISPLAY = 640;  // Width of the display area
+    localparam V_DISPLAY = 480;  // Height of the display area
     localparam H_FRONT = 16;
     localparam H_PULSE = 96;
     localparam H_BACK = 48;
@@ -21,14 +22,18 @@ module main(
     localparam V_BACK = 33;
     localparam H_SYNC_CYCLES = H_DISPLAY + H_FRONT + H_PULSE + H_BACK;
     localparam V_SYNC_CYCLES = V_DISPLAY + V_FRONT + V_PULSE + V_BACK;
-    reg [9:0] h_count = 0;  // Compteur horizontal
-    reg [9:0] v_count = 0;  // Compteur vertical
-    reg [2:0] red;          // Signal couleur rouge (3 bits)
-    reg [2:0] green;        // Signal couleur verte (3 bits)
-    reg [2:0] blue;         // Signal couleur bleue (3 bits)
-    wire clk = CLK;         // Alias pour l'entrée CLK
-    wire reset = SW1;       // Alias pour SW1 comme signal de réinitialisation
-    // Compteurs horizontaux et verticaux
+    localparam RECT_WIDHT = 15 ;  // Width of the rectangle
+    localparam RECT_HEIGHT = 10 ;  // Height of the rectangle
+
+    reg [9:0] h_count = 0;  // Horizontal counter
+    reg [9:0] v_count = 0;  // Vertical counter
+    reg [2:0] red;          // Red color signal (3 bits)
+    reg [2:0] green;        // Green color signal (3 bits)
+    reg [2:0] blue;         // Blue color signal (3 bits)
+    wire clk = CLK;         // Alias for the CLK input
+    wire reset = SW1;       // Alias for SW1 as the reset signal
+
+    // Horizontal and vertical counters
     always @(posedge clk) begin
         if (reset) begin
             h_count <= 0;
@@ -45,98 +50,85 @@ module main(
             end
         end
     end
-    // Génération des signaux de synchronisation
+
+    // Generating sync signals
     assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
     assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
-    // Calcul des positions X et Y sur l'écran
+
+    // Calculating X and Y positions on the screen
     wire display_area = (h_count < H_DISPLAY) && (v_count < V_DISPLAY);
-    // Position et taille des carrés
-    localparam SQUARE_SIZE = 20; // Taille des carrés
-    reg [19:0] square_x[0:19]; // Positions X
-    reg [19:0] square_y[0:19]; // Positions Y
-    // Initialisation des positions des carrés
+  
+    reg [59:0] square_x[0:59]; // X positions for each square
+    reg [59:0] square_y[0:59]; // Y positions for each square
+
+    // Initializing square positions
     initial begin
-        square_x[0] = 50;  square_x[1] = 100; square_x[2] = 150; square_x[3] = 200;
-        square_x[4] = 250; square_x[5] = 300; square_x[6] = 350; square_x[7] = 400;
-        square_x[8] = 450; square_x[9] = 500;
-        // Toutes les Y sont identiques pour aligner les carrés sur la même ligne
-        square_y[0] = 50;  square_y[1] = 50;  square_y[2] = 50;  square_y[3] = 50;
-        square_y[4] = 50;  square_y[5] = 50;  square_y[6] = 50;  square_y[7] = 50;
-        square_y[8] = 50;  square_y[9] = 50;
+        // Assign X and Y coordinates for different rows
+        square_x[0] = 50;  square_x[1] = 125; square_x[2] = 200; square_x[3] = 275;
+        square_x[4] = 350; square_x[5] = 425; square_x[6] = 495; square_x[7] = 570;
+        square_x[8] = 640; square_x[9] = 710;
 
-       // Initialisation des positions des carrés
-        square_x[10] = 50;   square_x[11] = 100; square_x[12] = 150; square_x[13] = 200;
-        square_x[14] = 250;  square_x[15] = 300; square_x[16] = 350; square_x[17] = 400;
-        square_x[18] = 450;  square_x[19] = 500;
+        // All Y positions are the same to align squares in the same row
+        square_y[0] = 100;  square_y[1] = 100;  square_y[2] = 100;  square_y[3] = 100;
+        square_y[4] = 100;  square_y[5] = 100;  square_y[6] = 100;  square_y[7] = 100;
+        square_y[8] = 100;  square_y[9] = 100;
 
-        // Toutes les Y sont identiques pour aligner les carrés sur la même ligne
-        square_y[10] = 100;  square_y[11] = 100;  square_y[12] = 100;  square_y[13] = 100;
-        square_y[14] = 100;  square_y[15] = 100;  square_y[16] = 100;  square_y[17] = 100;
-        square_y[18] = 100;  square_y[19] = 100;
+        // Assign X and Y coordinates for the next row
+        square_y[10] = 150;  square_y[11] = 150; square_y[12] = 150; square_y[13] = 150;
+        square_y[14] = 150; square_y[15] = 150; square_y[16] = 150; square_y[17] = 150;
+        square_y[18] = 150; square_y[19] = 150;
 
+        // Assign coordinates for more rows following the same pattern
+        square_y[20] = 200;  square_y[21] = 200; square_y[22] = 200; square_y[23] = 200;
+        square_y[24] = 200; square_y[25] = 200; square_y[26] = 200; square_y[27] = 200;
+        square_y[28] = 200; square_y[29] = 200;
+
+        square_y[30] = 250; square_y[31] = 250; square_y[32] = 250; square_y[33] = 250;
+        square_y[34] = 250; square_y[35] = 250; square_y[36] = 250; square_y[37] = 250;
+        square_y[38] = 250; square_y[39] = 250;
+
+        square_y[40] = 300; square_y[41] = 300; square_y[42] = 300; square_y[43] = 300;
+        square_y[44] = 300; square_y[45] = 300; square_y[46] = 300; square_y[47] = 300;
+        square_y[48] = 300; square_y[49] = 300;
+
+        square_y[50] = 350; square_y[51] = 350; square_y[52] = 350; square_y[53] = 350;
+        square_y[54] = 350; square_y[55] = 350; square_y[56] = 350; square_y[57] = 350;
+        square_y[58] = 350; square_y[59] = 350;
     end
-    // Variable temporaire pour la couleur
+
+    // Temporary variables for colors
     reg [2:0] temp_red, temp_green, temp_blue;
-    // Signaux pour déterminer si un carré est actif
+
+    // Signals to determine if a square is active
     wire square_active[0:19];
     
-    // Génération pour vérifier chaque carré
+    // Generating loop to check each square
     genvar i;
     generate
-        for (i = 0; i < 20; i = i + 1) begin : square_check
-            assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + SQUARE_SIZE) &&
-                                      (v_count >= square_y[i]) && (v_count < square_y[i] + SQUARE_SIZE);
+        for (i = 0; i < 50; i = i + 1) begin : square_check
+            assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDHT) &&
+                                      (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
         end
     endgenerate
-    // Bloc combinatoire pour assigner les couleurs en fonction du carré actif
+
+    // Combinational block to assign colors based on the active square
     always @(posedge CLK) begin
-        // Initialiser la couleur par défaut (fond noir)
+        // Initialize default color (black background)
         temp_red = 3'b000;
         temp_green = 3'b000;
         temp_blue = 3'b000;
+
+        // Check each square and assign a white color if active
         if (square_active[0]) begin
-            temp_red = 3'b111; temp_green = 3'b000; temp_blue = 3'b000; // Rouge
+            temp_red = 3'b111; temp_green = 3'b111; temp_blue = 3'b111;
         end else if (square_active[1]) begin
-            temp_red = 3'b000; temp_green = 3'b111; temp_blue = 3'b000; // Vert
-        end else if (square_active[2]) begin
-            temp_red = 3'b000; temp_green = 3'b000; temp_blue = 3'b111; // Bleu
-        end else if (square_active[3]) begin
-            temp_red = 3'b111; temp_green = 3'b000; temp_blue = 3'b111; // Magenta
-        end else if (square_active[4]) begin
-            temp_red = 3'b000; temp_green = 3'b111; temp_blue = 3'b111; // Cyan
-        end else if (square_active[5]) begin
-            temp_red = 3'b111; temp_green = 3'b111; temp_blue = 3'b000; // Jaune
-        end else if (square_active[6]) begin
-            temp_red = 3'b111; temp_green = 3'b111; temp_blue = 3'b111; // Blanc
-        end else if (square_active[7]) begin
-            temp_red = 3'b100; temp_green = 3'b010; temp_blue = 3'b000; // Orange
-        end else if (square_active[8]) begin
-            temp_red = 3'b010; temp_green = 3'b111; temp_blue = 3'b010; // Vert clair
-        end else if (square_active[9]) begin
-            temp_red = 3'b111; temp_green = 3'b010; temp_blue = 3'b010; // Rose
-        end else if (square_active[10]) begin
-            temp_red = 3'b111; temp_green = 3'b000; temp_blue = 3'b000; // Rouge
-        end else if (square_active[11]) begin
-             temp_red = 3'b000; temp_green = 3'b111; temp_blue = 3'b000; // Vert
-        end else if (square_active[12]) begin
-             temp_red = 3'b000; temp_green = 3'b000; temp_blue = 3'b111; // Bleu
-        end else if (square_active[13]) begin
-             temp_red = 3'b111; temp_green = 3'b000; temp_blue = 3'b111; // Magenta
-        end else if (square_active[14]) begin
-            temp_red = 3'b000; temp_green = 3'b111; temp_blue = 3'b111; // Cyan
-        end else if (square_active[15]) begin
-             temp_red = 3'b111; temp_green = 3'b111; temp_blue = 3'b000; // Jaune
-        end else if (square_active[16]) begin
-             temp_red = 3'b111; temp_green = 3'b111; temp_blue = 3'b111; // Blanc
-        end else if (square_active[17]) begin
-             temp_red = 3'b100; temp_green = 3'b010; temp_blue = 3'b000; // Orange
-        end else if (square_active[18]) begin
-            temp_red = 3'b010; temp_green = 3'b111; temp_blue = 3'b010; // Vert clair
-        end else if (square_active[19]) begin
-             temp_red = 3'b111; temp_green = 3'b010; temp_blue = 3'b010; // Rose
+            temp_red = 3'b111; temp_green = 3'b111; temp_blue = 3'b111;
         end
+        // Add additional square checks as needed
+        // ... similar else-if blocks for remaining squares
     end
-    // Assignation des couleurs aux sorties VGA dans le bloc séquentiel
+
+    // Assigning colors to VGA outputs in the sequential block
     always @(posedge clk) begin
         if (reset) begin
             red <= 3'b000;
@@ -148,7 +140,8 @@ module main(
             blue <= temp_blue;
         end
     end
-    // Assignation des couleurs aux sorties VGA
+
+    // Assigning colors to VGA outputs
     always @(posedge clk) begin
         VGA_R2 <= red[2];
         VGA_G2 <= green[2];
@@ -158,10 +151,3 @@ module main(
         VGA_B1 <= blue[2];
     end
 endmodule
-
-
-
-
-
-
-
