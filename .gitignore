@@ -1,0 +1,64 @@
+# Fichiers de synthèse et d'implémentation
+*.bit
+*.bin
+*.mcs
+*.hex
+*.elf
+*.map
+*.ngc
+*.dcp
+*.syr
+*.sdf
+*.jed
+*.bmm
+*.bin
+
+# Fichiers de simulation
+*.vcd
+*.wdb
+*.log
+*.jou
+*.pb
+*.svf
+
+# Fichiers temporaires et de cache
+*.tmp
+*.cache
+*.log
+*.rpt
+*.html
+*.xml
+
+# Répertoires générés par les outils FPGA (Vivado, Quartus, etc.)
+/.sim/
+/.cache/
+/.hw/
+/.ip_user_files/
+/.sim/
+/.gen/
+/.tmp/
+/webtalk/
+/ip/
+/project.cache/
+/project.hw/
+
+# Fichiers de configuration de l'environnement de l'outil FPGA
+*.xpr
+*.xdc
+*.xise
+*.qpf
+*.qsf
+
+# Scripts et logs d'outils FPGA
+*.tcl
+*.sh
+*.bat
+*.log
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+
+# Fichiers spécifiques à l'OS
+.DS_Store
+Thumbs.db
