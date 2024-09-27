@@ -26,6 +26,15 @@ This project is an ALGOSUP project, driven by the students. This project aims to
 
 To play ..., feel free to check the documentation here: [User Manual]()
 
+## Project documents
+
+- [Project Charter]()
+- [Functional Specifications]()
+- [Technical Specifications]()
+- [User Manual]()
+- [Test Plan]()
+- [Management]()
+
 ## MIT License //TODO
 
 Copyright (c) 2024 ALGOSUP
