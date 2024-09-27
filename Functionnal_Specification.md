@@ -1,7 +1,6 @@
 ## Functionnal Specification
 
 | Author       | Léna De Germain |
-| Reviewer     | Alexis SANTOS   |
 |--------------|-----------------|
 |Created       |    9/26/2024    |
 |Last Modified |    9/26/2024    |
