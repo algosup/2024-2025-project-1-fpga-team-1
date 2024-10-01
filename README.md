@@ -22,7 +22,7 @@ You follow the adventure of Ranck in the the frog world. Your goal is simple, he
 
 
 
-## How To Use //TODO
+## How To Use
 
 To play FroggyRanck, feel free to check the documentation here: [User Manual]()
 
