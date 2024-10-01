@@ -12,11 +12,11 @@
 
 ## Overview
 
-This project is an ALGOSUP project, driven by the students. This project aims to create a Frogger game with a FPGA language and a Go Board.
+This project is an ALGOSUP project, driven by the students. This project aims to create a Frogger game with a FPGA language and a Go Board. A Frogger game of whose aim is to cross the map from bottom to top, avoiding obstacles.
 
-## What Is ... //TODO
+## What Is FroggyRanck
 
-... is a Frogger game of whose aim is to cross the map from bottom to top, avoiding obstacles.
+You follow the adventure of Ranck in the the frog world. Your goal is simple, help Ranck to pass the road without crossing the paths to cars.
 
 ## How To Install //TODO
 
@@ -24,7 +24,7 @@ This project is an ALGOSUP project, driven by the students. This project aims to
 
 ## How To Use //TODO
 
-To play ..., feel free to check the documentation here: [User Manual]()
+To play FroggyRanck, feel free to check the documentation here: [User Manual]()
 
 ## Project documents
 
@@ -35,7 +35,7 @@ To play ..., feel free to check the documentation here: [User Manual]()
 - [Test Plan]()
 - [Management]()
 
-## MIT License //TODO
+## MIT License
 
 Copyright (c) 2024 ALGOSUP
 
