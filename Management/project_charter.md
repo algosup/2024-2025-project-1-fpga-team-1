@@ -14,10 +14,9 @@ Creation Date: 09/27/2024 <br> Last update: 09/27/2024
 - [Table of Contents](#table-of-contents)
 - [1. Project Overview](#1-project-overview)
 - [2. Project Scope](#2-project-scope)
-- [3. Project Deliverables](#3-project-deliverables)
-- [4. Project Schedule](#4-project-schedule)
-- [5. Cost](#5-cost)
-- [6. Risks](#6-risks)
+- [3. Project Deliverable](#3-project-deliverable)
+- [4. Cost](#4-cost)
+- [5. Risks](#5-risks)
 
 </details>
 
@@ -36,9 +35,7 @@ To create the Frogger, we defined some requierements:
 5. multiples level and difficulties
 6. add differents themes
 
-## 3. Project Deliverables
-
-## 4. Project Schedule
+## 3. Project Deliverable
 
 The project will be rythmed by deadlines fixed by the school. The milestones for the project are the following:
 
@@ -48,12 +45,12 @@ The project will be rythmed by deadlines fixed by the school. The milestones for
 - 10/21/2024: User Manual
 - 10/21/2024: Final Product
 
-## 5. Cost
+## 4. Cost
 
 The budget for this project is limited to the material provided at the beginning of the project.
 About the time spend on the project, we have at least 45h30 without overtime.
 
-## 6. Risks
+## 5. Risks
 
 - **Time**: We only have 4 weeks to complete the project, and might run out of time if we encounter too many problems.
 In this case, we will prioritise the tasks according to the order defined in [scope](#2-project-scope).
