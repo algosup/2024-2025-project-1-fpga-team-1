@@ -40,7 +40,7 @@ Project aims to recreate the game "Frogger" with our style using [FPGA board / G
 
 ### A. What is Frogger
 
-Frogger is an arcade action game developed by KONAMI and released in 1981. In the original game, the aim was to direct some frogs to their homes by dogging on a busy road. Frogs need to avoid cars to still alive and get back to their homes. 
+Frogger is an arcade action game developed by KONAMI and released in 1981. In the original game, the aim was to direct some frogs to their homes by dogging on a busy road. Frogs need to avoid cars to still alive and get back to their homes.
 
 To do this, the player must first move through the game zone, here a busy road, avoiding cars that move at different speeds. The Frog restarts at the beginning of the level if he hits a car or with a GAME OVER.
 
@@ -176,15 +176,15 @@ To more diversity, we have decided to add different themes to have another game 
 |8 lvl| Christmas|the frog become a lutin and the obstacles are replaced by reindeer|
 |2 lvl|ALGOSUP| obstacles replaced by Elone and the frog become Frank |
 
-## IV. Non-functional requirements 
+## IV. Non-functional requirements
 
 To code, in particular, but also to run the game, we need to meet few requirements.
 
 |Non-Functional Requirement|Utility| Run / Code |
 |-|-|-|
 |Windows/MacOS|We do all that we need on their computer's system.| Code |
-|FPGA board |We program the game on this board, the Go Board from Nandland.com | Run & Code |
-|Verilog|It's the language used to program the game.| Code|
+|[FPGA board](#vi-glossary)|We program the game on this board, the Go Board from Nandland.com | Run & Code |
+|[Verilog](#vi-glossary)|It's the language used to program the game.| Code|
 |Screen with [VGA port](#vi-glossary)|To observe the result of our code, we project it on a VGA Screen. We've been asked to make the game a 20x15 grid, the screen being 640x480, and one square corresponds to 32x32 pixels (640/20 = 32, 480/15 = 32).| Run & Code |
 |Cable double [VGA port](#vi-glossary)|It's cable is used to connect the FPGA board to VGA Screen| Run & Code|
 
@@ -209,6 +209,3 @@ Our client, ALGOSUP, asked us to deliver documents and the final product on a pr
 |Verilog|Verilog is a hardware description language used for computer simulation and synthesis. This is what we used to code the FPGA board.|[ScienceDirect](https://www.sciencedirect.com/topics/computer-science/verilog#:~:text=Verilog%20is%20a%20hardware%20description,language%20constructs%20for%20logic%20synthesis.)|
 |VGA display / VGA Port | For “Video Graphics Array”, is a connection interface for transmitting analog video signals. It was designed by IBM and introduced in some computers and monitors in 1987.|[LCD COMPARE](https://www.lcd-compare.com/definition-de-vga.htm)|
 |2-digit 7-segment display|A seven-segment display is a form of electronic display device for displaying decimal numerals that is an alternative to the more complex dot matrix displays.|[Wikipedia](https://en.wikipedia.org/wiki/Seven-segment_display)|
-
-
-
