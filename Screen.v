@@ -661,11 +661,6 @@ module main(
          player_x <= player_x + 32; // Droite
          speed_count <= 0;
         end
-        if (((player_x >= car_x && player_x <= car_x + CAR_WIDTH) || (player_x + PLAYER_WIDTH >= car_x && player_x + PLAYER_WIDTH <= car_x + CAR_WIDTH)) && player_y == car_y) begin
-        // Reset player position to the center of the display
-        player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-        player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-        end
     end
     reg [31:0] speed_count2 = 0;
     always @(posedge CLK) begin
@@ -676,12 +671,6 @@ module main(
             speed_count2 <= 0;
         end
     end
-
-    always @(posedge CLK) begin
-    // Check if player position matches car's position
-     
-    end 
-
 
     // Logique de génération VGA
     always @(posedge CLK) begin
