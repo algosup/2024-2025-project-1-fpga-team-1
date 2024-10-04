@@ -48,7 +48,7 @@ module main(
     localparam CAR3_SPEED = 12500000/2;
 
 
-    localparam CAR4_WIDTH = 40;
+    localparam CAR4_WIDTH = 50;
     localparam CAR4_HEIGHT = 32;
     localparam CAR4_SPEED = 12500000/2;
 
