@@ -114,6 +114,11 @@ The buttons on the [FPGA board](#vi-glossary) are used to control the frog and r
 | SW4 | left | 
 | SW1 & SW2 & SW3 & SW4 | reset the game |
 
+<u>frog sprite</u>
+![frog](image/Screenshot%202024-10-06%20134026.png)
+
+
+<u>Optional Feature</u>
 ![frog_sprite](image/Screenshot%202024-10-02%20155752.png)
 ![frog_sprite_left](image/Screenshot%202024-10-02%20161048.png)
 ![frog_sprite_right](image/Screenshot%202024-10-02%20161057.png)
