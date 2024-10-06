@@ -3,8 +3,9 @@
 | Author       | Alexis SANTOS |
 |--------------|---------------|
 |Created       |   9/26/2024   |
-|Last Modified |   10/05/2024  |
+|Last Modified |   10/06/2024  |
 
+7:30 AM - 9:20 AM / 10:10 AM - 10:40 AM / 11:20 AM - 
 
 <details>
 
@@ -20,8 +21,16 @@
   - [A. Scope of Frogger's Software](#a-scope-of-froggers-software)
   - [B. Scope of Frogger's Hardware](#b-scope-of-froggers-hardware)
   - [C. Scope of documentation](#c-scope-of-documentation)
+  - [D. Out of Scope for Testing](#d-out-of-scope-for-testing)
 - [IV. Testing Strategy](#iv-testing-strategy)
-  - [A.](#a)
+  - [A. Unit test](#a-unit-test)
+  - [B. Test Structure](#b-test-structure)
+  - [C. Test List](#c-test-list)
+    - [1. Handling](#1-handling)
+    - [2. Game Dynamics](#2-game-dynamics)
+    - [3. Scoring \& Level Indicator Mekanisms](#3-scoring--level-indicator-mekanisms)
+    - [4. Menu Mekanisms](#4-menu-mekanisms)
+    - [5. Bonus Mekanisms](#5-bonus-mekanisms)
 - [X. Glossary](#x-glossary)
 
 </details>
@@ -51,47 +60,135 @@ This document has been created to facilitate communication between team members 
 ### A. Primary objectives
 
 Testing the Frogger game program must validate, from the requirements point of view, that :
+
 * One of the backgrounds must match or represent the original frogger with the road and river.
-
-
+* Have a main character who functions in the same way as the original frogger: moving from square to square on the 20x15 grid.
+* Have obstacles, like the cars in the original frogger, which move square by square on the 20x15 grid.
+* Reset the game using all four switches simultaneously.
+* Have a level system that corresponds to the number of levels completed
 
 ### B. Secondary Objectives
 
+As we are also implementing a number of additional functionalities, we also need to test whether these functionalities work correctly, and whether they do not negatively impact the objectives already in place. Consequently, this test plan will also focus on the following aspects:
 
-
+* Use sprites for main characters and obstacles in 32x32 (VGA screen is 640x480, 640/20 = 32 and 480/15 = 32).
+* Add a win page which appears when all levels are finish.
+* Add a menu which allows to :
+  * Save the game
+  * Possibility to change Frog's apparence
+  * Display the score and current level compared to existing levels.
+* Add levels with specific frog and obstacle appearances, like : 
+  * Halloween theme
+  * Christmas theme
+  * ALGOSUP theme
 
 ## III. Scope of Testing
 
+Testing will focus on both core gameplay elements and peripheral features to guarantee a reliable end product. However, it's important to note that certain aspects, such as low-level technical details will be excluded from testing as they are beyond the scope of the test.
+
 ### A. Scope of Frogger's Software
 
-
+As far as software testing is concerned, we will test everything we can:
+* Absence of significant bugs
+* Main game mechanics and functionality
+* Additional game mechanics and features
+* Acceptable visual quality
+* Sprite speed
+* Sprites and graphics quality
 
 ### B. Scope of Frogger's Hardware
 
-
+As far as hardware testing is concerned, we will test everything we can, such as :
+* Switch use and responsiveness
+* The correspondence between the 7 segments displaying the current level number and the true level number
 
 ### C. Scope of documentation
 
+The documents are supposed to explain their purpose and add value to the project. Thus, we will test the documents on : 
+* Spelling accuracy
+* Vocabulary accuracy
+* Information provided in relation to its usefulness
+
+### D. Out of Scope for Testing
+
+Some parts do not require a test to exist in the project, such as :
+* Font details
+* Colors of sprites
 
 ## IV. Testing Strategy
 
+Our testing strategy uses a multi-faceted approach. Unit testing forms the basis, scrutinizing individual components to verify their functionality. Game testing sessions take center stage, offering a holistic evaluation of gameplay, user interactions and the overall user experience.
 
-### A. 
+### A. Unit test
 
+Unit testing is an important part of the process. These tests are developed in Verilog and executed on an FPGA / Go-board, to meet the customer's requirements.
 
+These tests are developed throughout the project, in parallel with the development of the game, which corresponds to an exploratory testing approach.
 
+These unit tests meet three crucial objectives:
+* Code functionality: to check that each function works as expected in different scenarios. For example, we make sure that the scoring mechanisms work correctly when Frogger interacts with different elements such as obstacles or bonuses.
+* Code quality: Evaluate code clarity and quality to promote maintainability and ease of collaboration between developers.
+* Code coverage: Guarantee comprehensive testing to prevent future modifications from unintentionally altering the code's original behavior.
 
+### B. Test Structure
 
+Each test comprises the following components:
 
+* Function: Identifies the function under examination.
+* Test Description: Describes the purpose of the test, the specific conditions being evaluated, and the expected outcome.
+* Severity: Indicates the criticality of the test, categorized as High, Medium, or Low.
 
+### C. Test List
 
+#### 1. Handling
 
+|Fonction|Test Description| Severity|
+|:-|:-:|:-:|
+|Foward square by square|Press SW1|High|
+|Backward square by square |Press SW2|High|
+|Right square by square |Press SW3|High|
+|Left square by square|Press SW4|High|
+|Reset the game|Press SW1 & SW2 & SW3 & SW4|High|
 
-The strategy that will be used to test the game is to test it manually. The tester will have to test the game throughout the development phase and also afterwards in order to prevent the appearance of bugs and to be able to resolve them if there are any.
+#### 2. Game Dynamics
 
-First, we'll run a smoke test to see if the basic functionality works. When the smoke test is successful, we will then perform a functional test to ensure all features work as expected. Then we will do a regression test after each new version to see if any new bugs appear...
+|Fonction|Test Description| Severity|
+|:-|:-:|:-:|
+|Wall Collision (Frogger)|Ensure Frogger stops at every screen edge|High|
+| Frogger / Car collision| Ensures Frogger stops every collision with an obstacle | High |
+| Lives cap | Player can't have more than 5 lives | Medium |
+| Lives cap | Player can't have less than 0 lives | Medium |
 
+#### 3. Scoring & Level Indicator Mekanisms
 
+|Fonction|Test Description| Severity|
+|:-|:-:|:-:|
+|Score when Finish a Level|Increment 100 Points|Medium| 
+|Score when hit a obstacle|Reset Score|Medium|
+|Score when take a gift|Increment 20 Points|Low|
+|Score when take a poison gift|Decrement 20 Points|Low|
+
+#### 4. Menu Mekanisms
+
+|Fonction|Test Description| Severity|
+|:-|:-:|:-:|
+|Open & Close Menu|Press SW1 & SW2|Medium|
+|Save Button|Press SW1|Medium|
+|Show up the Level & Score|Press SW2|Low|
+|Possibility to change Frog's appearance|Press SW3|Low|
+|Have a Register of Different Bonuses|Press SW4|Low|
+
+#### 5. Bonus Mekanisms
+
+|Fonction|Test Description| Severity|
+|:-|:-:|:-:|
+|Take Gift|increase your score by 20 points| Low |
+|Take Poison Gift|reduce the score by 20 points| Low|
+|Take a StopTime Bonus|stop the obstacle for 3 seconds| Low |
+|Take a Level Rebooter|return to start of level|Low |
+|Take a Star|make the character invincible for 3 seconds| Low |
+|Take a Left arrow|slows down obsctacles| Low |
+|Take a Right arrow|speed up obsctacles| Low |
 
 ## X. Glossary
 
