@@ -5,7 +5,7 @@
 |Created       |   9/26/2024   |
 |Last Modified |   10/06/2024  |
 
-7:30 AM - 9:20 AM / 10:10 AM - 10:40 AM / 11:20 AM - 
+7:30 AM - 9:20 AM / 10:10 AM - 10:40 AM / 11:20 AM - 12:20
 
 <details>
 
@@ -55,6 +55,8 @@ With these objectives in mind, the product aims to serve as a pedagogical tool f
 
 This document has been created to facilitate communication between team members on the various tests to be carried out on the project. It describes the approaches and methodologies that will be applied to Frogger's regression[^3], smoke[^4], Functionnal[^5], Unit[^6] tests and test case[^7]. It also identifies the Frogger's reactions to the various tests.
 
+---
+
 ## II. Quality Objectives
 
 ### A. Primary objectives
@@ -81,6 +83,8 @@ As we are also implementing a number of additional functionalities, we also need
   * Halloween theme
   * Christmas theme
   * ALGOSUP theme
+
+---
 
 ## III. Scope of Testing
 
@@ -189,6 +193,8 @@ Each test comprises the following components:
 |Take a Star|make the character invincible for 3 seconds| Low |
 |Take a Left arrow|slows down obsctacles| Low |
 |Take a Right arrow|speed up obsctacles| Low |
+
+---
 
 ## X. Glossary
 
