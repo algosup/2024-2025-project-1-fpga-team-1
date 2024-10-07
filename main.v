@@ -1,95 +1,47 @@
 `timescale 1ns / 1ps
 
+include "constants.v"
+
+
 module main(
-    input wire CLK,          // Horloge principale
-    input wire SW1,          // haut
-    input wire SW2,          // bas
-    input wire SW3,          // Gauche
-    input wire SW4,          // Droite
-    output wire VGA_HS,      // Signal de synchronisation horizontale
-    output wire VGA_VS,      // Signal de synchronisation verticale
-    output reg  VGA_R2,      // Sortie couleur rouge (3 bits)
-    output reg  VGA_G2,      // Sortie couleur verte (3 bits)
-    output reg  VGA_B2,      // Sortie couleur bleue (3 bits)
-    output reg  VGA_R1,      // Couleur de fond
-    output reg  VGA_G1,      // Couleur de fond
-    output reg  VGA_B1       // Couleur de fond
+    input wire CLK,          // Main clock
+    input wire SW1,          // Up
+    input wire SW2,          // Down
+    input wire SW3,          // Left
+    input wire SW4,          // Right
+    output wire VGA_HS,      // Horizontal sync signal
+    output wire VGA_VS,      // Vertical sync signal
+    output reg  VGA_R2,      // Red color output (3 bits)
+    output reg  VGA_G2,      // Green color output (3 bits)
+    output reg  VGA_B2,      // Blue color output (3 bits)
+    output reg  VGA_R1,      // Background color
+    output reg  VGA_G1,      // Background color
+    output reg  VGA_B1       // Background color
 );
 
-    // Paramètres VGA et rectangle
-    localparam H_DISPLAY = 640;
-    localparam V_DISPLAY = 480;
-    localparam H_FRONT = 16;
-    localparam H_PULSE = 96;
-    localparam H_BACK = 48;
-    localparam V_FRONT = 10;
-    localparam V_PULSE = 2;
-    localparam V_BACK = 33;
-    localparam H_SYNC_CYCLES = H_DISPLAY + H_FRONT + H_PULSE + H_BACK;
-    localparam V_SYNC_CYCLES = V_DISPLAY + V_FRONT + V_PULSE + V_BACK;
-    localparam RECT_WIDTH = 17;   // Largeur des rectangles
-    localparam RECT_HEIGHT = 2;  // Hauteur des rectangles
+    reg [9:0] h_count = 0;  // Horizontal counter
+    reg [9:0] v_count = 0;  // Vertical counter
+    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player position (X)
+    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;    // Player position (Y)
+    reg [9:0] car_x = 0;        // Car position (X)
+    reg [9:0] car_y = 288;      // Car position (Y)
+    reg [9:0] car2_x = 0;       // Car 2 position (X)
+    reg [9:0] car2_y = 320;     // Car 2 position (Y)
+    reg [9:0] car3_x = 0;       // Car 3 position (X)
+    reg [9:0] car3_y = 352;     // Car 3 position (Y)
+    reg [9:0] car4_x = 0;       // Car 4 position (X)
+    reg [9:0] car4_y = 384;     // Car 4 position (Y)
 
-    localparam PLAYER_WIDTH = 32;
-    localparam PLAYER_HEIGHT = 32;
-    localparam PLAYER_SPEED = 12500000/2;
+    // Positions of the squares on the map
+    reg [9:0] square_x[0:89]; // X positions
+    reg [9:0] square_y[0:89]; // Y positions
 
-    localparam CAR_WIDTH = 40;
-    localparam CAR_HEIGHT = 32;
-    localparam CAR_SPEED = 12500000/2;
+    wire v_count ; // Vertical counter
+    wire h_count ; // Horizontal counter
 
-    localparam CAR2_WIDTH = 40;
-    localparam CAR2_HEIGHT = 32;
-    localparam CAR2_SPEED = 12500000/2;
-
-
-    localparam CAR3_WIDTH = 40;
-    localparam CAR3_HEIGHT = 32;
-    localparam CAR3_SPEED = 12500000/2;
-
-
-    localparam CAR4_WIDTH = 50;
-    localparam CAR4_HEIGHT = 32;
-    localparam CAR4_SPEED = 12500000/2;
-
-    reg [9:0] h_count = 0;  // Compteur horizontal
-    reg [9:0] v_count = 0;  // Compteur vertical
-    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Position du joueur
-    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;
-    reg [9:0] car_x = 0;
-    reg [9:0] car_y = 288;
-    reg [9:0] car2_x = 0;
-    reg [9:0] car2_y = 320;
-    reg [9:0] car3_x = 0;
-    reg [9:0] car3_y = 352;
-    reg [9:0] car4_x = 0;
-    reg [9:0] car4_y = 384;
-
-
-    // Compteurs horizontaux et verticaux pour la synchronisation VGA
-    always @(posedge CLK) begin
-        if (h_count == H_SYNC_CYCLES - 1) begin
-            h_count <= 0;
-            if (v_count == V_SYNC_CYCLES - 1)
-                v_count <= 0;
-            else
-                v_count <= v_count + 1;
-        end else begin
-            h_count <= h_count + 1;
-        end
-    end
-
-    // Signaux de synchronisation
-    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
-    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
-
-    // Position des rectangles sur la carte
-    reg [9:0] square_x[0:89]; // Positions X
-    reg [9:0] square_y[0:89]; // Positions Y
-
-    // Initialisation des positions - valeurs manuelles pour chaque carré
+    // Initialization of positions - manual values for each square
     initial begin
-        // Assignations pour la première rangée
+        // Assignments for the first row
         square_x[0] = 10;    square_y[0] = 286;
         square_x[1] = 45;    square_y[1] = 286;
         square_x[2] = 80;    square_y[2] = 286;
@@ -109,7 +61,7 @@ module main(
         square_x[16] = 570;  square_y[16] = 286;
         square_x[17] = 605;  square_y[17] = 286;
 
-        // Assignations pour la deuxième rangée
+        // Assignments for the second row
         square_x[18] = 10;   square_y[18] = 318;
         square_x[19] = 45;   square_y[19] = 318;
         square_x[20] = 80;   square_y[20] = 318;
@@ -129,7 +81,7 @@ module main(
         square_x[34] = 570;  square_y[34] = 318;
         square_x[35] = 605;  square_y[35] = 318;
 
-        // Assignations pour la troisième rangée
+        // Assignments for the third row
         square_x[36] = 10;   square_y[36] = 350;
         square_x[37] = 45;   square_y[37] = 350;
         square_x[38] = 80;   square_y[38] = 350;
@@ -149,7 +101,7 @@ module main(
         square_x[52] = 570;  square_y[52] = 350;
         square_x[53] = 605;  square_y[53] = 350;
 
-        // Assignations pour la quatrième rangée
+        // Assignments for the fourth row
         square_x[54] = 10;   square_y[54] = 382;
         square_x[55] = 45;   square_y[55] = 382;
         square_x[56] = 80;   square_y[56] = 382;
@@ -168,9 +120,10 @@ module main(
         square_x[69] = 535;  square_y[69] = 382;
         square_x[70] = 570;  square_y[70] = 382;
         square_x[71] = 605;  square_y[71] = 382;
+ 
 
-        // Assignations pour la cinquième rangée
-        square_x[72] = 10;   square_y[72] = 414;
+        // Assignments for the fifth row
+         square_x[72] = 10;   square_y[72] = 414;
         square_x[73] = 45;   square_y[73] = 414;
         square_x[74] = 80;   square_y[74] = 414;
         square_x[75] = 115;  square_y[75] = 414;
@@ -190,7 +143,7 @@ module main(
         square_x[89] = 605;  square_y[89] = 414;
     end
 
-    // Signaux pour les carrés actifs, assignés individuellement
+    // Signals for active squares, individually assigned
     wire square_active[0:89];
 
     genvar i;
@@ -201,14 +154,14 @@ module main(
         end
     endgenerate
 
-    // Affichage des couleurs des carrés (blanc)
+    // Display square colours (white)
     reg [2:0] temp_red, temp_green, temp_blue;
     always @(posedge CLK) begin
         temp_red = 3'b000;
         temp_green = 3'b000;
         temp_blue = 3'b000;
 
-        // Si un carré est actif, afficher en blanc
+        //  Assign colours for each square
         if (square_active[0]) begin
             temp_red = 3'b111;
             temp_green = 3'b111;
@@ -218,7 +171,7 @@ module main(
             temp_green = 3'b111;
             temp_blue = 3'b111;
         end
-        // Continuez pour tous les carrés jusqu'à square_active[89]
+        // Continue for all the squares until you reach square_active[89].
         else if (square_active[2]) begin
             temp_red = 3'b111;
             temp_green = 3'b111;
@@ -661,139 +614,56 @@ module main(
         end
     end
 
-    reg [31:0] speed_count = 0;
+    
+    
+    
+    reg [31:0] speed_count1 = 0;
+
+    // Car movement
     always @(posedge CLK) begin
-        if (speed_count < PLAYER_SPEED) begin
-            speed_count <= speed_count + 1;
-        end
-        if (SW1 && player_y > 0 && speed_count == PLAYER_SPEED) begin
-            player_y <= player_y - 32; // Haut
-            speed_count <= 0;
-        end
-        if (SW2 && player_y < V_DISPLAY - PLAYER_HEIGHT && speed_count == PLAYER_SPEED)begin
-         player_y <= player_y + 32; // Bas
-         speed_count <= 0;
-         end
-        if (SW3 && player_x > 0 && speed_count == PLAYER_SPEED)begin
-         player_x <= player_x - 32; // Gauche
-         speed_count <= 0;
-        end
-        if (SW4 && player_x < H_DISPLAY - PLAYER_WIDTH && speed_count == PLAYER_SPEED)begin
-         player_x <= player_x + 32; // Droite
-         speed_count <= 0;
-        end
-        if (((player_x >= car_x && player_x <= car_x + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x && player_x + PLAYER_WIDTH <= car_x + CAR_WIDTH && player_y == car_y)) begin
-        player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-        player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-        end
-        if (((player_x >= car2_x && player_x <= car2_x + CAR2_WIDTH) || player_x + PLAYER_WIDTH >= car2_x && player_x + PLAYER_WIDTH <= car2_x + CAR2_WIDTH && player_y == car2_y)) begin
-        player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-        player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-        end
-        if (((player_x >= car3_x && player_x <= car3_x + CAR3_WIDTH) || player_x + PLAYER_WIDTH >= car3_x && player_x + PLAYER_WIDTH <= car3_x + CAR3_WIDTH && player_y == car3_y)) begin
-        player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-        player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-        end
-        if (((player_x >= car4_x && player_x <= car4_x + CAR4_WIDTH) || player_x + PLAYER_WIDTH >= car4_x && player_x + PLAYER_WIDTH <= car4_x + CAR4_WIDTH && player_y == car4_y)) begin
-        player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-        player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
+        if (speed_coun1 <  CAR_SPEED) begin
+            speed_count1 <= speed_count1 + 1;
+        end else if (speed_count1 >= CAR_SPEED) begin
+            car_x <= car_x + 32 % H_DISPLAY;
+            speed_count1 <= 0;
         end
     end
+
     reg [31:0] speed_count2 = 0;
+
     always @(posedge CLK) begin
-        if (speed_count2 <  CAR_SPEED) begin
+        if (speed_count2 <  CAR2_SPEED) begin
             speed_count2 <= speed_count2 + 1;
-        end else if (speed_count2 >= CAR_SPEED) begin
-            car_x <= car_x + 32 % H_DISPLAY;
+        end else if (speed_count3 >= CAR2_SPEED) begin
+            car2_x <= car2_x + 32 % H_DISPLAY;
             speed_count2 <= 0;
         end
     end
 
     reg [31:0] speed_count3 = 0;
+
+    // Car 3 movement
     always @(posedge CLK) begin
-        if (speed_count3 <  CAR2_SPEED) begin
+        if (speed_count3 <  CAR3_SPEED) begin
             speed_count3 <= speed_count3 + 1;
-        end else if (speed_count3 >= CAR2_SPEED) begin
-            car2_x <= car2_x + 32 % H_DISPLAY;
+        end else if (speed_count3 >= CAR3_SPEED) begin
+            car3_x <= car3_x + 32 % H_DISPLAY;
             speed_count3 <= 0;
         end
     end
 
     reg [31:0] speed_count4 = 0;
     always @(posedge CLK) begin
-        if (speed_count4 <  CAR3_SPEED) begin
+        if (speed_count4 <  CAR4_SPEED) begin
             speed_count4 <= speed_count4 + 1;
-        end else if (speed_count4 >= CAR3_SPEED) begin
-            car3_x <= car3_x + 32 % H_DISPLAY;
+        end else if (speed_count4 >= CAR4_SPEED) begin
+            car4_x <= car4_x + 32 % H_DISPLAY;
             speed_count4 <= 0;
         end
     end
 
-    reg [31:0] speed_count5 = 0;
-    always @(posedge CLK) begin
-        if (speed_count5 <  CAR4_SPEED) begin
-            speed_count5 <= speed_count5 + 1;
-        end else if (speed_count5 >= CAR4_SPEED) begin
-            car4_x <= car4_x + 32 % H_DISPLAY;
-            speed_count5 <= 0;
-        end
-    end
 
-
-    // Logique de génération VGA
-    always @(posedge CLK) begin
-        if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
-            // Priorité au joueur
-            if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
-                (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
-                VGA_R2 <= 3'b000;
-                VGA_G2 <= 3'b111;
-                VGA_B2 <= 3'b000;
-                end 
-            if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
-                        (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end 
-            if ((h_count >= car2_x) && (h_count < car2_x + CAR2_WIDTH) &&
-                        (v_count >= car2_y) && (v_count < car2_y + CAR2_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end 
-            if ((h_count >= car3_x) && (h_count < car3_x + CAR3_WIDTH) &&
-                        (v_count >= car3_y) && (v_count < car3_y + CAR3_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end 
-            if ((h_count >= car4_x) && (h_count < car4_x + CAR4_WIDTH) &&
-                        (v_count >= car4_y) && (v_count < car4_y + CAR4_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end else begin
-                // Dessiner la carte en arrière-plan
-                VGA_R2 <= temp_red;
-                VGA_G2 <= temp_green;
-                VGA_B2 <= temp_blue;
-            end
-        end else begin
-            // En dehors de l'affichage
-            VGA_R2 <= 3'b000;
-            VGA_G2 <= 3'b000;
-            VGA_B2 <= 3'b000;
-        end
-    end
-
-    // Assigner les couleurs aux signaux de fond
-    always @(posedge CLK) begin
-        VGA_R1 <= 3'b000;  // Noir de fond
-        VGA_G1 <= 3'b000;
-        VGA_B1 <= 3'b000;
-    end
+    
 
 endmodule
 
-// test
