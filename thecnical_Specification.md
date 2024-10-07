@@ -1,4 +1,4 @@
-# 2023-2024 - FROGGYRANCK PROJECT - FPGA GAME - TEAM 1
+# Technical Specification
 
 ## Role Distribution for the Project
 
@@ -20,7 +20,7 @@
 
 - [I. Project Introduction](#i-project-introduction)
   - [A. Client](#a-client)
-  - [B. Project Objective](#b-project-objective)
+  - [B. Project Scope](#b-project-scope)
   - [C. Project Architecture](#c-project-architecture)
 - [II. Solution](#ii-solution)
   - [A. Description](#a-description)
@@ -73,7 +73,7 @@
 - Developed to provide a retro gaming experience with custom features.
 - Aimed at a playful and educational audience.
 
-### B. Project Objective
+### B. Project Scope
 - To recreate a game on FPGA where the player controls a frog that must cross a road filled with cars to reach its destination.
 - Includes VGA display mechanisms and hardware controls (buttons on the board).
 
