@@ -10,6 +10,10 @@ module vga_control(
     output reg  VGA_B1       // Background color
 )
 
+    // Sync signals
+    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
+    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
+
 
     reg [9:0] h_count = 0;  // Horizontal counter
     reg [9:0] v_count = 0;  // Vertical counter
@@ -27,10 +31,7 @@ module vga_control(
         end
     end
 
-    // Sync signals
-    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
-    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
-
+    
     // VGA generation logic
     always @(posedge CLK) begin
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
@@ -80,7 +81,9 @@ module vga_control(
 
     // Assign background colors to signals
     always @(posedge CLK) begin
-        VGA_R1 <= 3'b000;  // Black background
+
+        // Black background
+        VGA_R1 <= 3'b000;  
         VGA_G1 <= 3'b000;
         VGA_B1 <= 3'b000;
     end

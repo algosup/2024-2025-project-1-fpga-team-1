@@ -1,4 +1,4 @@
-module (
+module movement_player (
     input CLK,
     input SW1, // Up
     input SW2, // Down
@@ -6,6 +6,9 @@ module (
     input SW4, // Right
 );
     reg [31:0] speed_count = 0; // Speed counter
+    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player position (X)
+    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;    // Player position (Y)
+
 
     // Player movement
     always @(posedge CLK) begin

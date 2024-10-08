@@ -1,4 +1,4 @@
-parameter = PLAYER_WIDTH = 32;  // Player width
+parameter PLAYER_WIDTH = 32;  // Player width
 parameter PLAYER_HEIGHT = 32; // Player height
 parameter PLAYER_SPEED = 12500000 / 2;  // Player speed
 
