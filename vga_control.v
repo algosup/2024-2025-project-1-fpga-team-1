@@ -7,16 +7,10 @@ module vga_control(
     output reg  VGA_B2,      // Blue color output (3 bits)
     output reg  VGA_R1,      // Background color
     output reg  VGA_G1,      // Background color
-    output reg  VGA_B1       // Background color
-)
-
-    // Sync signals
-    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
-    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
-
-
-    reg [9:0] h_count = 0;  // Horizontal counter
-    reg [9:0] v_count = 0;  // Vertical counter
+    output reg  VGA_B1,      // Background color
+    output wire [9:0] h_count, // compteur horizontal
+    output wire [9:0] v_count  // compteur vertical
+    );
 
     // Horizontal and vertical counters for VGA synchronization
     always @(posedge CLK) begin
@@ -25,7 +19,7 @@ module vga_control(
             if (v_count == V_SYNC_CYCLES - 1)
                 v_count <= 0;
             else
-                v_count <= v_count + 1;
+                wv_ount <= v_count + 1;
         end else begin
             h_count <= h_count + 1;
         end
@@ -87,5 +81,11 @@ module vga_control(
         VGA_G1 <= 3'b000;
         VGA_B1 <= 3'b000;
     end
+
+    // Sync signals
+    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
+    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
+
+
 
 endmodule

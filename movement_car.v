@@ -1,5 +1,14 @@
 module movement_car (
-        input CLK, 
+        input CLK,         // Main clock
+        // output wire [9:0] car_x, // Car position (X)
+        // output wire [9:0] car_y, // Car position (Y)
+        // output wire [9:0] car2_x, // Car 2 position (X)
+        // output wire [9:0] car2_y, // Car 2 position (Y)
+        // output wire [9:0] car3_x, // Car 3 position (X)
+        // output wire [9:0] car3_y, // Car 3 position (Y)
+        // output wire [9:0] car4_x, // Car 4 position (X)
+        // output wire [9:0] car4_y  // Car 4 position (Y)
+        // output wire [31:0] speed_count1, // Speed counter
 );
 
      

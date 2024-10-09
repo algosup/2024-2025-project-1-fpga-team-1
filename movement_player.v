@@ -47,9 +47,6 @@ module movement_player (
         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
         end
-
-
-
     end
 
 
