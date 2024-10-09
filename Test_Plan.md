@@ -69,10 +69,10 @@ Testing the Frogger game program must validate, from the requirements point of v
 As we are also implementing a number of additional functionalities, we also need to test whether these functionalities work correctly and whether they do not negatively impact the objectives already in place. Consequently, this test plan will also focus on the following aspects:
 
 * Use sprites for main characters and obstacles in 32x32 (VGA screen is 640x480, 640/20 = 32 and 480/15 = 32).
-* Add a winning page which appears when all levels are finish.
+* Add a winning page that appears when all levels are finished.
 * Add a menu that allows to :
   * Save the game
-  * Possibility to change Frog's appearence
+  * Possibility to change Frog's appearance
   * Display the score and current level compared to existing levels.
 * Add levels with specific frog and obstacle appearances, like : 
   * Halloween theme
