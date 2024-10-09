@@ -1,10 +1,8 @@
 module maps (
-    input CLk,
+    input CLK,
+    output wire [9:0] h_count, // compteur horizontal
+    output wire [9:0] v_count  // compteur vertical
 );
-
-    reg [9:0] h_count = 0;  // Horizontal counter
-    reg [9:0] v_count = 0;  // Vertical counter
-
     
     // Positions of the squares on the map
     reg [9:0] square_x[0:89]; // X positions

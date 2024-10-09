@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-include "constants.v"
+`include "constants.v"
 
 
 module main (
@@ -19,17 +19,28 @@ module main (
     output reg  VGA_B1       // Background color
 );
     
-wire v_count ; // Vertical counter
-wire h_count ; // Horizontal counter
+wire [9:0] w_hcount ; // Vertical counter
+wire [9:0] w_vcount ; // Horizontal counter
 
     
 movement_car movement_car_inst (
     .CLK(CLK),
+    // .car_x(car_x),
+    // .car_y(car_y),
+    // .car2_x(car2_x),
+    // .car2_y(car2_y),
+    // .car3_x(car3_x),
+    // .car3_y(car3_y),
+    // .car4_x(car4_x),
+    // .car4_y(car4_y),
+    // .speed_count1(speed_count1)
 );
   
 
 maps maps_inst (
     .CLK(CLK),
+    .h_count(w_hcount),
+    .v_count(w_vcount),
 );
 
 
@@ -43,8 +54,8 @@ movement_player movement_player_inst (
 
 vga_control vga_control_inst (
     .CLK(CLK),
-    .h_count(h_count),
-    .v_count(v_count),
+    .h_count(w_hcount),
+    .v_count(w_vcount),
     .VGA_HS(VGA_HS),
     .VGA_VS(VGA_VS),
     .VGA_R2(VGA_R2),
@@ -55,9 +66,9 @@ vga_control vga_control_inst (
     .VGA_B1(VGA_B1)
 );
 
+assign h_count = w_hcount;
+assign v_count = w_vcount;
 
-
-    
 
 endmodule
 
