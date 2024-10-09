@@ -3,7 +3,7 @@
 | Author       | Léna De Germain |
 |--------------|-----------------|
 |Created       |    9/26/2024    |
-|Last Modified |    10/02/2024    |
+|Last Modified |    10/06/2024    |
 
 ---
 
@@ -89,17 +89,17 @@ Frogger can be played solo, but it's also possible to play with two players, tak
 * The level must be displays on the [2-digit 7-segment display](#vi-glossary) of the Go Board.
 * To move the player we need to use the four buttons on [Go-board](#vi-glossary) (SW1, SW2, SW3, SW4)
 * the player have only one life
-* There shall be at least 8 levels in the game, when the level increases the game dificulty
+* There must be at least 8 levels in the game. As the level increases, so does the difficulty of the game.
 
-## III. Requierements / Base Mechanics
+## III. Requirements / Base Mechanics
 
-|Requierements|Usefullness|
+|Requirements|Usefullness|
 |-|-|
 |Name|We have done a vote to find a name, The majority adopted "FroggyRanck"|
 |Main character|A character played by player|
-|Main character's design|A basic character design for a basic level, a character design for special levels, dimensions are 32x32|
+|Main character's design|A basic character design for a basic level, a character design for special levels, dimensions are 32x32 pixels|
 |Obstacles|a character for Obstacles avoided by player|
-|Obstacles' design| A basic design for a basic level, a design for special levels, the obstacle's dimensions are 32x32*(2 or 3)|
+|Obstacles' design| A basic design for a basic level, a design for special levels, the obstacle's dimensions are 32x32 pixels but the width can vary |
 |Playground|A space without physique/collision for a play area|
 
 ### A. The Frog Mechanics
@@ -111,8 +111,16 @@ The buttons on the [FPGA board](#vi-glossary) are used to control the frog and r
 | SW1 | forward |
 | SW2 | backward |
 | SW3 | right |
-| SW4 | left | 
+| SW4 | left |
 | SW1 & SW2 & SW3 & SW4 | reset the game |
+
+<u>frog sprite</u>
+
+![frog](image/Screenshot%202024-10-06%20134026.png)
+
+
+<u>Optional Feature</u>
+
 
 ![frog_sprite](image/Screenshot%202024-10-02%20155752.png)
 ![frog_sprite_left](image/Screenshot%202024-10-02%20161048.png)
@@ -176,7 +184,7 @@ To more diversity, we have decided to add different themes to have another game 
 |8 lvl| Christmas|the frog become a lutin and the obstacles are replaced by reindeer|
 |2 lvl|ALGOSUP| obstacles replaced by Elone and the frog become Frank |
 
-## IV. Non-functional requirements
+## IV. Non-functional Requirements
 
 To code, in particular, but also to run the game, we need to meet few requirements.
 
