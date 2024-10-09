@@ -29,7 +29,7 @@
     - [3. Scoring \& Level Indicator Mekanisms](#3-scoring--level-indicator-mekanisms)
     - [4. Menu Mekanisms](#4-menu-mekanisms)
     - [5. Bonus Mekanisms](#5-bonus-mekanisms)
-- [X. Glossary](#x-glossary)
+- [V. Glossary](#v-glossary)
 
 </details>
 
@@ -37,7 +37,7 @@
 
 ## I. Introduction
 
-The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] language on a hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay, while adding features that enhance the user experience.
+The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] on a hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay, while adding features that enhance the user experience.
 
 The project is aimed at a varied audience, from those familiar with the original Frogger game or its various copies, to those discovering it for the first time. With a dual objective, the product aims to serve as a pedagogical tool for learning to code in the Verilog language and as an entertainment game.
 
@@ -45,7 +45,7 @@ Before create the game and test it, we need understand how worked this game. Fro
 
 <p class="text-center"> <img src="/images/Frogger_Original_Game.jpg" alt="Original Frogger"> </p>
 
-To do this, as in the picture above, the frog must cross a busy road, then an equally busy river. The frog, Frogger, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river and reach his goal of returning home.
+To do this, as in the picture above, the frog must cross a busy road, then an equally busy river. The frog, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river and reach his goal of returning home.
 
 
 ### A. Document purpose
@@ -61,8 +61,8 @@ This document has been created to facilitate communication between team members 
 Testing the Frogger game program must validate, from the requirements point of view, that :
 
 * One of the backgrounds must match or represent the original frogger with the road and river.
-* Have a main character who functions in the same way as the original frogger: moving from square to square on the 20x15 grid.
-* Have obstacles, like the cars in the original frogger, which move square by square on the 20x15 grid.
+* Have a main character who functions in the same way as the original Frogger: moving from square to square on the 20x15 grid.
+* Have obstacles, like the cars in the original Frogger, which move square by square on the 20x15 grid.
 * Reset the game using all four switches simultaneously.
 * Have a level system that corresponds to the number of levels completed
 
@@ -193,7 +193,7 @@ Each test comprises the following components:
 
 ---
 
-## X. Glossary
+## V. Glossary
 
 [^1]: FPGA board / Go-board
 Field Programmable Gate Arrays (FPGAs) are integrated circuits used to program and launch games.
