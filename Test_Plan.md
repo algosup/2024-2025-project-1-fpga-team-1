@@ -116,7 +116,7 @@ Some parts do not require a test to exist in the project, such as :
 
 ## IV. Testing Strategy
 
-Our testing strategy uses a multi-faceted approach. Unit testing forms the basis, scrutinizing individual components to verify their functionality. Game testing sessions take center stage, offering a holistic evaluation of gameplay, user interactions and the overall user experience.
+Our testing strategy uses a multi-faceted approach. Unit testing forms the basis, scrutinizing individual components to verify their functionality. Game testing sessions take center stage, offering a holistic evaluation of gameplay, user interactions, and the overall user experience.
 
 ### A. Unit test
 
@@ -125,7 +125,7 @@ Unit testing is an important part of the process. These tests are developed in V
 These tests are developed throughout the project, in parallel with the development of the game, which corresponds to an exploratory testing approach.
 
 These unit tests meet three crucial objectives:
-* Code functionality: to check that each function works as expected in different scenarios. For example, we make sure that the scoring mechanisms work correctly when Frogger interacts with different elements such as obstacles or bonuses.
+* Code functionality: check that each function works as expected in different scenarios. For example, we make sure that the scoring mechanisms work correctly when Frogger interacts with different elements such as obstacles or bonuses.
 * Code quality: Evaluate code clarity and quality to promote maintainability and ease of collaboration between developers.
 * Code coverage: Guarantee comprehensive testing to prevent future modifications from unintentionally altering the code's original behavior.
 
