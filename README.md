@@ -18,9 +18,9 @@ This project is an ALGOSUP project, driven by the students. This project aims to
 
 You follow the adventure of Ranck in the the frog world. Your goal is simple, help Ranck to pass the road without crossing the paths to cars.
 
-## How To Install //TODO
+## How To Install
 
-
+//TODO
 
 ## How To Use
 
@@ -29,7 +29,7 @@ To play FroggyRanck, feel free to check the documentation here: [User Manual]()
 ## Project documents
 
 - [Project Charter]()
-- [Functional Specifications]()
+- [Functional Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Functionnal_Specification.md)
 - [Technical Specifications]()
 - [User Manual]()
 - [Test Plan]()
