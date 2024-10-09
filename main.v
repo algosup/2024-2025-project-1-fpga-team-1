@@ -1,22 +1,22 @@
 `timescale 1ns / 1ps
 
 module main(
-    input wire CLK,          // Horloge principale
-    input wire SW1,          // haut
-    input wire SW2,          // bas
-    input wire SW3,          // Gauche
-    input wire SW4,          // Droite
-    output wire VGA_HS,      // Signal de synchronisation horizontale
-    output wire VGA_VS,      // Signal de synchronisation verticale
-    output reg  VGA_R2,      // Sortie couleur rouge (3 bits)
-    output reg  VGA_G2,      // Sortie couleur verte (3 bits)
-    output reg  VGA_B2,      // Sortie couleur bleue (3 bits)
-    output reg  VGA_R1,      // Couleur de fond
-    output reg  VGA_G1,      // Couleur de fond
-    output reg  VGA_B1       // Couleur de fond
+    input wire CLK,          // Main clock
+    input wire SW1,          // Up
+    input wire SW2,          // Down
+    input wire SW3,          // Left
+    input wire SW4,          // Right
+    output wire VGA_HS,      // Horizontal sync signal
+    output wire VGA_VS,      // Vertical sync signal
+    output reg  VGA_R2,      // Red color output (3 bits)
+    output reg  VGA_G2,      // Green color output (3 bits)
+    output reg  VGA_B2,      // Blue color output (3 bits)
+    output reg  VGA_R1,      // Background color
+    output reg  VGA_G1,      // Background color
+    output reg  VGA_B1       // Background color
 );
 
-    // Paramètres VGA et rectangle
+    // VGA and rectangle parameters
     localparam H_DISPLAY = 640;
     localparam V_DISPLAY = 480;
     localparam H_FRONT = 16;
@@ -27,8 +27,8 @@ module main(
     localparam V_BACK = 33;
     localparam H_SYNC_CYCLES = H_DISPLAY + H_FRONT + H_PULSE + H_BACK;
     localparam V_SYNC_CYCLES = V_DISPLAY + V_FRONT + V_PULSE + V_BACK;
-    localparam RECT_WIDTH = 17;   // Largeur des rectangles
-    localparam RECT_HEIGHT = 2;  // Hauteur des rectangles
+    localparam RECT_WIDTH = 17;   // Rectangle width
+    localparam RECT_HEIGHT = 2;   // Rectangle height
 
     localparam PLAYER_WIDTH = 32;
     localparam PLAYER_HEIGHT = 32;
@@ -52,9 +52,9 @@ module main(
     localparam CAR4_HEIGHT = 32;
     localparam CAR4_SPEED = 12500000/2;
 
-    reg [9:0] h_count = 0;  // Compteur horizontal
-    reg [9:0] v_count = 0;  // Compteur vertical
-    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Position du joueur
+    reg [9:0] h_count = 0;  // hozintal counter
+    reg [9:0] v_count = 0;  // vertical counter
+    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player X position
     reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;
     reg [9:0] car_x = 0;
     reg [9:0] car_y = 288;
@@ -66,7 +66,7 @@ module main(
     reg [9:0] car4_y = 384;
 
 
-    // Compteurs horizontaux et verticaux pour la synchronisation VGA
+    // Horizontal and vertical counters for VGA synchronization
     always @(posedge CLK) begin
         if (h_count == H_SYNC_CYCLES - 1) begin
             h_count <= 0;
@@ -79,17 +79,17 @@ module main(
         end
     end
 
-    // Signaux de synchronisation
+    // VGA synchronization signals
     assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
     assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
 
-    // Position des rectangles sur la carte
+    // Position of rectangles on the map
     reg [9:0] square_x[0:89]; // Positions X
     reg [9:0] square_y[0:89]; // Positions Y
 
-    // Initialisation des positions - valeurs manuelles pour chaque carré
+    // Initialization of positions - manual values for each square
     initial begin
-        // Assignations pour la première rangée
+        // Assignments for the first row
         square_x[0] = 10;    square_y[0] = 286;
         square_x[1] = 45;    square_y[1] = 286;
         square_x[2] = 80;    square_y[2] = 286;
@@ -109,7 +109,7 @@ module main(
         square_x[16] = 570;  square_y[16] = 286;
         square_x[17] = 605;  square_y[17] = 286;
 
-        // Assignations pour la deuxième rangée
+        // Assignments for the second row
         square_x[18] = 10;   square_y[18] = 318;
         square_x[19] = 45;   square_y[19] = 318;
         square_x[20] = 80;   square_y[20] = 318;
@@ -129,7 +129,7 @@ module main(
         square_x[34] = 570;  square_y[34] = 318;
         square_x[35] = 605;  square_y[35] = 318;
 
-        // Assignations pour la troisième rangée
+        // Assignments for the third row
         square_x[36] = 10;   square_y[36] = 350;
         square_x[37] = 45;   square_y[37] = 350;
         square_x[38] = 80;   square_y[38] = 350;
@@ -149,7 +149,7 @@ module main(
         square_x[52] = 570;  square_y[52] = 350;
         square_x[53] = 605;  square_y[53] = 350;
 
-        // Assignations pour la quatrième rangée
+        // Assignments for the fourth row
         square_x[54] = 10;   square_y[54] = 382;
         square_x[55] = 45;   square_y[55] = 382;
         square_x[56] = 80;   square_y[56] = 382;
@@ -169,7 +169,7 @@ module main(
         square_x[70] = 570;  square_y[70] = 382;
         square_x[71] = 605;  square_y[71] = 382;
 
-        // Assignations pour la cinquième rangée
+        // Assignments for the fifth row
         square_x[72] = 10;   square_y[72] = 414;
         square_x[73] = 45;   square_y[73] = 414;
         square_x[74] = 80;   square_y[74] = 414;
@@ -190,7 +190,7 @@ module main(
         square_x[89] = 605;  square_y[89] = 414;
     end
 
-    // Signaux pour les carrés actifs, assignés individuellement
+    // Signals for active squares, assigned individually
     wire square_active[0:89];
 
     genvar i;
@@ -201,14 +201,14 @@ module main(
         end
     endgenerate
 
-    // Affichage des couleurs des carrés (blanc)
+    // Display square colors (white)
     reg [2:0] temp_red, temp_green, temp_blue;
     always @(posedge CLK) begin
         temp_red = 3'b000;
         temp_green = 3'b000;
         temp_blue = 3'b000;
 
-        // Si un carré est actif, afficher en blanc
+        // If a square is active, display in white
         if (square_active[0]) begin
             temp_red = 3'b111;
             temp_green = 3'b111;
@@ -218,7 +218,7 @@ module main(
             temp_green = 3'b111;
             temp_blue = 3'b111;
         end
-        // Continuez pour tous les carrés jusqu'à square_active[89]
+        // Continue for all squares up to square_active[89]
         else if (square_active[2]) begin
             temp_red = 3'b111;
             temp_green = 3'b111;
@@ -667,19 +667,19 @@ module main(
             speed_count <= speed_count + 1;
         end
         if (SW1 && player_y > 0 && speed_count == PLAYER_SPEED) begin
-            player_y <= player_y - 32; // Haut
+            player_y <= player_y - 32; // Up
             speed_count <= 0;
         end
         if (SW2 && player_y < V_DISPLAY - PLAYER_HEIGHT && speed_count == PLAYER_SPEED)begin
-         player_y <= player_y + 32; // Bas
+         player_y <= player_y + 32; // Down
          speed_count <= 0;
          end
         if (SW3 && player_x > 0 && speed_count == PLAYER_SPEED)begin
-         player_x <= player_x - 32; // Gauche
+         player_x <= player_x - 32; // Left
          speed_count <= 0;
         end
         if (SW4 && player_x < H_DISPLAY - PLAYER_WIDTH && speed_count == PLAYER_SPEED)begin
-         player_x <= player_x + 32; // Droite
+         player_x <= player_x + 32; // Right
          speed_count <= 0;
         end
         if (((player_x >= car_x && player_x <= car_x + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x && player_x + PLAYER_WIDTH <= car_x + CAR_WIDTH && player_y == car_y)) begin
@@ -740,7 +740,7 @@ module main(
     end
 
 
-    // Logique de génération VGA
+    // VGA generation logic
     always @(posedge CLK) begin
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
             // Priorité au joueur
@@ -774,26 +774,25 @@ module main(
                 VGA_G2 <= 3'b000;
                 VGA_B2 <= 3'b000;
             end else begin
-                // Dessiner la carte en arrière-plan
+                // Draw the map in the background
                 VGA_R2 <= temp_red;
                 VGA_G2 <= temp_green;
                 VGA_B2 <= temp_blue;
             end
         end else begin
-            // En dehors de l'affichage
+            // Outside of display
             VGA_R2 <= 3'b000;
             VGA_G2 <= 3'b000;
             VGA_B2 <= 3'b000;
         end
     end
 
-    // Assigner les couleurs aux signaux de fond
+    // Assign background colors to signals
     always @(posedge CLK) begin
-        VGA_R1 <= 3'b000;  // Noir de fond
+        VGA_R1 <= 3'b000;  // black background
         VGA_G1 <= 3'b000;
         VGA_B1 <= 3'b000;
     end
 
 endmodule
 
-// test
