@@ -11,7 +11,7 @@
 
 - [Test Plan](#test-plan)
 - [I. Introduction](#i-introduction)
-  - [A. Document purpose](#a-document-purpose)
+  - [Document purpose](#document-purpose)
 - [II. Quality Objectives](#ii-quality-objectives)
   - [A. Primary objectives](#a-primary-objectives)
   - [B. Secondary Objectives](#b-secondary-objectives)
@@ -33,8 +33,6 @@
 
 </details>
 
-
-
 ## I. Introduction
 
 The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] on a hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay, while adding features that enhance the user experience.
@@ -48,7 +46,7 @@ Before create the game and test it, we need understand how worked this game. Fro
 To do this, as in the picture above, the frog must cross a busy road, then an equally busy river. The frog, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river and reach his goal of returning home.
 
 
-### A. Document purpose
+### Document purpose
 
 This document has been created to facilitate communication between team members on the various tests to be carried out on the project. It describes the approaches and methodologies that will be applied to Frogger's regression[^3], smoke[^4], Functionnal[^5], Unit[^6] tests and test case[^7]. It also identifies the Frogger's reactions to the various tests.
 
