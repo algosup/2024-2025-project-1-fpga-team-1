@@ -22,6 +22,7 @@ module main (
 wire [9:0] w_hcount ; // Vertical counter
 wire [9:0] w_vcount ; // Horizontal counter
 
+wire w_SW1, w_SW2, w_SW3, w_SW4;        // Debounced switches
     
 movement_car movement_car_inst (
     .CLK(CLK),
@@ -35,6 +36,28 @@ movement_car movement_car_inst (
     // .car4_y(car4_y),
     // .speed_count1(speed_count1)
 );
+
+localparam DEBOUNCE_LIMIT = 25000;    // 1 ms debounce filter
+
+debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW1_inst (
+    .CLK(CLK), 
+    .SW(SW1),
+    .SW_debounced(w_SW1));
+
+debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW2_inst (
+    .CLK(CLK), 
+    .SW(SW2),
+    .SW_debounced(w_SW2));
+
+debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW3_inst (
+    .CLK(CLK), 
+    .SW(SW3),
+    .SW_debounced(w_SW3));
+
+debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW4_inst (
+    .CLK(CLK), 
+    .SW(SW4),
+    .SW_debounced(w_SW4));
   
 
 maps maps_inst (
@@ -46,10 +69,10 @@ maps maps_inst (
 
 movement_player movement_player_inst (
     .CLK(CLK),
-    .SW1(SW1),
-    .SW2(SW2),
-    .SW3(SW3),
-    .SW4(SW4)
+    .SW1(w_SW1),
+    .SW2(w_SW2),
+    .SW3(w_SW3),
+    .SW4(w_SW4)
 );
 
 vga_control vga_control_inst (
