@@ -3,9 +3,7 @@
 | Author       | Alexis SANTOS |
 |--------------|---------------|
 |Created       |   9/26/2024   |
-|Last Modified |   10/06/2024  |
-
-7:30 AM - 9:20 AM / 10:10 AM - 10:40 AM / 11:20 AM - 12:20
+|Last Modified |   10/09/2024  |
 
 <details>
 
@@ -39,17 +37,16 @@
 
 ## I. Introduction
 
-The client contacted us to work on a new version of Frogger, an arcade game. This game targets nostalgics of the arcade era, those who are fans of the Frogger concept, as well as those who want to (re)discover arcade games.
+The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] language on a hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay, while adding features that enhance the user experience.
 
-Frogger is basically a game about controlling a frog who has to return home. 
+The project is aimed at a varied audience, from those familiar with the original Frogger game or its various copies, to those discovering it for the first time. With a dual objective, the product aims to serve as a pedagogical tool for learning to code in the Verilog language and as an entertainment game.
+
+Before create the game and test it, we need understand how worked this game. Frogger is basically a game about controlling a frog who has to return home. 
 
 <p class="text-center"> <img src="/images/Frogger_Original_Game.jpg" alt="Original Frogger"> </p>
 
 To do this, as in the picture above, the frog must cross a busy road, then an equally busy river. The frog, Frogger, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river and reach his goal of returning home.
 
-The aim of this project is to recreate the arcade game Frogger using hardware supplied by Nandland.com, an FPGA / Go-board[^1] coded in Verilog[^2]. 
-
-With these objectives in mind, the product aims to serve as a pedagogical tool for learning Verilog. As well as (re)discovering the arcade games of yesteryear.
 
 ### A. Document purpose
 
