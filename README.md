@@ -8,7 +8,7 @@
 | <img src="https://ca.slack-edge.com/T07NMGKN89J-U07NJUJGP19-g3711fcc3b4b-512" width="100" height="100"> | Mathis LEBEL | Technical Leader | [GitHub](https://github.com/mathislebel) \| [LinkedIn](https://www.linkedin.com/in/mathis-lebel-429114293/) \| [Mail](mailto:mathis.lebel@algosup.com) |
 | <img src="https://ca.slack-edge.com/T019N8PRR7W-U07EAF600RE-712036a7e97f-512" width="100" height="100"> | Robin GOUMY | Software Engineer | [GitHub](https://github.com/RobinGOUMY) \| [LinkedIn](https://www.linkedin.com/in/robin-goumy-66452832a/) \| [Mail](mailto:robin.goumy@algosup.com) |
 | <img src="https://ca.slack-edge.com/T07NMGKN89J-U07NCGVBHGE-9217f9ed5380-512" width="100" height="100"> | Alexis SANTOS | Quality Assurance | [GitHub](https://github.com/Mamoru-fr) \| [LinkedIn](https://www.linkedin.com/in/alexis-santos-83481031b/) \| [Mail](mailto:alexis.santos@algosup.com) |
-| <img src="https://ca.slack-edge.com/T019N8PRR7W-U07EAF5MLU8-cbf39e86ee82-512" width="100" height="100"> | Yann-Maël BOUTON | Technical Writer | [GitHub](https://github.com/devnjoyer) \| [LinkedIn]() \| [Mail](mailto:yann-mael.bouton@algosup.com) |
+| <img src="https://ca.slack-edge.com/T019N8PRR7W-U07EAF5MLU8-cbf39e86ee82-512" width="100" height="100"> | Yann-Maël BOUTON | Technical Writer | [GitHub](https://github.com/devnjoyer) \| [Mail](mailto:yann-mael.bouton@algosup.com) |
 
 ## Overview
 
@@ -30,9 +30,9 @@ To play FroggyRanck, feel free to check the documentation here: [User Manual]()
 
 - [Project Charter]()
 - [Functional Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Functionnal_Specification.md)
-- [Technical Specifications]()
+- [Technical Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/thecnical_Specification.md)
 - [User Manual]()
-- [Test Plan]()
+- [Test Plan](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Test_Plan.md)
 - [Management]()
 
 ## MIT License
