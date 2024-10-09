@@ -1,4 +1,4 @@
-module movement_player (
+/*module movement_player (
     input CLK,
     input SW1, // Up
     input SW2, // Down

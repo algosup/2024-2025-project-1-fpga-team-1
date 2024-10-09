@@ -1,4 +1,4 @@
-module movement_car (
+/*module movement_car (
         input CLK,         // Main clock
         // output wire [9:0] car_x, // Car position (X)
         // output wire [9:0] car_y, // Car position (Y)

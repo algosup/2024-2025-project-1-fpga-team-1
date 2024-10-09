@@ -1,4 +1,4 @@
-module debounce_SW #(parameter DEBOUNCE_LIMIT = 20)(
+/*module debounce_SW #(parameter DEBOUNCE_LIMIT = 20)(
     input wire CLK,
     input wire SW,
     output wire SW_debounced

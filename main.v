@@ -1,5 +1,8 @@
 `timescale 1ns / 1ps
 
+`include "constants.v"
+
+
 module main(
     input wire CLK,          // Main clock
     input wire SW1,          // Up
@@ -8,52 +11,45 @@ module main(
     input wire SW4,          // Right
     output wire VGA_HS,      // Horizontal sync signal
     output wire VGA_VS,      // Vertical sync signal
-    output reg  VGA_R2,      // Red color output (3 bits)
-    output reg  VGA_G2,      // Green color output (3 bits)
-    output reg  VGA_B2,      // Blue color output (3 bits)
-    output reg  VGA_R1,      // Background color
-    output reg  VGA_G1,      // Background color
-    output reg  VGA_B1       // Background color
+    output wire VGA_R2,      // Red color output (3 bits)
+    output wire VGA_G2,      // Green color output (3 bits)
+    output wire VGA_B2,      // Blue color output (3 bits)
+    output wire VGA_R1,      // Background color
+    output wire VGA_G1,      // Background color
+    output wire VGA_B1       // Background color
 );
 
-    // VGA and rectangle parameters
-    localparam H_DISPLAY = 640;
-    localparam V_DISPLAY = 480;
-    localparam H_FRONT = 16;
-    localparam H_PULSE = 96;
-    localparam H_BACK = 48;
-    localparam V_FRONT = 10;
-    localparam V_PULSE = 2;
-    localparam V_BACK = 33;
-    localparam H_SYNC_CYCLES = H_DISPLAY + H_FRONT + H_PULSE + H_BACK;
-    localparam V_SYNC_CYCLES = V_DISPLAY + V_FRONT + V_PULSE + V_BACK;
-    localparam RECT_WIDTH = 17;   // Rectangle width
-    localparam RECT_HEIGHT = 2;   // Rectangle height
-
-    localparam PLAYER_WIDTH = 32;
-    localparam PLAYER_HEIGHT = 32;
-    localparam PLAYER_SPEED = 12500000/2;
-
-    localparam CAR_WIDTH = 40;
-    localparam CAR_HEIGHT = 32;
-    localparam CAR_SPEED = 12500000/2;
-
-    localparam CAR2_WIDTH = 40;
-    localparam CAR2_HEIGHT = 32;
-    localparam CAR2_SPEED = 12500000/2;
 
 
-    localparam CAR3_WIDTH = 40;
-    localparam CAR3_HEIGHT = 32;
-    localparam CAR3_SPEED = 12500000/2;
+    // VGA control module
+    wire [9:0] h_count ;  // hozintal counter
+    wire [9:0] v_count ;  // vertical counter
+    // wire [2:0] VGA_R2  ; // Red color output (3 bits)
+    // wire [2:0] VGA_G2  ; // Green color output (3 bits)
+    // wire [2:0] VGA_B2  ; // Blue color output (3 bits)
+    // wire [2:0] VGA_R1  ; // Background color
+    // wire [2:0] VGA_G1  ; // Background color
+    // wire [2:0] VGA_B1  ; // Background color
+    // wire [2:0] VGA_HS  ; // Horizontal sync signal
+    // wire [2:0] VGA_VS  ; // Vertical sync signal
 
 
-    localparam CAR4_WIDTH = 50;
-    localparam CAR4_HEIGHT = 32;
-    localparam CAR4_SPEED = 12500000/2;
+    vga_control vga_control_inst(
+        .CLK(CLK),
+        .VGA_HS(VGA_HS),
+        .VGA_VS(VGA_VS),
+        .VGA_R2(VGA_R2),
+        .VGA_G2(VGA_G2),
+        .VGA_B2(VGA_B2),
+        .VGA_R1(VGA_R1),
+        .VGA_G1(VGA_G1),
+        .VGA_B1(VGA_B1),
+        .h_count(h_count),
+        .v_count(v_count)
+    );
 
-    reg [9:0] h_count = 0;  // hozintal counter
-    reg [9:0] v_count = 0;  // vertical counter
+
+
     reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player X position
     reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;
     reg [9:0] car_x = 0;
@@ -64,24 +60,6 @@ module main(
     reg [9:0] car3_y = 352;
     reg [9:0] car4_x = 0;
     reg [9:0] car4_y = 384;
-
-
-    // Horizontal and vertical counters for VGA synchronization
-    always @(posedge CLK) begin
-        if (h_count == H_SYNC_CYCLES - 1) begin
-            h_count <= 0;
-            if (v_count == V_SYNC_CYCLES - 1)
-                v_count <= 0;
-            else
-                v_count <= v_count + 1;
-        end else begin
-            h_count <= h_count + 1;
-        end
-    end
-
-    // VGA synchronization signals
-    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
-    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
 
     // Position of rectangles on the map
     reg [9:0] square_x[0:89]; // Positions X
@@ -196,7 +174,7 @@ module main(
     genvar i;
     generate
         for (i = 0; i < 90; i = i + 1) begin : square_active_gen
-            assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
+            assign square_active[i] = ( h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
                                       (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
         end
     endgenerate
@@ -742,9 +720,9 @@ module main(
 
     // VGA generation logic
     always @(posedge CLK) begin
-        if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
+        if ( h_count < H_DISPLAY && v_count < V_DISPLAY) begin
             // Priorité au joueur
-            if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
+            if ((h_count>= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
                 (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
                 VGA_R2 <= 3'b000;
                 VGA_G2 <= 3'b111;
@@ -756,7 +734,7 @@ module main(
                 VGA_G2 <= 3'b000;
                 VGA_B2 <= 3'b000;
             end 
-            if ((h_count >= car2_x) && (h_count < car2_x + CAR2_WIDTH) &&
+            if ((h_count>= car2_x) && (h_count < car2_x + CAR2_WIDTH) &&
                         (v_count >= car2_y) && (v_count < car2_y + CAR2_HEIGHT)) begin
                 VGA_R2 <= 3'b111;
                 VGA_G2 <= 3'b000;
