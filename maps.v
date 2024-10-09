@@ -1,122 +1,94 @@
-module maps (
-    input CLK,
-    output wire [9:0] h_count, // compteur horizontal
-    output wire [9:0] v_count  // compteur vertical
+`timescale 1ns / 1ps
+
+module main(
+    input wire CLK,          // Horloge principale
+    input wire SW1,         // haut 
+    input wire SW2,         // bas 
+    input wire SW3,         // Gauche
+    input wire SW4,         // Droite
+    output wire VGA_HS,     // Signal de synchronisation horizontale
+    output wire VGA_VS,     // Signal de synchronisation verticale
+    output reg  VGA_R2,     // Sortie couleur rouge (3 bits)
+    output reg  VGA_G2,     // Sortie couleur verte (3 bits)
+    output reg  VGA_B2,     // Sortie couleur bleue (3 bits)
+    output reg  VGA_R1,     // Couleur de fond
+    output reg  VGA_G1,     // Couleur de fond
+    output reg  VGA_B1      // Couleur de fond
+>>>>>>> parent of 80f2ab7 (add a good movement and one car):Screen.v
 );
     
     // Positions of the squares on the map
     reg [9:0] square_x[0:89]; // X positions
     reg [9:0] square_y[0:89]; // Y positions
 
+    // Paramètres VGA et rectangle
+    localparam H_DISPLAY = 640;
+    localparam V_DISPLAY = 480;
+    localparam H_FRONT = 16;
+    localparam H_PULSE = 96;
+    localparam H_BACK = 48;
+    localparam V_FRONT = 10;
+    localparam V_PULSE = 2;
+    localparam V_BACK = 33;
+    localparam H_SYNC_CYCLES = H_DISPLAY + H_FRONT + H_PULSE + H_BACK;
+    localparam V_SYNC_CYCLES = V_DISPLAY + V_FRONT + V_PULSE + V_BACK;
+    localparam RECT_WIDTH = 17;   // Largeur des rectangles
+    localparam RECT_HEIGHT = 10;  // Hauteur des rectangles
 
-    // Initialization of positions - manual values for each square
+    // Paramètres du joueur
+    localparam PLAYER_WIDTH = 30;
+    localparam PLAYER_HEIGHT = 50;
+    localparam PLAYER_SPEED = 250000;
+
+    reg [9:0] h_count = 0;  // Compteur horizontal
+    reg [9:0] v_count = 0;  // Compteur vertical
+    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Position du joueur
+    reg [9:0] player_y = V_DISPLAY / 2 - PLAYER_HEIGHT / 2;
+
+    reg [31:0] r_PLAYER_COUNT = 0;
+
+
+    // Compteurs horizontaux et verticaux pour la synchronisation VGA
+    always @(posedge CLK) begin
+            if (h_count == H_SYNC_CYCLES - 1) begin
+                h_count <= 0;
+                if (v_count == V_SYNC_CYCLES - 1)
+                    v_count <= 0;
+                else
+                    v_count <= v_count + 1;
+            end else begin
+                h_count <= h_count + 1;
+            end
+        end
+
+    // Signaux de synchronisation
+    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
+    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
+
+    // Position des rectangles sur la carte
+    reg [9:0] square_x[0:89]; // Positions X
+    reg [9:0] square_y[0:89]; // Positions Y
+
+    // Initialisation des positions
+    integer i;
     initial begin
-        // Assignments for the first row
-        square_x[0] = 10;    square_y[0] = 286;
-        square_x[1] = 45;    square_y[1] = 286;
-        square_x[2] = 80;    square_y[2] = 286;
-        square_x[3] = 115;   square_y[3] = 286;
-        square_x[4] = 150;   square_y[4] = 286;
-        square_x[5] = 185;   square_y[5] = 286;
-        square_x[6] = 220;   square_y[6] = 286;
-        square_x[7] = 255;   square_y[7] = 286;
-        square_x[8] = 290;   square_y[8] = 286;
-        square_x[9] = 325;   square_y[9] = 286;
-        square_x[10] = 360;  square_y[10] = 286;
-        square_x[11] = 395;  square_y[11] = 286;
-        square_x[12] = 430;  square_y[12] = 286;
-        square_x[13] = 465;  square_y[13] = 286;
-        square_x[14] = 500;  square_y[14] = 286;
-        square_x[15] = 535;  square_y[15] = 286;
-        square_x[16] = 570;  square_y[16] = 286;
-        square_x[17] = 605;  square_y[17] = 286;
-
-        // Assignments for the second row
-        square_x[18] = 10;   square_y[18] = 318;
-        square_x[19] = 45;   square_y[19] = 318;
-        square_x[20] = 80;   square_y[20] = 318;
-        square_x[21] = 115;  square_y[21] = 318;
-        square_x[22] = 150;  square_y[22] = 318;
-        square_x[23] = 185;  square_y[23] = 318;
-        square_x[24] = 220;  square_y[24] = 318;
-        square_x[25] = 255;  square_y[25] = 318;
-        square_x[26] = 290;  square_y[26] = 318;
-        square_x[27] = 325;  square_y[27] = 318;
-        square_x[28] = 360;  square_y[28] = 318;
-        square_x[29] = 395;  square_y[29] = 318;
-        square_x[30] = 430;  square_y[30] = 318;
-        square_x[31] = 465;  square_y[31] = 318;
-        square_x[32] = 500;  square_y[32] = 318;
-        square_x[33] = 535;  square_y[33] = 318;
-        square_x[34] = 570;  square_y[34] = 318;
-        square_x[35] = 605;  square_y[35] = 318;
-
-        // Assignments for the third row
-        square_x[36] = 10;   square_y[36] = 350;
-        square_x[37] = 45;   square_y[37] = 350;
-        square_x[38] = 80;   square_y[38] = 350;
-        square_x[39] = 115;  square_y[39] = 350;
-        square_x[40] = 150;  square_y[40] = 350;
-        square_x[41] = 185;  square_y[41] = 350;
-        square_x[42] = 220;  square_y[42] = 350;
-        square_x[43] = 255;  square_y[43] = 350;
-        square_x[44] = 290;  square_y[44] = 350;
-        square_x[45] = 325;  square_y[45] = 350;
-        square_x[46] = 360;  square_y[46] = 350;
-        square_x[47] = 395;  square_y[47] = 350;
-        square_x[48] = 430;  square_y[48] = 350;
-        square_x[49] = 465;  square_y[49] = 350;
-        square_x[50] = 500;  square_y[50] = 350;
-        square_x[51] = 535;  square_y[51] = 350;
-        square_x[52] = 570;  square_y[52] = 350;
-        square_x[53] = 605;  square_y[53] = 350;
-
-        // Assignments for the fourth row
-        square_x[54] = 10;   square_y[54] = 382;
-        square_x[55] = 45;   square_y[55] = 382;
-        square_x[56] = 80;   square_y[56] = 382;
-        square_x[57] = 115;  square_y[57] = 382;
-        square_x[58] = 150;  square_y[58] = 382;
-        square_x[59] = 185;  square_y[59] = 382;
-        square_x[60] = 220;  square_y[60] = 382;
-        square_x[61] = 255;  square_y[61] = 382;
-        square_x[62] = 290;  square_y[62] = 382;
-        square_x[63] = 325;  square_y[63] = 382;
-        square_x[64] = 360;  square_y[64] = 382;
-        square_x[65] = 395;  square_y[65] = 382;
-        square_x[66] = 430;  square_y[66] = 382;
-        square_x[67] = 465;  square_y[67] = 382;
-        square_x[68] = 500;  square_y[68] = 382;
-        square_x[69] = 535;  square_y[69] = 382;
-        square_x[70] = 570;  square_y[70] = 382;
-        square_x[71] = 605;  square_y[71] = 382;
- 
-
-        // Assignments for the fifth row
-         square_x[72] = 10;   square_y[72] = 414;
-        square_x[73] = 45;   square_y[73] = 414;
-        square_x[74] = 80;   square_y[74] = 414;
-        square_x[75] = 115;  square_y[75] = 414;
-        square_x[76] = 150;  square_y[76] = 414;
-        square_x[77] = 185;  square_y[77] = 414;
-        square_x[78] = 220;  square_y[78] = 414;
-        square_x[79] = 255;  square_y[79] = 414;
-        square_x[80] = 290;  square_y[80] = 414;
-        square_x[81] = 325;  square_y[81] = 414;
-        square_x[82] = 360;  square_y[82] = 414;
-        square_x[83] = 395;  square_y[83] = 414;
-        square_x[84] = 430;  square_y[84] = 414;
-        square_x[85] = 465;  square_y[85] = 414;
-        square_x[86] = 500;  square_y[86] = 414;
-        square_x[87] = 535;  square_y[87] = 414;
-        square_x[88] = 570;  square_y[88] = 414;
-        square_x[89] = 605;  square_y[89] = 414;
+        for (i = 0; i < 90; i = i + 1) begin
+            square_x[i] = 10 + (i % 18) * 35;
+            square_y[i] = 100 + (i / 18) * 75;
+        end
     end
 
-    // Signals for active squares, individually assigned
+    // Signaux pour les carrés actifs
     wire square_active[0:89];
+    generate
+        genvar idx;
+        for (idx = 0; idx < 90; idx = idx + 1) begin : square_check
+            assign square_active[idx] = (h_count >= square_x[idx]) && (h_count < square_x[idx] + RECT_WIDTH) &&
+                                        (v_count >= square_y[idx]) && (v_count < square_y[idx] + RECT_HEIGHT);
+        end
+    endgenerate
 
-    // Display square colours (white)
+    // Affichage des couleurs des carrés (blanc)
     reg [2:0] temp_red, temp_green, temp_blue;
 
     always @(posedge CLK) begin
@@ -124,7 +96,6 @@ module maps (
         temp_green = 3'b000;
         temp_blue = 3'b000;
 
-        //  Assign colours for each square
         if (square_active[0]) begin
             temp_red = 3'b111;
             temp_green = 3'b111;
@@ -600,7 +571,6 @@ module maps (
          player_x <= player_x + 32; // Droite
          speed_count <= 0;
         end
-    end
     reg [31:0] speed_count2 = 0;
     always @(posedge CLK) begin
         if (speed_count2 <  CAR_SPEED) begin
@@ -613,35 +583,28 @@ module maps (
 
     // Logique de génération VGA
     always @(posedge CLK) begin
-        if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
-            // Priorité au joueur
-            if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
-                (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
+            if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
+                // Priorité au joueur
+                if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
+                    (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
+                    // Dessiner le joueur (couleur blanche)
+                    VGA_R2 <= 3'b000;
+                    VGA_G2 <= 3'b111;
+                    VGA_B2 <= 3'b000;
+                end else begin
+                    // Dessiner la carte en arrière-plan
+                    VGA_R2 <= temp_red;
+                    VGA_G2 <= temp_green;
+                    VGA_B2 <= temp_blue;
+                end
+            end else begin
+                // En dehors de l'affichage
                 VGA_R2 <= 3'b000;
-                VGA_G2 <= 3'b111;
-                VGA_B2 <= 3'b000;
-            end else if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
-                        (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
                 VGA_G2 <= 3'b000;
                 VGA_B2 <= 3'b000;
-            end else begin
-                // Dessiner la carte en arrière-plan
-                VGA_R2 <= temp_red;
-                VGA_G2 <= temp_green;
-                VGA_B2 <= temp_blue;
             end
-        end else begin
-            // En dehors de l'affichage
-            VGA_R2 <= 3'b000;
-            VGA_G2 <= 3'b000;
-            VGA_B2 <= 3'b000;
         end
-    end
->>>>>>> parent of 71dd7a7 (added colision):Screen.v
+
 
 
 endmodule
-
-
-    
