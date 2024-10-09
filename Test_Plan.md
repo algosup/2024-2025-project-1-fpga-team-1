@@ -35,15 +35,15 @@
 
 ## I. Introduction
 
-The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] on a hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay, while adding features that enhance the user experience.
+The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] on hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay while adding features that enhance the user experience.
 
-The project is aimed at a varied audience, from those familiar with the original Frogger game or its various copies, to those discovering it for the first time. With a dual objective, the product aims to serve as a pedagogical tool for learning to code in the Verilog language and as an entertainment game.
+The project is aimed at a varied audience, from those familiar with the original Frogger game or its various copies to those discovering it for the first time. With a dual objective, the product aims to serve as a pedagogical tool for learning to code in the Verilog language and as an entertainment game.
 
-Before create the game and test it, we need understand how worked this game. Frogger is basically a game about controlling a frog who has to return home. 
+Before creating the game and testing it, we need to understand how worked this game. Frogger is basically a game about controlling a frog who has to return home. 
 
 <p class="text-center"> <img src="/images/Frogger_Original_Game.jpg" alt="Original Frogger"> </p>
 
-To do this, as in the picture above, the frog must cross a busy road, then an equally busy river. The frog, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river and reach his goal of returning home.
+To do this, as in the picture above, the frog must cross a busy road, and then an equally busy river. The frog, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river, and reach his goal of returning home.
 
 
 ### Document purpose
@@ -58,7 +58,7 @@ This document has been created to facilitate communication between team members 
 
 Testing the Frogger game program must validate, from the requirements point of view, that :
 
-* One of the backgrounds must match or represent the original frogger with the road and river.
+* One of the backgrounds must match or represent the original Frogger with the road and river.
 * Have a main character who functions in the same way as the original Frogger: moving from square to square on the 20x15 grid.
 * Have obstacles, like the cars in the original Frogger, which move square by square on the 20x15 grid.
 * Reset the game using all four switches simultaneously.
@@ -66,13 +66,13 @@ Testing the Frogger game program must validate, from the requirements point of v
 
 ### B. Secondary Objectives
 
-As we are also implementing a number of additional functionalities, we also need to test whether these functionalities work correctly, and whether they do not negatively impact the objectives already in place. Consequently, this test plan will also focus on the following aspects:
+As we are also implementing a number of additional functionalities, we also need to test whether these functionalities work correctly and whether they do not negatively impact the objectives already in place. Consequently, this test plan will also focus on the following aspects:
 
 * Use sprites for main characters and obstacles in 32x32 (VGA screen is 640x480, 640/20 = 32 and 480/15 = 32).
-* Add a win page which appears when all levels are finish.
-* Add a menu which allows to :
+* Add a winning page which appears when all levels are finish.
+* Add a menu that allows to :
   * Save the game
-  * Possibility to change Frog's apparence
+  * Possibility to change Frog's appearence
   * Display the score and current level compared to existing levels.
 * Add levels with specific frog and obstacle appearances, like : 
   * Halloween theme
