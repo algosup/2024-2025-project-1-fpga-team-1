@@ -5,13 +5,8 @@ Creation Date: 09/27/2024 <br> Last update: 09/27/2024
 </p>
 
 <details>
-<summary>
+<summary>Table of Contents</summary>
 
-## Table of Contents
-
-</summary>
-
-- [Table of Contents](#table-of-contents)
 - [1. Project Overview](#1-project-overview)
 - [2. Project Scope](#2-project-scope)
 - [3. Project Deliverable](#3-project-deliverable)

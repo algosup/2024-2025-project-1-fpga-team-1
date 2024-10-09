@@ -5,13 +5,8 @@ Creation Date: 09/27/2024 <br> Last update: 09/27/2024
 </p>
 
 <details>
-<summary>
+<summary>Table of Contents</summary>
 
-## Table of Contents
-
-</summary>
-
-- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Success](#success)
 - [What could have gone better](#what-could-have-gone-better)
@@ -22,7 +17,7 @@ Creation Date: 09/27/2024 <br> Last update: 09/27/2024
 
 ## Introduction
 
-The post-mortem is a document which is made a the end of the project, to permit to the team to tell what it work or not during all the project. It's a way to learn about all errors made but also to talk with all the team.
+The post-mortem is a document which is made a the end of the project, to allow to the team to tell what it work or not during all the project. It's a way to learn about all errors made but also to talk with all the team.
 
 ## Success
 
@@ -37,3 +32,5 @@ The post-mortem is a document which is made a the end of the project, to permit 
 
 
 ## Conclusion
+
+
