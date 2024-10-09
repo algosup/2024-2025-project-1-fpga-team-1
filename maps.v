@@ -581,16 +581,65 @@ module maps (
 
     
     genvar i;
-    generate
         for (i = 0; i < 90; i = i + 1) begin : square_active_gen
             assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
                                       (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
         end
-    endgenerate
 
+        if (SW1 && player_y > 0 && speed_count == PLAYER_SPEED) begin
+            player_y <= player_y - 32; // Haut
+            speed_count <= 0;
+        end
+        if (SW2 && player_y < V_DISPLAY - PLAYER_HEIGHT && speed_count == PLAYER_SPEED)begin
+         player_y <= player_y + 32; // Bas
+         speed_count <= 0;
+         end
+        if (SW3 && player_x > 0 && speed_count == PLAYER_SPEED)begin
+         player_x <= player_x - 32; // Gauche
+         speed_count <= 0;
+        end
+        if (SW4 && player_x < H_DISPLAY - PLAYER_WIDTH && speed_count == PLAYER_SPEED)begin
+         player_x <= player_x + 32; // Droite
+         speed_count <= 0;
+        end
+    reg [31:0] speed_count2 = 0;
+    always @(posedge CLK) begin
+        if (speed_count2 <  CAR_SPEED) begin
+            speed_count2 <= speed_count2 + 1;
+        end else if (speed_count2 >= CAR_SPEED) begin
+            car_x <= car_x + 32 % H_DISPLAY;
+            speed_count2 <= 0;
+        end
+    end
 
-
-
+    // Logique de génération VGA
+    always @(posedge CLK) begin
+        if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
+            // Priorité au joueur
+            if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
+                (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
+                VGA_R2 <= 3'b000;
+                VGA_G2 <= 3'b111;
+                VGA_B2 <= 3'b000;
+            end else if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
+                        (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
+                VGA_R2 <= 3'b111;
+                VGA_G2 <= 3'b000;
+                VGA_B2 <= 3'b000;
+            end else begin
+                // Dessiner la carte en arrière-plan
+                VGA_R2 <= temp_red;
+                VGA_G2 <= temp_green;
+                VGA_B2 <= temp_blue;
+            end
+        end else begin
+            // En dehors de l'affichage
+            VGA_R2 <= 3'b000;
+            VGA_G2 <= 3'b000;
+            VGA_B2 <= 3'b000;
+        end
+    end
+>>>>>>> parent of 71dd7a7 (added colision):Screen.v
 
 
 endmodule
