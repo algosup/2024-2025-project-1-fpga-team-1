@@ -19,7 +19,7 @@
   - [A. Prototypes Goals](#a-prototypes-goals)
   - [B. Final game Goals](#b-final-game-goals)
   - [C. Constraints](#c-constraints)
-- [III. Requierements / Base Mechanics](#iii-requierements--base-mechanics)
+- [III. Requirements / Base Mechanics](#iii-requirements--base-mechanics)
   - [A. The Frog Mechanics](#a-the-frog-mechanics)
   - [B. The level](#b-the-level)
   - [C. Car Mechanics](#c-car-mechanics)
@@ -28,7 +28,7 @@
     - [2. Score](#2-score)
     - [3. Bonus](#3-bonus)
     - [4. Themes](#4-themes)
-- [IV. Non-functional requirements](#iv-non-functional-requirements)
+- [IV. Non-functional Requirements](#iv-non-functional-requirements)
 - [V. Deliverable](#v-deliverable)
 - [VI. Glossary](#vi-glossary)
 
@@ -54,8 +54,8 @@ The game starts with the frog positioned at the bottom of the screen, and the go
 
 Frogger can be played solo, but it's also possible to play with two players, taking turns.
 
-![example of frog](image/Frogger_Original_ch.jpg)
-![example of frogger in game](image/Frogger_Original_Game.jpg)
+![example of frog](images/Frogger_Original_ch.jpg)
+![example of frogger in game](images/Frogger_Original_Game.jpg)
 
 ## II. Goals and constraints 
 
@@ -116,16 +116,16 @@ The buttons on the [FPGA board](#vi-glossary) are used to control the frog and r
 
 <u>frog sprite</u>
 
-![frog](image/Screenshot%202024-10-06%20134026.png)
+![frog](images/Screenshot%202024-10-06%20134026.png)
 
 
 <u>Optional Feature</u>
 
 
-![frog_sprite](image/Screenshot%202024-10-02%20155752.png)
-![frog_sprite_left](image/Screenshot%202024-10-02%20161048.png)
-![frog_sprite_right](image/Screenshot%202024-10-02%20161057.png)
-![frog_sprite_back](image/Screenshot%202024-10-02%20161144.png)
+![frog_sprite](images/Screenshot%202024-10-02%20155752.png)
+![frog_sprite_left](images/Screenshot%202024-10-02%20161048.png)
+![frog_sprite_right](images/Screenshot%202024-10-02%20161057.png)
+![frog_sprite_back](images/Screenshot%202024-10-02%20161144.png)
 
 ### B. The level
 
