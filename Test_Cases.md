@@ -22,6 +22,9 @@
   - [12. Open Menu](#12-open-menu)
   - [13. Close Menu](#13-close-menu)
   - [14. Save Game](#14-save-game)
+  - [15. Show up level and score](#15-show-up-level-and-score)
+  - [16. Change frog's appearance](#16-change-frogs-appearance)
+  - [17. Display a register of bonuses](#17-display-a-register-of-bonuses)
   - [XX. FroggyRanck Collision: Car With a Star](#xx-froggyranck-collision-car-with-a-star)
   - [XX.](#xx)
 
@@ -39,6 +42,7 @@ Test priorities are indicated by the following colors:
 
 |Color|Priority|
 |:-:|:-:|
+|🟢|Very Low|
 |🟡|Low|
 |🟠|Medium|
 |🔴|High|
@@ -173,7 +177,7 @@ Test priorities are indicated by the following colors:
 | Name | Open Menu |
 | Test Description | Verify Menu is oppened when FPGA board's Switch 1 and 2 are pressed |
 | Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Press Switch 1 and 2 at the same time|
+| Step(s) | 1. Start the game, <br> 2. Press Switch 1 and 2 at the same time.|
 | Expected Result | Menu is opened |
 | Priority |🟠|*
 
@@ -184,7 +188,7 @@ Test priorities are indicated by the following colors:
 | Name | Close Menu |
 | Test Description | Verify Menu is closed when FPGA board's Switch 1 and 2 are pressed |
 | Requirement(s) | The game is started, Menu is oppened |
-| Step(s) | 1. Start the game, <br> 2. Open Menu <br>3. Press Switch 1 and 2 at the same time|
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1 and 2 at the same time.|
 | Expected Result | Menu is Close |
 | Priority |🟠|
 
@@ -195,9 +199,43 @@ Test priorities are indicated by the following colors:
 | Name | Save Game |
 | Test Description | Verify game is saved when FPGA board's Switch 1 is pressed |
 | Requirement(s) | The game is started, Menu is oppened |
-| Step(s) | 1. Start the game, <br> 2. Open Menu <br>3. Press Switch 1.|
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1.|
 | Expected Result | Game has been save and a Text "Game Saved" is displayed.|
 | Priority |🟠|
+
+### 15. Show up level and score
+
+| ID | T15 |
+| --- | --- |
+| Name | Show up level and score |
+| Test Description | Verify level and score are displayed on a big display when FPGA board's switch 2 is pressed. |
+| Requirement(s) | The game is started, menu is opened |
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press Switch 2. |
+| Expected Result | A display with score and level is showed. |
+| Priority |🟢|
+
+### 16. Change frog's appearance
+
+| ID | T16 |
+| --- | --- |
+| Name | Change frog's appearance |
+| Test Description | Verify frog could change appearance with a display of sprite when FPGA board's switch 3 is pressed. |
+| Requirement(s) | The game is started, menu is opened |
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press switch 3.|
+| Expected Result | A display with frog's appearance is showed with possibility to selec one of them. |
+| Priority |🟢|
+
+### 17. Display a register of bonuses
+
+| ID | T17 |
+| --- | --- |
+| Name | Display a register of bonuses |
+| Test Description | Verify a display with different bonuses and explication is displayed when FPGA board's switch 4 is pressed. |
+| Requirement(s) | The game is started, Menu is oppened |
+| Step(s) | 1. Start the game, <br> 2. Open Menu, <br> 3. Press switch 4. |
+| Expected Result | A display with a register of bonuses and description of them next to sprit. |
+| Priority | 🟢|
+
 
 ### XX. FroggyRanck Collision: Car With a Star
 
@@ -219,4 +257,4 @@ Test priorities are indicated by the following colors:
 | Requirement(s) | The game is started |
 | Step(s) | 1. Start the game, <br> 2. |
 | Expected Result |  |
-| Priority | 🔴 or 🟠 or 🟡|
+| Priority | 🔴 or 🟠 or 🟡 or 🟢|
