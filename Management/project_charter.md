@@ -23,12 +23,12 @@ This project is an ALGOSUP project, driven by the students. This project aims to
 
 To create the Frogger, we defined some requierements:
 
-1. recreate the basic game (map, character, obstacles)
-2. add bonuses
-3. add score
-4. add menu
-5. multiples level and difficulties
-6. add differents themes
+1. Recreate the basic game (map, character, obstacles)
+2. Add bonuses
+3. Add score
+4. Add menu
+5. Multiples level and difficulties
+6. Add differents themes
 
 ## 3. Project Deliverable
 

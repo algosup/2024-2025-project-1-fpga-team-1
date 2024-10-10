@@ -33,11 +33,7 @@ You'll find the time spent working on the project below:
 All session reports are available below:
 
 <details>
-<summary>
-
-## Report
-
-</summary>
+<summary>Report</summary>
 
 - [09/26/2024](./Report/09.26.2024.md)
 - [09/27/2024](./Report/09.27.2024.md)
