@@ -20,34 +20,32 @@ module main(
 );
 
 
-
     // VGA control module
-    wire [9:0] h_count ;  // hozintal counter
-    wire [9:0] v_count ;  // vertical counter
-    // wire [2:0] VGA_R2  ; // Red color output (3 bits)
-    // wire [2:0] VGA_G2  ; // Green color output (3 bits)
-    // wire [2:0] VGA_B2  ; // Blue color output (3 bits)
-    // wire [2:0] VGA_R1  ; // Background color
-    // wire [2:0] VGA_G1  ; // Background color
-    // wire [2:0] VGA_B1  ; // Background color
-    // wire [2:0] VGA_HS  ; // Horizontal sync signal
-    // wire [2:0] VGA_VS  ; // Vertical sync signal
+    wire [9:0] h_count_w ;  // hozintal counter
+    wire [9:0] v_count_w ;  // vertical counter
 
 
+    // Color signals
+    wire [2:0] temp_red, temp_green, temp_blue;
+
+
+    // VGA control module instantiation
     vga_control vga_control_inst(
         .CLK(CLK),
-        .VGA_HS(VGA_HS),
-        .VGA_VS(VGA_VS),
-        .VGA_R2(VGA_R2),
-        .VGA_G2(VGA_G2),
-        .VGA_B2(VGA_B2),
-        .VGA_R1(VGA_R1),
-        .VGA_G1(VGA_G1),
-        .VGA_B1(VGA_B1),
-        .h_count(h_count),
-        .v_count(v_count)
+        .VGA_HS_r(VGA_HS),
+        .VGA_VS_r(VGA_VS),
+        .VGA_R2_r(VGA_R2),
+        .VGA_G2_r(VGA_G2),
+        .VGA_B2_r(VGA_B2),
+        .VGA_R1_r(VGA_R1),
+        .VGA_G1_r(VGA_G1),
+        .VGA_B1_r(VGA_B1),
+        .h_count_r(h_count_w),
+        .v_count_r(v_count_w),
+        .temp_red_r(temp_red),
+        .temp_green_r(temp_green),
+        .temp_blue_r(temp_blue)
     );
-
 
 
     reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player X position
@@ -174,13 +172,13 @@ module main(
     genvar i;
     generate
         for (i = 0; i < 90; i = i + 1) begin : square_active_gen
-            assign square_active[i] = ( h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
-                                      (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
+            assign square_active[i] = ( h_count_w >= square_x[i]) && (h_count_w < square_x[i] + RECT_WIDTH) &&
+                                      (v_count_w >= square_y[i]) && (v_count_w < square_y[i] + RECT_HEIGHT);
         end
     endgenerate
 
     // Display square colors (white)
-    reg [2:0] temp_red, temp_green, temp_blue;
+
     always @(posedge CLK) begin
         temp_red = 3'b000;
         temp_green = 3'b000;
@@ -640,6 +638,7 @@ module main(
     end
 
     reg [31:0] speed_count = 0;
+    
     always @(posedge CLK) begin
         if (speed_count < PLAYER_SPEED) begin
             speed_count <= speed_count + 1;
@@ -678,6 +677,7 @@ module main(
         end
     end
     reg [31:0] speed_count2 = 0;
+
     always @(posedge CLK) begin
         if (speed_count2 <  CAR_SPEED) begin
             speed_count2 <= speed_count2 + 1;
@@ -718,59 +718,39 @@ module main(
     end
 
 
-    // VGA generation logic
-    always @(posedge CLK) begin
-        if ( h_count < H_DISPLAY && v_count < V_DISPLAY) begin
-            // Priorité au joueur
-            if ((h_count>= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
-                (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
-                VGA_R2 <= 3'b000;
-                VGA_G2 <= 3'b111;
-                VGA_B2 <= 3'b000;
-                end 
-            if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
-                        (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end 
-            if ((h_count>= car2_x) && (h_count < car2_x + CAR2_WIDTH) &&
-                        (v_count >= car2_y) && (v_count < car2_y + CAR2_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end 
-            if ((h_count >= car3_x) && (h_count < car3_x + CAR3_WIDTH) &&
-                        (v_count >= car3_y) && (v_count < car3_y + CAR3_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end 
-            if ((h_count >= car4_x) && (h_count < car4_x + CAR4_WIDTH) &&
-                        (v_count >= car4_y) && (v_count < car4_y + CAR4_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
-            end else begin
-                // Draw the map in the background
-                VGA_R2 <= temp_red;
-                VGA_G2 <= temp_green;
-                VGA_B2 <= temp_blue;
-            end
-        end else begin
-            // Outside of display
-            VGA_R2 <= 3'b000;
-            VGA_G2 <= 3'b000;
-            VGA_B2 <= 3'b000;
-        end
-    end
+    //     wire w_SW1, w_SW2, w_SW3, w_SW4 ;       // Debounced switches
 
-    // Assign background colors to signals
-    always @(posedge CLK) begin
-        VGA_R1 <= 3'b000;  // black background
-        VGA_G1 <= 3'b000;
-        VGA_B1 <= 3'b000;
-    end
+    // debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW1_inst (
+    //     .CLK(CLK), 
+    //     .SW(SW1),
+    //     .SW_debounced(w_SW1)
+    // );
+
+    // debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW2_inst (
+    //     .CLK(CLK), 
+    //     .SW(SW2),
+    //     .SW_debounced(w_SW2)
+    // );
+
+    // debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW3_inst (
+    //     .CLK(CLK), 
+    //     .SW(SW3),
+    //     .SW_debounced(w_SW3)
+    // );
+
+    // debounce_SW #(.DEBOUNCE_LIMIT(DEBOUNCE_LIMIT)) Debounce_SW4_inst (
+    //     .CLK(CLK), 
+    //     .SW(SW4),
+    //     .SW_debounced(w_SW4)
+    // );
+
+    // movement_player movement_player_inst(
+    //     .CLK(CLK),
+    //     .SW1(w_SW1),
+    //     .SW2(w_SW2),
+    //     .SW3(w_SW3),
+    //     .SW4(w_SW4)
+    // );
 
 endmodule
 
