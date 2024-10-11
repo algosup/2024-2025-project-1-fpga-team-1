@@ -68,6 +68,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Plug a micro USB cable to FPGA Board, <br> 2. Plug a VGA cable to FPGA Board |
 | Expected Result | The game starts |
 | Priority | 🔴 |
+|Test result||
 
 ### 02. Screen displayed
 
@@ -79,7 +80,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Look if screen responding. |
 | Expected Result | We have the game on the VGA screen or HDMI screen with an adaptator|
 | Priority |🔴|
-
+|Test result||
 
 ### 03. Stop the Game
 
@@ -91,6 +92,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Unplug micro USB cable or VGA cable |
 | Expected Result | The game stops |
 | Priority | 🔴 |
+|Test result||
 
 ### 04. Reset the game
 
@@ -102,6 +104,7 @@ Test priorities are indicated by the following colors:
 |Step(s)|1. Start the game,<br> 2. Move with FroggyRanck, <br> Press Switch 1, 2, 3 and 4 at the same time.|
 |Expected Result|Game is reset|
 |Priority|🔴|
+|Test result||
 
 ### 05. Car movement
 
@@ -113,6 +116,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Verify car's moves |
 | Expected Result | Cars move at different same speed. |
 | Priority |🔴|
+|Test result||
 
 ### 06. Car speed increased to every level
 
@@ -124,6 +128,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Check car speed, <br> 3. Cross and win a level |
 | Expected Result | Compare car speed between two levels. |
 | Priority |🟠|
+|Test result||
 
 ### 07. Move FroggyRanck Up
 
@@ -135,6 +140,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 1 in FPGA Board |
 | Expected Result | FroggyRanck moves up |
 | Priority |🔴|
+|Test result||
 
 ### 08. Move FroggyRanck Down
 
@@ -146,6 +152,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 2 in FPGA Board |
 | Expected Result | FroggyRanck moves down |
 | Priority |🔴|
+|Test result||
 
 ### 09. Move FroggyRanck Left
 
@@ -157,6 +164,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 3 in FPGA Board |
 | Expected Result | FroggyRanck moves left |
 | Priority |🔴|
+|Test result||
 
 ### 10. Move FroggyRanck Right
 
@@ -168,6 +176,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 4 in FPGA Board |
 | Expected Result | FroggyRanck moves right |
 | Priority |🔴|
+|Test result||
 
 ### 11. Time deplacement
 
@@ -179,6 +188,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Move FroggyRanck as faster as possible. |
 | Expected Result | We can only move FroggyRanck every second and not less. |
 | Priority |🟠|
+|Test result||
 
 ### 12. FroggyRanck Collision: Screen border
 
@@ -190,6 +200,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Move toward screen limit |
 | Expected Result | FroggyRanck is stopped and cannot pass through the screen border |
 | Priority | 🔴 |
+|Test result||
 
 ### 13. FroggyRanck Collision: Car
 
@@ -201,6 +212,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Move toward a car |
 | Expected Result | FroggyRanck is killed by the car and it return to the beginning of level |
 | Priority | 🔴 |
+|Test result||
 
 ### 14. Level is indicated on the 7-segment display
 
@@ -212,6 +224,7 @@ Test priorities are indicated by the following colors:
 |Step(s)|1. Start the game,<br> Check 7-segment display|
 |Expected Result|At the first level, 7-segment display need to indicat "01".|
 |Priority|🔴|
+|Test result||
 
 ### 15. Level score increased
 
@@ -223,6 +236,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if level score have been increased |
 | Expected Result | Level score has been increased by 1.|
 | Priority |🔴|
+|Test result||
 
 ### 16. Display score on the screen 
 
@@ -234,6 +248,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Check if we have a score indicator on the screen. |
 | Expected Result | We have a score display with a number associate |
 | Priority |🟠|
+|Test result||
 
 ### 17. Score increased when a level is complete
 
@@ -244,7 +259,8 @@ Test priorities are indicated by the following colors:
 | Requirement(s) | The game is started |
 | Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if score have been increased |
 | Expected Result | Score has been increased by 100 points. |
-| Priority |🟠|
+| Priority |🟠|*
+|Test result||
 
 ### 18. Score increased when positive bonuses has taken
 
@@ -256,6 +272,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Take a positive bonuses <br> 3. Look if score have been increased |
 | Expected Result | Score has been increased by some points in link to bonuses description. |
 | Priority |🟡|
+|Test result||
 
 ### 19. Score reset when FroggyRanck hit a car
 
@@ -267,6 +284,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Hit a car <br> 3. Look if score have been reset |
 | Expected Result | Score has been reset to 0. |
 | Priority |🟠|
+|Test result||
 
 ### 20. Score desincreased when negative bonuses has taken
 
@@ -278,6 +296,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Take a negative bonuses <br> 3. Look if score have been desincreased |
 | Expected Result | Score has been desincreased by some points in link to bonuses description.|
 | Priority |🟡|
+|Test result||
 
 ### 21. Open Menu
 
@@ -289,6 +308,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 1 and 2 at the same time.|
 | Expected Result | Menu is opened |
 | Priority |🟠|
+|Test result||
 
 ### 22. Close Menu
 
@@ -300,6 +320,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1 and 2 at the same time.|
 | Expected Result | Menu is Close |
 | Priority |🟠|
+|Test result||
 
 ### 23. Save Game
 
@@ -311,6 +332,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1.|
 | Expected Result | Game has been save and a Text "Game Saved" is displayed.|
 | Priority |🟠|
+|Test result||
 
 ### 24. Show up level and score
 
@@ -322,6 +344,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press Switch 2. |
 | Expected Result | A display with score and level is showed. |
 | Priority |🟢|
+|Test result||
 
 ### 25. Change FroggyRanck's appearance
 
@@ -333,6 +356,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press switch 3.|
 | Expected Result | A display with FroggyRanck's appearance is showed with possibility to selec one of them. |
 | Priority |🟢|
+|Test result||
 
 ### 26. Display a register of bonuses
 
@@ -344,6 +368,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Open Menu, <br> 3. Press switch 4. |
 | Expected Result | A display with a register of bonuses and description of them next to sprit. |
 | Priority | 🟢|
+|Test result||
 
 ### 27. Display Car sprite 
 
@@ -355,6 +380,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. See cars sprite |
 | Expected Result | cars sprite are one we have drawn on 32x32 or 32x64. |
 | Priority |🟡|
+|Test result||
 
 ### 28. Display FroggyRanck's sprite 
 
@@ -366,3 +392,4 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. See FroggyRanck sprite |
 | Expected Result | FroggyRanck sprite is one we have drawn on 32x32. |
 | Priority |🟡|
+|Test result||
