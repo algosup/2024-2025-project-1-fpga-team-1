@@ -1,36 +1,46 @@
+//Frog Ranck Game
 `timescale 1ns / 1ps
 
 `include "constant.v"
 
 module main(
-    input wire CLK,
-    input wire SW1,
-    input wire SW2,
-    input wire SW3,
-    input wire SW4,
-    output wire VGA_HS,
-    output wire VGA_VS,
-    output reg  VGA_R2,
-    output reg  VGA_G2,
-    output reg  VGA_B2,
-    output reg  VGA_R1,
-    output reg  VGA_G1,
-    output reg  VGA_B1
+    input wire CLK,         // Clock
+    input wire SW1,         // Up
+    input wire SW2,         // Down
+    input wire SW3,         // Left
+    input wire SW4,         // Right
+    output wire VGA_HS,     // HSYNC
+    output wire VGA_VS,     // VSYNC
+    output reg  VGA_R2,     // VGA Red
+    output reg  VGA_G2,     // VGA Green
+    output reg  VGA_B2,     // VGA Blue
+    output reg  VGA_R1,     // VGA Red
+    output reg  VGA_G1,     // VGA Green
+    output reg  VGA_B1      // VGA Blue
 );
 
-    reg [9:0] h_count = 0;
-    reg [9:0] v_count = 0;
-    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;
-    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;
-    reg [9:0] car_x = 200;
-    reg [9:0] car_y = 320;
-    reg [9:0] car_x2 = 0;
-    reg [9:0] car_y2 = 384;
-    reg [9:0] car_x3 = 508;
+    reg [9:0] h_count = 0;    // Horizontal counter
+    reg [9:0] v_count = 0;    // Vertical counter
+    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player x position
+    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;    // Player y position
+
+    // Car x and y positions
+    reg [9:0] car_x = 200; 
+    reg [9:0] car_y = 320;    
+    reg [9:0] car_x2 = 0;     
+    reg [9:0] car_y2 = 384;   
+    reg [9:0] car_x3 = 508;         
     reg [9:0] car_y3 = 416;
     reg [9:0] car_x4 = 600;
     reg [9:0] car_y4 = 448;
 
+    // // Wood x and y positions
+    // reg [9:0] wood_x1 = 692;
+    // reg [9:0] wood_y1 = 480;
+
+
+
+    // VGA signals generation
     always @(posedge CLK) begin
         if (h_count == H_SYNC_CYCLES - 1) begin
             h_count <= 0;
@@ -43,9 +53,16 @@ module main(
         end
     end
 
+
+    // VGA signals
     assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
     assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
 
+
+   
+
+
+    // Square generation positions
     reg [9:0] square_x[0:89];
     reg [9:0] square_y[0:89];
 
@@ -59,6 +76,7 @@ module main(
 
     wire square_active[0:89];
 
+    // Square active generation
     genvar i;
     generate
         for (i = 0; i < 90; i = i + 1) begin : square_active_gen
@@ -70,6 +88,7 @@ module main(
     reg [2:0] temp_red, temp_green, temp_blue;
     reg [89:0] square_active;
 
+    // Square color generation
     always @(posedge CLK) begin
         temp_red = 3'b000;
         temp_green = 3'b000;
@@ -82,7 +101,9 @@ module main(
         end
     end
 
+    // Player movement
     reg [31:0] speed_count = 0;
+    
     always @(posedge CLK) begin
         if (speed_count < PLAYER_SPEED) begin
             speed_count <= speed_count + 1;
@@ -103,6 +124,10 @@ module main(
             player_x <= player_x + 32;
             speed_count <= 0;
         end
+    end
+
+    // Collision detection
+    always @(posedge CLK) begin
         if (((player_x >= car_x && player_x <= car_x + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x && player_x + PLAYER_WIDTH <= car_x + CAR_WIDTH && player_y == car_y)) begin
             player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
             player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
@@ -121,32 +146,42 @@ module main(
         end
     end
 
+
+    // // Wood collision detection
+    // always @(posedge CLK) begin
+    //     if (((player_x >= wood_x && player_x <= wood_x + wood_WIDTH) || player_x + PLAYER_WIDTH >= wood_x && player_x + PLAYER_WIDTH <= wood_x + wood_WIDTH && player_y == wood_y)) begin
+    //         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
+    //         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
+    //     end
+    // end
+
+
+
+
     reg [31:0] speed_count1 = 0;
+    reg [31:0] speed_count2 = 0;
+    
+    // Car movement speed
     always @(posedge CLK) begin
         if (speed_count1 < CAR_SPEED) begin
             speed_count1 <= speed_count1 + 1;
         end else if (speed_count1 >= CAR_SPEED) begin
-            car_x <= car_x + 32 % H_DISPLAY; // Faire avancer la voiture 1
-            car_x3 <= car_x3 + 32 % H_DISPLAY; // Faire avancer la voiture 3
+            car_x <= car_x + 32 % H_DISPLAY;
+            car_x3 <= car_x3 + 32 % H_DISPLAY;
             speed_count1 <= 0;
         end
-    end
 
-    reg [31:0] speed_count2 = 0;
-    always @(posedge CLK) begin
         if (speed_count2 < CAR_SPEED) begin
             speed_count2 <= speed_count2 + 1;
         end else if (speed_count2 >= CAR_SPEED) begin
             car_x2 <= car_x2 + 20 % H_DISPLAY;
             speed_count2 <= 0;
-        end else if (speed_count2 < CAR_SPEED) begin
-            speed_count2 <= speed_count2 + 1;
-        end else if (speed_count2 >= CAR_SPEED) begin
-            car_x <= car_x + 32 % H_DISPLAY;
-            speed_count2 <= 0;
         end
     end
 
+
+    
+    // Generation of VGA for player movement 
     always @(posedge CLK) begin
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
             if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
@@ -186,6 +221,8 @@ module main(
         end
     end
 
+
+    // Reset background color VGA
     always @(posedge CLK) begin
         VGA_R1 <= 3'b000;
         VGA_G1 <= 3'b000;
