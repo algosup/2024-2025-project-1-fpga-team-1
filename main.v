@@ -22,22 +22,17 @@ module main(
     reg [9:0] h_count = 0;    // Horizontal counter
     reg [9:0] v_count = 0;    // Vertical counter
     reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player x position
-    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT - 32;    // Player y position
+    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT ;    // Player y position
 
     // Car x and y positions
     reg [9:0] car_x = 200; 
     reg [9:0] car_y = 320;    
-    reg [9:0] car_x2 = 0;     
+    reg [9:0] car_x2 = 400;     
     reg [9:0] car_y2 = 384;   
     reg [9:0] car_x3 = 508;         
     reg [9:0] car_y3 = 416;
     reg [9:0] car_x4 = 600;
     reg [9:0] car_y4 = 448;
-
-    // // Wood x and y positions
-    // reg [9:0] wood_x1 = 692;
-    // reg [9:0] wood_y1 = 480;
-
 
     // VGA signals generation
     always @(posedge CLK) begin
@@ -57,11 +52,7 @@ module main(
     assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
     assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
 
-
-   
-
-
-    // Square generation positions
+   // Square generation positions
     reg [9:0] square_x[0:89];
     reg [9:0] square_y[0:89];
 
@@ -103,99 +94,53 @@ module main(
     // Player movement
     reg [31:0] speed_count = 0;
     
-    always @(posedge CLK) begin
-        if (speed_count < PLAYER_SPEED) begin
-            speed_count <= speed_count + 1;
-        end
-        if (SW1 && player_y > 0 && speed_count == PLAYER_SPEED) begin
-            player_y <= player_y - 32;
-            speed_count <= 0;
-        end
-        if (SW2 && player_y < V_DISPLAY - PLAYER_HEIGHT && speed_count == PLAYER_SPEED)begin
-            player_y <= player_y + 32;
-            speed_count <= 0;
-        end
-        if (SW3 && player_x > 0 && speed_count == PLAYER_SPEED)begin
-            player_x <= player_x - 32;
-            speed_count <= 0;
-        end
-        if (SW4 && player_x < H_DISPLAY - PLAYER_WIDTH && speed_count == PLAYER_SPEED)begin
-            player_x <= player_x + 32;
-            speed_count <= 0;
-        end
+    
+    always @(posedge CLK) 
+    begin
+            if (speed_count < PLAYER_SPEED) begin
+                speed_count <= speed_count + 1;
+            end
+            if (SW1 && player_y > 0 && speed_count == PLAYER_SPEED) begin
+                player_y <= player_y - 32;
+                speed_count <= 0;
+            end
+            if (SW2 && player_y < V_DISPLAY - PLAYER_HEIGHT && speed_count == PLAYER_SPEED)begin
+                player_y <= player_y + 32;
+                speed_count <= 0;
+            end
+            if (SW3 && player_x > 0 && speed_count == PLAYER_SPEED)begin
+                player_x <= player_x - 32;
+                speed_count <= 0;
+            end
+            if (SW4 && player_x < H_DISPLAY - PLAYER_WIDTH && speed_count == PLAYER_SPEED)begin
+                player_x <= player_x + 32;
+                speed_count <= 0;
+            end
     end
-
-    // // Collision detection
-    // always @(posedge CLK) begin
-    //     if (((player_x >= car_x && player_x <= car_x + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x && player_x + PLAYER_WIDTH <= car_x + CAR_WIDTH && player_y == car_y)) begin
-    //         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-    //         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-    //     end
-    //     if (((player_x >= car_x2 && player_x <= car_x2 + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x2 && player_x + PLAYER_WIDTH <= car_x2 + CAR_WIDTH && player_y == car_y2)) begin
-    //         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-    //         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-    //     end
-    //     if (((player_x >= car_x3 && player_x <= car_x3 + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x3 && player_x + PLAYER_WIDTH <= car_x3 + CAR_WIDTH && player_y == car_y3)) begin
-    //         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-    //         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-    //     end
-    //     if (((player_x >= car_x4 && player_x <= car_x4 + CAR_WIDTH) || player_x + PLAYER_WIDTH >= car_x4 && player_x + PLAYER_WIDTH <= car_x4 + CAR_WIDTH && player_y == car_y4)) begin
-    //         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-    //         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-    //     end
-    // end
-
-
-
-
-    // // Wood collision detection
-    // always @(posedge CLK) begin
-    //     if (((player_x >= wood_x && player_x <= wood_x + wood_WIDTH) || player_x + PLAYER_WIDTH >= wood_x && player_x + PLAYER_WIDTH <= wood_x + wood_WIDTH && player_y == wood_y)) begin
-    //         player_x <= (H_DISPLAY / 2) - (PLAYER_WIDTH / 2);
-    //         player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-    //     end
-    // end
-
-    // // Wood movement speed
-    // always @(posedge CLK) begin
-    //     if (speed_count3 < WOOD_SPEED) begin
-    //         speed_count3 <= speed_count1 + 1;
-    //     end else if (speed_count3 >= WOOD_SPEED) begin
-    //         wood_x <= wood_x + 32 % H_DISPLAY;
-    //         speed_count3 <= 0;
-    //     end
-    // end
-
-
-
 
     reg [31:0] speed_count1 = 0;
     reg [31:0] speed_count2 = 0;
-    
+
     // Car movement speed
     always @(posedge CLK) begin
         if (speed_count1 < CAR_SPEED) begin
             speed_count1 <= speed_count1 + 1;
         end else if (speed_count1 >= CAR_SPEED) begin
             car_x <= car_x + 32 % H_DISPLAY;
-            car_x3 <= car_x3 + 32 % H_DISPLAY;
+            car_x3 <= car_x3 + 20 % H_DISPLAY;
             speed_count1 <= 0;
         end
-
         if (speed_count2 < CAR_SPEED) begin
             speed_count2 <= speed_count2 + 1;
         end else if (speed_count2 >= CAR_SPEED) begin
+            car_x4 <= car_x4 + 32 % H_DISPLAY;
             car_x2 <= car_x2 + 20 % H_DISPLAY;
             speed_count2 <= 0;
-        end
+        end    
     end
 
 
-    // // Wood x and y positions
-    // reg [9:0] wood_x1 = 692;
-    // reg [9:0] wood_y1 = 480;
 
-    
     // Generation of VGA for player movement 
     always @(posedge CLK) begin
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
@@ -206,7 +151,7 @@ module main(
                 VGA_B2 <= 3'b000;
             end else if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
                         (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;
+                VGA_R2 <= 3'b111;   // Red (Car_1)
                 VGA_G2 <= 3'b000;
                 VGA_B2 <= 3'b000;
             end else if ((h_count >= car_x2) && (h_count < car_x2 + CAR_WIDTH) &&
@@ -224,11 +169,6 @@ module main(
                 VGA_R2 <= 3'b111;   // Red (Car_4)
                 VGA_G2 <= 3'b000;
                 VGA_B2 <= 3'b000;
-            // end else if ((h_count >= wood_x) && (h_count < wood_x + wood_WIDTH) &&
-            //              (v_count >= wood_y) && (v_count < wood_y + wood_HEIGH)) begin                      
-            //     VGA_R2 <= 3'b100;   // Brown  (Wood_1)
-            //     VGA_G2 <= 3'b010;
-            //     VGA_B2 <= 3'b000; 
             end else begin
                 VGA_R2 <= temp_red;
                 VGA_G2 <= temp_green;
