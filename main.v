@@ -19,8 +19,21 @@ module main(
     output reg  VGA_B1      // VGA Blue
 );
 
-    reg [9:0] h_count = 0;    // Horizontal counter
-    reg [9:0] v_count = 0;    // Vertical counter
+
+    // VGA control
+    wire [9:0] h_count, v_count;
+
+    vga_control vga_control(
+        .CLK(CLK),
+        .VGA_HS(VGA_HS),
+        .VGA_VS(VGA_VS),
+        .v_count(v_count),
+        .h_count(h_count)
+    );
+
+
+
+
     reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player x position
     reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT ;    // Player y position
 
@@ -28,29 +41,12 @@ module main(
     reg [9:0] car_x = 200; 
     reg [9:0] car_y = 320;    
     reg [9:0] car_x2 = 400;     
-    reg [9:0] car_y2 = 384;   
+    reg [9:0] car_y2 = 384 - CAR_HEIGHT;   
     reg [9:0] car_x3 = 508;         
-    reg [9:0] car_y3 = 416;
+    reg [9:0] car_y3 = 416 - CAR_HEIGHT;
     reg [9:0] car_x4 = 600;
-    reg [9:0] car_y4 = 448;
+    reg [9:0] car_y4 = 448 - CAR_HEIGHT;
 
-    // VGA signals generation
-    always @(posedge CLK) begin
-        if (h_count == H_SYNC_CYCLES - 1) begin
-            h_count <= 0;
-            if (v_count == V_SYNC_CYCLES - 1)
-                v_count <= 0;
-            else
-                v_count <= v_count + 1;
-        end else begin
-            h_count <= h_count + 1;
-        end
-    end
-
-
-    // VGA signals
-    assign VGA_HS = (h_count >= H_DISPLAY + H_FRONT) && (h_count < H_DISPLAY + H_FRONT + H_PULSE);
-    assign VGA_VS = (v_count >= V_DISPLAY + V_FRONT) && (v_count < V_DISPLAY + V_FRONT + V_PULSE);
 
    // Square generation positions
     reg [9:0] square_x[0:89];
