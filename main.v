@@ -4,47 +4,26 @@
 `include "constant.v"
 
 module main(
-    input wire CLK,         // Clock
-    input wire SW1,         // Up
-    input wire SW2,         // Down
-    input wire SW3,         // Left
-    input wire SW4,         // Right
-    output wire VGA_HS,     // HSYNC
-    output wire VGA_VS,     // VSYNC
-    output reg  VGA_R2,     // VGA Red
-    output reg  VGA_G2,     // VGA Green
-    output reg  VGA_B2,     // VGA Blue
-    output reg  VGA_R1,     // VGA Red
-    output reg  VGA_G1,     // VGA Green
-    output reg  VGA_B1      // VGA Blue
+    input  CLK,         // Clock
+    input  SW1,         // Up
+    input  SW2,         // Down
+    input  SW3,         // Left
+    input  SW4,         // Right
+    output  VGA_HS,     // HSYNC
+    output  VGA_VS,     // VSYNC
+    output  VGA_R2,     // VGA Red
+    output  VGA_G2,     // VGA Green
+    output  VGA_B2,     // VGA Blue
+    output  VGA_R1,     // VGA Red
+    output  VGA_G1,     // VGA Green
+    output  VGA_B1      // VGA Blue
 );
 
-
-    // VGA control
+    // VGA signals
     wire [9:0] h_count, v_count;
 
-    vga_control vga_control(
-        .CLK(CLK),
-        .VGA_HS(VGA_HS),
-        .VGA_VS(VGA_VS),
-        .v_count(v_count),
-        .h_count(h_count)
-    );
-
-
-
-    wire [9:0] player_x, player_y  ;  // Player x and y  position
-
-    player_control player_control(
-        .CLK(CLK),
-        .SW1(SW1),
-        .SW2(SW2),
-        .SW3(SW3),
-        .SW4(SW4),
-        .rplayer_x(player_x),
-        .rplayer_y(player_y)
-    );
-
+    // Player x and y  position
+    wire [9:0] player_x, player_y  ;  
 
     // Car x and y positions
     reg [9:0] car_x = 200; 
@@ -57,7 +36,31 @@ module main(
     reg [9:0] car_y4 = 448 - CAR_HEIGHT;
 
 
-   // Square generation positions
+    // VGA control module
+    vga_control vga_control(
+        .CLK(CLK),
+        .VGA_HS(VGA_HS),
+        .VGA_VS(VGA_VS),
+        .v_count(v_count),
+        .h_count(h_count)
+    );
+
+
+    // Player control module
+    player_control player_control(
+        .CLK(CLK),
+        .SW1(SW1),
+        .SW2(SW2),
+        .SW3(SW3),
+        .SW4(SW4),
+        .rplayer_x(player_x),
+        .rplayer_y(player_y)
+    );
+
+
+    
+
+    // Square generation positions
     reg [9:0] square_x[0:89];
     reg [9:0] square_y[0:89];
 
