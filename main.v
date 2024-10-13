@@ -18,7 +18,6 @@ module main(
 
     // VGA signals
     wire [9:0] h_count, v_count;
-    reg VGA_R2, VGA_G2, VGA_B2;
 
     // Player x and y  position
     wire [9:0] player_x, player_y  ;  
@@ -120,51 +119,28 @@ module main(
     end
 
 
-
-    // Generation of VGA for player movement 
-    always @(posedge CLK) begin
-        if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
-            if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
-                (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
-                VGA_R2 <= 0;   // Green (Player)
-                VGA_G2 <= 1;
-                VGA_B2 <= 0;
-            end else if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
-                        (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
-                VGA_R2 <= 1;   // Red (Car_1)
-                VGA_G2 <= 0;
-                VGA_B2 <= 0;
-            end else if ((h_count >= car_x2) && (h_count < car_x2 + CAR_WIDTH) &&
-                        (v_count >= car_y2) && (v_count < car_y2 + CAR_HEIGHT)) begin
-                VGA_R2 <= 1;   // Red (Car_2)
-                VGA_G2 <= 0;
-                VGA_B2 <= 0;
-            end else if ((h_count >= car_x3) && (h_count < car_x3 + CAR_WIDTH) &&
-                        (v_count >= car_y3) && (v_count < car_y3 + CAR_HEIGHT)) begin
-                VGA_R2 <= 1;   // Red (Car_3)
-                VGA_G2 <= 0;
-                VGA_B2 <= 0;
-            end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
-                        (v_count >= car_y4) && (v_count < car_y4 + CAR_HEIGHT)) begin
-                VGA_R2 <= 1;   // Red (Car_4)
-                VGA_G2 <= 0;
-                VGA_B2 <= 0;
-            end else begin
-                VGA_R2 <= temp_red;
-                VGA_G2 <= temp_green;
-                VGA_B2 <= temp_blue;
-            end
-        end else begin
-            VGA_R2 <= 0;
-            VGA_G2 <= 0;
-            VGA_B2 <= 0;
-        end
-    end
-
-// VGA register to VGA output
-assign VGA_R = VGA_R2;
-assign VGA_G = VGA_G2;
-assign VGA_B = VGA_B2;
+// Color generation
+    color_generation color_generation(
+        .CLK(CLK),
+        .player_x(player_x),
+        .player_y(player_y),
+        .car_x(car_x),
+        .car_y(car_y),
+        .car_x2(car_x2),
+        .car_y2(car_y2),
+        .car_x3(car_x3),
+        .car_y3(car_y3),
+        .car_x4(car_x4),
+        .car_y4(car_y4),
+        .VGA_R2(VGA_R2),
+        .VGA_G2(VGA_G2),
+        .VGA_B2(VGA_B2),
+        .v_count(v_count),
+        .h_count(h_count),
+        .temp_red(temp_red),
+        .temp_green(temp_green),
+        .temp_blue(temp_blue),
+    );
 
 endmodule
 
