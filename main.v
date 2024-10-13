@@ -14,13 +14,11 @@ module main(
     output  VGA_R2,     // VGA Red
     output  VGA_G2,     // VGA Green
     output  VGA_B2,     // VGA Blue
-    output  VGA_R1,     // VGA Red
-    output  VGA_G1,     // VGA Green
-    output  VGA_B1      // VGA Blue
 );
 
     // VGA signals
     wire [9:0] h_count, v_count;
+    reg VGA_R2, VGA_G2, VGA_B2;
 
     // Player x and y  position
     wire [9:0] player_x, player_y  ;  
@@ -88,14 +86,14 @@ module main(
 
     // Square color generation
     always @(posedge CLK) begin
-        temp_red = 3'b000;
-        temp_green = 3'b000;
-        temp_blue = 3'b000;
+        temp_red = 0;
+        temp_green = 0;
+        temp_blue = 0;
 
         if (square_active) begin
-            temp_red = 3'b111;
-            temp_green = 3'b111;
-            temp_blue = 3'b111;
+            temp_red = 1;
+            temp_green = 1;
+            temp_blue = 1;
         end
     end
 
@@ -128,48 +126,45 @@ module main(
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
             if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
                 (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
-                VGA_R2 <= 3'b000;   // Green (Player)
-                VGA_G2 <= 3'b111;
-                VGA_B2 <= 3'b000;
+                VGA_R2 <= 0;   // Green (Player)
+                VGA_G2 <= 1;
+                VGA_B2 <= 0;
             end else if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) &&
                         (v_count >= car_y) && (v_count < car_y + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;   // Red (Car_1)
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
+                VGA_R2 <= 1;   // Red (Car_1)
+                VGA_G2 <= 0;
+                VGA_B2 <= 0;
             end else if ((h_count >= car_x2) && (h_count < car_x2 + CAR_WIDTH) &&
                         (v_count >= car_y2) && (v_count < car_y2 + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;   // Red (Car_2)
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
+                VGA_R2 <= 1;   // Red (Car_2)
+                VGA_G2 <= 0;
+                VGA_B2 <= 0;
             end else if ((h_count >= car_x3) && (h_count < car_x3 + CAR_WIDTH) &&
                         (v_count >= car_y3) && (v_count < car_y3 + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;   // Red (Car_3)
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
+                VGA_R2 <= 1;   // Red (Car_3)
+                VGA_G2 <= 0;
+                VGA_B2 <= 0;
             end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
                         (v_count >= car_y4) && (v_count < car_y4 + CAR_HEIGHT)) begin
-                VGA_R2 <= 3'b111;   // Red (Car_4)
-                VGA_G2 <= 3'b000;
-                VGA_B2 <= 3'b000;
+                VGA_R2 <= 1;   // Red (Car_4)
+                VGA_G2 <= 0;
+                VGA_B2 <= 0;
             end else begin
                 VGA_R2 <= temp_red;
                 VGA_G2 <= temp_green;
                 VGA_B2 <= temp_blue;
             end
         end else begin
-            VGA_R2 <= 3'b000;
-            VGA_G2 <= 3'b000;
-            VGA_B2 <= 3'b000;
+            VGA_R2 <= 0;
+            VGA_G2 <= 0;
+            VGA_B2 <= 0;
         end
     end
 
-
-    // Reset background color VGA
-    always @(posedge CLK) begin
-        VGA_R1 <= 3'b000;
-        VGA_G1 <= 3'b000;
-        VGA_B1 <= 3'b000;
-    end
+// VGA register to VGA output
+assign VGA_R = VGA_R2;
+assign VGA_G = VGA_G2;
+assign VGA_B = VGA_B2;
 
 endmodule
 
