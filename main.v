@@ -33,9 +33,18 @@ module main(
 
 
 
+    wire [9:0] player_x, player_y  ;  // Player x and y  position
 
-    reg [9:0] player_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player x position
-    reg [9:0] player_y = V_DISPLAY - PLAYER_HEIGHT ;    // Player y position
+    player_control player_control(
+        .CLK(CLK),
+        .SW1(SW1),
+        .SW2(SW2),
+        .SW3(SW3),
+        .SW4(SW4),
+        .rplayer_x(player_x),
+        .rplayer_y(player_y)
+    );
+
 
     // Car x and y positions
     reg [9:0] car_x = 200; 
@@ -87,32 +96,6 @@ module main(
         end
     end
 
-    // Player movement
-    reg [31:0] speed_count = 0;
-    
-    
-    always @(posedge CLK) 
-    begin
-            if (speed_count < PLAYER_SPEED) begin
-                speed_count <= speed_count + 1;
-            end
-            if (SW1 && player_y > 0 && speed_count == PLAYER_SPEED) begin
-                player_y <= player_y - 32;
-                speed_count <= 0;
-            end
-            if (SW2 && player_y < V_DISPLAY - PLAYER_HEIGHT && speed_count == PLAYER_SPEED)begin
-                player_y <= player_y + 32;
-                speed_count <= 0;
-            end
-            if (SW3 && player_x > 0 && speed_count == PLAYER_SPEED)begin
-                player_x <= player_x - 32;
-                speed_count <= 0;
-            end
-            if (SW4 && player_x < H_DISPLAY - PLAYER_WIDTH && speed_count == PLAYER_SPEED)begin
-                player_x <= player_x + 32;
-                speed_count <= 0;
-            end
-    end
 
     reg [31:0] speed_count1 = 0;
     reg [31:0] speed_count2 = 0;
