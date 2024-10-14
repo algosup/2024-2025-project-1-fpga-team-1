@@ -15,22 +15,15 @@ module car_control (
 
     // Car movement speed
     always @(posedge CLK) begin
-        if (speed_count1 < CAR_SPEED) begin
+        if (speed_count1 < CAR_CLOCK) begin
             speed_count1 <= speed_count1 + 1;
-        end else if (speed_count1 >= CAR_SPEED) begin
-            r_car_x1 <= r_car_x1 + 1 ;
-            r_car_x2 <= r_car_x2 + 1 ;
-            r_car_x4 <= r_car_x4 + 1 ;
-            r_car_x3 <= r_car_x3 + 1 ;
+        end else if (speed_count1 >= CAR_CLOCK) begin
+            r_car_x1 <= r_car_x1 + CAR_1_SPEED ;
+            r_car_x2 <= r_car_x2 + CAR_2_SPEED ;
+            r_car_x4 <= r_car_x4 + CAR_3_SPEED ;
+            r_car_x3 <= r_car_x3 + CAR_4_SPEED ;
             speed_count1 <= 0;
         end
-        // if (speed_count2 < CAR_SPEED) begin
-        //     speed_count2 <= speed_count2 + 1;
-        // end else if (speed_count2 >= CAR_SPEED) begin
-        //     r_car_x4 <= r_car_x4 + 1 % H_DISPLAY;
-        //     r_car_x3 <= r_car_x3 + 1 % H_DISPLAY;
-        //     speed_count2 <= 0;
-        // end    
     end
 
     // Car positions
