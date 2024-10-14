@@ -29,16 +29,16 @@ module color_generation
                 r_VGA_R2 <= 1;   // Red (Car_2)
                 r_VGA_G2 <= 0;
                 r_VGA_B2 <= 0;
-            // end else if ((h_count >= car_x3) && (h_count < car_x3 + CAR_WIDTH) &&
-            //             (v_count >= CAR_Y3) && (v_count < CAR_Y3 + CAR_HEIGHT)) begin
-            //     r_VGA_R2 <= 1;   // Red (Car_3)
-            //     r_VGA_G2 <= 0;
-            //     r_VGA_B2 <= 0;
-            // end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
-            //             (v_count >= CAR_Y4) && (v_count < CAR_Y4 + CAR_HEIGHT)) begin
-            //     r_VGA_R2 <= 1;   // Red (Car_4)
-            //     r_VGA_G2 <= 0;
-            //     r_VGA_B2 <= 0;
+            end else if ((h_count >= car_x3) && (h_count < car_x3 + CAR_WIDTH) &&
+                        (v_count >= CAR_Y3) && (v_count < CAR_Y3 + CAR_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // Red (Car_3)
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
+            end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
+                        (v_count >= CAR_Y4) && (v_count < CAR_Y4 + CAR_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // Red (Car_4)
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
             end else begin
                 r_VGA_R2 <= temp_red;
                 r_VGA_G2 <= temp_green;
