@@ -1,7 +1,7 @@
 //Frog Ranck Game
 `timescale 1ns / 1ps
 
-`include "constant.v"
+`include "constants.v"
 
 module main(
     input  CLK,         // Clock
@@ -53,48 +53,6 @@ module main(
         .rplayer_x(player_x),
         .rplayer_y(player_y)
     );
-
-
-    
-
-    // Square generation positions
-    reg [9:0] square_x[0:89];
-    reg [9:0] square_y[0:89];
-
-    integer i;
-    generate
-        for (i = 0; i < 90; i = i + 1) begin
-            assign square_x[i] = 10 + (i % 18) * 35;
-            assign square_y[i] = 320 + (i / 18) * 32;
-        end
-    endgenerate
-
-    wire square_active[0:89];
-
-    // Square active generation
-    genvar i;
-    generate
-        for (i = 0; i < 90; i = i + 1) begin : square_active_gen
-            assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
-                                      (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
-        end
-    endgenerate
-
-    reg [2:0] temp_red, temp_green, temp_blue;
-    reg [89:0] square_active;
-
-    // Square color generation
-    always @(posedge CLK) begin
-        temp_red = 0;
-        temp_green = 0;
-        temp_blue = 0;
-
-        if (square_active) begin
-            temp_red = 1;
-            temp_green = 1;
-            temp_blue = 1;
-        end
-    end
 
 
     reg [31:0] speed_count1 = 0;
