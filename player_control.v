@@ -14,7 +14,7 @@ module player_control(
     reg [31:0] speed_count = 0;    // Speed counter
 
     initial begin
-             rplayer_x = H_DISPLAY / 2 - PLAYER_WIDTH / 2;  // Player x position
+             rplayer_x = H_DISPLAY / 2 ;  // Player x position
              rplayer_y = V_DISPLAY - PLAYER_HEIGHT ;    // Player y position
     end
 

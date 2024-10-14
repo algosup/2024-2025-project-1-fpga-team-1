@@ -17,7 +17,7 @@ module car_control (
     always @(posedge CLK) begin
         if (speed_count1 < CAR_CLOCK) begin
             speed_count1 <= speed_count1 + 1;
-        end else if (speed_count1 >= CAR_CLOCK) begin
+        end else begin
             r_car_x1 <= r_car_x1 + CAR_1_SPEED ;
             r_car_x2 <= r_car_x2 + CAR_2_SPEED ;
             r_car_x4 <= r_car_x4 + CAR_3_SPEED ;
