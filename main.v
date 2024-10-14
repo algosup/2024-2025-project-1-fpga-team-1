@@ -1,4 +1,5 @@
 //Frog Ranck Game
+
 `timescale 1ns / 1ps
 
 `include "constants.v"
@@ -21,17 +22,12 @@ module main(
 
     // Player x and y  position
     wire [9:0] player_x, player_y  ;  
-
-    // Car x and y positions
-    reg [9:0] car_x = 200; 
-    reg [9:0] car_y = 320;    
-    reg [9:0] car_x2 = 400;     
-    reg [9:0] car_y2 = 384 - CAR_HEIGHT;   
-    reg [9:0] car_x3 = 508;         
-    reg [9:0] car_y3 = 416 - CAR_HEIGHT;
-    reg [9:0] car_x4 = 600;
-    reg [9:0] car_y4 = 448 - CAR_HEIGHT;
-
+    
+    // Car x and y position
+    wire [9:0] w_car_x1 ;
+    wire [9:0] w_car_x2 ;
+    wire [9:0] w_car_x3 ;
+    wire [9:0] w_car_x4 ;
 
     // VGA control module
     vga_control vga_control(
@@ -54,42 +50,24 @@ module main(
         .rplayer_y(player_y)
     );
 
-
-    reg [31:0] speed_count1 = 0;
-    reg [31:0] speed_count2 = 0;
-
-    // Car movement speed
-    always @(posedge CLK) begin
-        if (speed_count1 < CAR_SPEED) begin
-            speed_count1 <= speed_count1 + 1;
-        end else if (speed_count1 >= CAR_SPEED) begin
-            car_x <= car_x + 32 % H_DISPLAY;
-            car_x3 <= car_x3 + 20 % H_DISPLAY;
-            speed_count1 <= 0;
-        end
-        if (speed_count2 < CAR_SPEED) begin
-            speed_count2 <= speed_count2 + 1;
-        end else if (speed_count2 >= CAR_SPEED) begin
-            car_x4 <= car_x4 + 32 % H_DISPLAY;
-            car_x2 <= car_x2 + 20 % H_DISPLAY;
-            speed_count2 <= 0;
-        end    
-    end
-
-
-// Color generation
+    // Car control module
+    car_control car_control(
+        .CLK(CLK),
+        .car_x1(w_car_x1),
+        .car_x2(w_car_x2),
+        .car_x3(w_car_x3),
+        .car_x4(w_car_x4),
+    );
+   
+    // Color generation
     color_generation color_generation(
         .CLK(CLK),
         .player_x(player_x),
         .player_y(player_y),
-        .car_x(car_x),
-        .car_y(car_y),
-        .car_x2(car_x2),
-        .car_y2(car_y2),
-        .car_x3(car_x3),
-        .car_y3(car_y3),
-        .car_x4(car_x4),
-        .car_y4(car_y4),
+        .car_x1(w_car_x1),
+        .car_x2(w_car_x2),
+        .car_x3(w_car_x3),
+        .car_x4(w_car_x4),
         .VGA_R2(VGA_R2),
         .VGA_G2(VGA_G2),
         .VGA_B2(VGA_B2),

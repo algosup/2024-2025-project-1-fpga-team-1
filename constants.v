@@ -23,10 +23,23 @@
     // Car parameters
     parameter CAR_WIDTH = 40;
     parameter CAR_HEIGHT = 32;
-    parameter CAR_SPEED = 12500000/2;
+    parameter CAR_SPEED = (12500000/2)/32;
 
 
     // Wood parameters
     parameter WOOD_WIDTH = 40;
     parameter WOOD_HEIGHT = 32;
     parameter WOOD_SPEED = 12500000/2;
+
+
+
+    // Car parameters
+    parameter CAR_Y1 = 320;
+    parameter CAR_Y2 = 384 - CAR_HEIGHT;   
+    parameter CAR_Y3 = 416 - CAR_HEIGHT;  
+    parameter CAR_Y4 = 448 - CAR_HEIGHT;
+    parameter CAR_X1 = 200;
+    parameter CAR_X2 = 400;   
+    parameter CAR_X3 = 508;  
+    parameter CAR_X4 = 600;
+

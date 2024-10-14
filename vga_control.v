@@ -1,3 +1,5 @@
+`include "constants.v"
+
 module vga_control(
     input wire CLK,         // Clock
     output wire VGA_HS,     // HSYNC

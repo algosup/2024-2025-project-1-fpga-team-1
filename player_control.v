@@ -1,5 +1,7 @@
-// Player control module
+`include "constants.v"
 
+
+// Player control module
 module player_control(
     input wire CLK,         // Clock
     input wire SW1,         // Up
