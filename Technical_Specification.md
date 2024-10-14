@@ -101,7 +101,7 @@ graph TD;
 ## II. Solution
 
 - ### A. Description
-  - Developed in **Verilog** on the **[FPGA board name]**.
+  - Developed in **Verilog** on the **FPGA GO Board**.
   - Display managed via VGA, with the player using the board's buttons to move the frog.
   - Each level becomes progressively more difficult with an increase in the number of obstacles.
 
@@ -124,26 +124,26 @@ graph TD;
 - ### C. Display
   - Game displayed on a **VGA** screen connected to the FPGA board, with a resolution of 640x480 pixels.
 
-- ### D. Constraints**
+- ### D. Constraints
   - Real-time operation with no noticeable latency.
   - Managing button bounces via a Verilog filter.
   - VGA display limited to 640x480 with 256 colors.
 
-- ### E. Risks and Assumptions**
+- ### E. Risks and Assumptions
   - **Development Time**: Delivery within a tight timeline; non-essential features may be set aside for a future version.
   - **Performance Risk**: Importance of hardware management for a good user experience.
   - **Compatibility**: Game must be compatible with the specified FPGA board.
 
 ## III. Technical Specifications
 
-- ### A. Graphic Convention**
+- ### A. Graphic Convention
   - **Background**: Black color (#000000).
-  - **Frog**: 16x16 pixel sprite, green (#00FF00).
-  - **Cars**: 16x32 pixel sprites, color varying by level.
+  - **Frog**: 32x32 pixel sprite, green (#00FF00).
+  - **Cars**: 32x32 pixel sprites, color varying by level.
   
   ```verilog
   // Example sprite definition for the frog
-  reg [15:0] frog_sprite [0:255]; // Store 16x16 sprite data
+  reg [31:0] frog_sprite [0:255]; // Store 32x32 sprite data
   initial begin
       $readmemh("frog_sprite.mem", frog_sprite);
   end
