@@ -78,6 +78,33 @@ module main(
         .temp_blue(temp_blue),
     );
 
+    // // Collision detection module
+    // wire collision_signal;
+
+    // collision_detector cd(
+    //     .player_x(player_x),
+    //     .player_y(player_y),
+    //     .car_x1(w_car_x1),
+    //     .car_x2(w_car_x2),
+    //     .car_x3(w_car_x3),
+    //     .car_x4(w_car_x4),
+    //     .collision(collision_signal)
+    // );
+
+    // always @(posedge CLK) begin
+    //     // If collision detected, reset player position
+    //     if (collision_signal) begin
+    //         r_player_x <= H_DISPLAY / 2 ;
+    //         r_player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
+    //     end
+    // end
+
+    // reg r_player_x ;
+    // reg r_player_y ;
+
+    // assign player_x = r_player_x;
+    // assign player_y = r_player_y;
+    
 endmodule
 
 
