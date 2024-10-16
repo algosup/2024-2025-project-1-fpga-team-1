@@ -55,13 +55,17 @@ module player_control(
             end else if (SW4 && rplayer_x < H_DISPLAY - PLAYER_WIDTH) begin
                 rplayer_x <= rplayer_x + 32;
                  speed_count <= 0;
-            // end else if (SW1 && SW2 && SW3 && SW4) begin 
-            //     rplayer_x = H_DISPLAY / 2;
-            //     rplayer_y = V_DISPLAY - PLAYER_HEIGHT;
-            //     speed_count <= 0;
-            end
+            end 
         end
-
+        if (SW1 && SW2 && SW3 && SW4) begin 
+                rplayer_x <= H_DISPLAY / 2;
+                rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
+                speed_count <= 0;
+                tens <= 4'b0000;
+                units <= 4'b0001;
+                {S1_A, S1_B, S1_C, S1_D, S1_E, S1_F, S1_G} = 7'b0000001;
+                {S2_A, S2_B, S2_C, S2_D, S2_E, S2_F, S2_G} = 7'b0000001;
+         end
         // Collision detection with car1
         if ((rplayer_x + PLAYER_WIDTH > car_x1) && (rplayer_x < car_x1 + CAR_WIDTH) &&
             (rplayer_y + PLAYER_HEIGHT > CAR_Y1) && (rplayer_y < CAR_Y1 + CAR_HEIGHT)) begin
