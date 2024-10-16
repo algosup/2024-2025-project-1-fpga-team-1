@@ -10,12 +10,26 @@ module main(
     input  SW2,         // Down
     input  SW3,         // Left
     input  SW4,         // Right
-    output LED1, LED2, LED3, LED4, // LEDs
     output  VGA_HS,     // HSYNC
     output  VGA_VS,     // VSYNC
     output  VGA_R2,     // VGA Red
     output  VGA_G2,     // VGA Green
     output  VGA_B2,     // VGA Blue
+    output reg S1_A,
+    output reg S1_B,
+    output reg S1_C,
+    output reg S1_D,
+    output reg S1_E,
+    output reg S1_F,
+    output reg S1_G,
+    output reg S2_A,
+    output reg S2_B,
+    output reg S2_C,
+    output reg S2_D,
+    output reg S2_E,
+    output reg S2_F,
+    output reg S2_G,
+    output reg LED1
 );
 
     // VGA signals
@@ -23,6 +37,9 @@ module main(
 
     // Player x and y  position
     wire [9:0] player_x, player_y  ;  
+
+    // Switches
+    wire SW1, SW2, SW3, SW4;
     
     // Car x and y position
     wire [9:0] w_car_x1 ;
@@ -61,10 +78,21 @@ module main(
         .car_x8(w_car_x8),
         .rplayer_x(player_x),
         .rplayer_y(player_y),
-        .LED1(LED1),
-        .LED2(LED2),
-        .LED3(LED3),
-        .LED4(LED4)
+        .S1_A(S1_A),
+        .S1_B(S1_B),
+        .S1_C(S1_C),
+        .S1_D(S1_D),
+        .S1_E(S1_E),
+        .S1_F(S1_F),
+        .S1_G(S1_G),
+        .S2_A(S2_A),
+        .S2_B(S2_B),
+        .S2_C(S2_C),
+        .S2_D(S2_D),
+        .S2_E(S2_E),
+        .S2_F(S2_F),
+        .S2_G(S2_G),
+        .LED1(LED1)
     );
 
     // Car control module
@@ -102,6 +130,26 @@ module main(
         .temp_green(temp_green),
         .temp_blue(temp_blue),
     );
+
+
+    // segment inc (
+    //     .CLK(CLK),
+    //     .INC(player_y),
+    //     .S1_A(S1_A),
+    //     .S1_B(S1_B),
+    //     .S1_C(S1_C),
+    //     .S1_D(S1_D),
+    //     .S1_E(S1_E),
+    //     .S1_F(S1_F),
+    //     .S1_G(S1_G),
+    //     .S2_A(S2_A),
+    //     .S2_B(S2_B),
+    //     .S2_C(S2_C),
+    //     .S2_D(S2_D),
+    //     .S2_E(S2_E),
+    //     .S2_F(S2_F),
+    //     .S2_G(S2_G),
+    // );
 
 
     

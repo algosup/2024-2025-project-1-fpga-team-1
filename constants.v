@@ -25,7 +25,7 @@
     parameter CAR_HEIGHT = 32;
     parameter CAR_CLOCK = 12500000/64;
 
-    parameter CAR_1_SPEED = 1;
+    parameter CAR_1_SPEED = 2;
     parameter CAR_2_SPEED = 2;
     parameter CAR_3_SPEED = 3;
     parameter CAR_4_SPEED = 2;
@@ -50,9 +50,9 @@
 
 
     parameter CAR_Y5 = 320/2;
-    parameter CAR_Y6 = 384/2 - CAR_HEIGHT;   
-    parameter CAR_Y7 = 416/2 - CAR_HEIGHT;  
-    parameter CAR_Y8 = 448/2 - CAR_HEIGHT;
+    parameter CAR_Y6 = 384/2;   
+    parameter CAR_Y7 = 416/2;  
+    parameter CAR_Y8 = 448/2;
     parameter CAR_X5= 200/2;
     parameter CAR_X6 = 400/2;   
     parameter CAR_X7 = 508/2;  
