@@ -29,16 +29,16 @@ module color_generation
                 r_VGA_R2 <= 1;   // Red (Car_2)
                 r_VGA_G2 <= 0;
                 r_VGA_B2 <= 0;
-            // end else if ((h_count >= car_x3) && (h_count < car_x3 + CAR_WIDTH) &&
-            //             (v_count >= CAR_Y3) && (v_count < CAR_Y3 + CAR_HEIGHT)) begin
-            //     r_VGA_R2 <= 1;   // Red (Car_3)
-            //     r_VGA_G2 <= 0;
-            //     r_VGA_B2 <= 0;
-            // end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
-            //             (v_count >= CAR_Y4) && (v_count < CAR_Y4 + CAR_HEIGHT)) begin
-            //     r_VGA_R2 <= 1;   // Red (Car_4)
-            //     r_VGA_G2 <= 0;
-            //     r_VGA_B2 <= 0;
+            end else if ((h_count >= car_x3) && (h_count < car_x3 + CAR_WIDTH) &&
+                        (v_count >= CAR_Y3) && (v_count < CAR_Y3 + CAR_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // Red (Car_3)
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
+            end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
+                        (v_count >= CAR_Y4) && (v_count < CAR_Y4 + CAR_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // Red (Car_4)
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
             end else begin
                 r_VGA_R2 <= temp_red;
                 r_VGA_G2 <= temp_green;
@@ -57,31 +57,31 @@ module color_generation
         assign VGA_B2 = r_VGA_B2;
 
 
-    // Square generation positions
-        reg [9:0] square_x[0:89];
-        reg [9:0] square_y[0:89];
+    // // Square generation positions
+    //     reg [9:0] square_x[0:89];
+    //     reg [9:0] square_y[0:89];
 
-    integer i;
-    generate
-        for (i = 0; i < 90; i = i + 1) begin
-            assign square_x[i] = 10 + (i % 18) * 35;
-            assign square_y[i] = 320 + (i / 18) * 32;
-        end
-    endgenerate
+    // integer i;
+    // generate
+    //     for (i = 0; i < 90; i = i + 1) begin
+    //         assign square_x[i] = 10 + (i % 18) * 35;
+    //         assign square_y[i] = 320 + (i / 18) * 32;
+    //     end
+    // endgenerate
 
-    wire square_active[0:89];
+    // wire square_active[0:89];
 
-    // Square active generation
-    genvar i;
-    generate
-        for (i = 0; i < 90; i = i + 1) begin : square_active_gen
-            assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
-                                    (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
-        end
-    endgenerate
+    // // Square active generation
+    // genvar i;
+    // generate
+    //     for (i = 0; i < 90; i = i + 1) begin : square_active_gen
+    //         assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
+    //                                 (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
+    //     end
+    // endgenerate
 
 
-    reg [89:0] square_active;
+    // reg [89:0] square_active;
 
     // Square color generation
     always @(posedge CLK) begin
@@ -89,11 +89,6 @@ module color_generation
         temp_green = 0;
         temp_blue = 0;
 
-        if (square_active) begin
-            temp_red = 1;
-            temp_green = 1;
-            temp_blue = 1;
-        end
     end
 
 

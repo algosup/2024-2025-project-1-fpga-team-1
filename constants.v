@@ -18,7 +18,7 @@
     // Player parameters
     parameter PLAYER_WIDTH = 32;
     parameter PLAYER_HEIGHT = 32;
-    parameter PLAYER_SPEED = 12500000/2;
+    parameter PLAYER_SPEED = 12500000/4;
 
     // Car parameters
     parameter CAR_WIDTH = 40;
@@ -27,7 +27,7 @@
 
     parameter CAR_1_SPEED = 1;
     parameter CAR_2_SPEED = 2;
-    parameter CAR_3_SPEED = 1;
+    parameter CAR_3_SPEED = 3;
     parameter CAR_4_SPEED = 2;
 
 

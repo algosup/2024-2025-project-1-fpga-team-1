@@ -20,8 +20,8 @@ module car_control (
         end else begin
             r_car_x1 <= r_car_x1 + CAR_1_SPEED ;
             r_car_x2 <= r_car_x2 + CAR_2_SPEED ;
-            r_car_x4 <= r_car_x4 + CAR_3_SPEED ;
-            r_car_x3 <= r_car_x3 + CAR_4_SPEED ;
+            r_car_x4 <= r_car_x4 - CAR_3_SPEED ;
+            r_car_x3 <= r_car_x3 - CAR_4_SPEED ;
             speed_count1 <= 0;
         end
     end

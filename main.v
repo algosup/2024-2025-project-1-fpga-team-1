@@ -10,6 +10,7 @@ module main(
     input  SW2,         // Down
     input  SW3,         // Left
     input  SW4,         // Right
+    output LED1, LED2, LED3, LED4, // LEDs
     output  VGA_HS,     // HSYNC
     output  VGA_VS,     // VSYNC
     output  VGA_R2,     // VGA Red
@@ -46,8 +47,16 @@ module main(
         .SW2(SW2),
         .SW3(SW3),
         .SW4(SW4),
+        .car_x1(w_car_x1),
+        .car_x2(w_car_x2),
+        .car_x3(w_car_x3),
+        .car_x4(w_car_x4),
         .rplayer_x(player_x),
-        .rplayer_y(player_y)
+        .rplayer_y(player_y),
+        .LED1(LED1),
+        .LED2(LED2),
+        .LED3(LED3),
+        .LED4(LED4)
     );
 
     // Car control module
@@ -78,32 +87,7 @@ module main(
         .temp_blue(temp_blue),
     );
 
-    // // Collision detection module
-    // wire collision_signal;
 
-    // collision_detector cd(
-    //     .player_x(player_x),
-    //     .player_y(player_y),
-    //     .car_x1(w_car_x1),
-    //     .car_x2(w_car_x2),
-    //     .car_x3(w_car_x3),
-    //     .car_x4(w_car_x4),
-    //     .collision(collision_signal)
-    // );
-
-    // always @(posedge CLK) begin
-    //     // If collision detected, reset player position
-    //     if (collision_signal) begin
-    //         r_player_x <= H_DISPLAY / 2 ;
-    //         r_player_y <= V_DISPLAY - PLAYER_HEIGHT - 32;
-    //     end
-    // end
-
-    // reg r_player_x ;
-    // reg r_player_y ;
-
-    // assign player_x = r_player_x;
-    // assign player_y = r_player_y;
     
 endmodule
 
