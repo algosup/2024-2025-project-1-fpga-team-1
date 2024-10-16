@@ -29,6 +29,10 @@ module main(
     wire [9:0] w_car_x2 ;
     wire [9:0] w_car_x3 ;
     wire [9:0] w_car_x4 ;
+    wire [9:0] w_car_x5 ;
+    wire [9:0] w_car_x6 ;
+    wire [9:0] w_car_x7 ;
+    wire [9:0] w_car_x8 ;
 
     // VGA control module
     vga_control vga_control(
@@ -51,6 +55,10 @@ module main(
         .car_x2(w_car_x2),
         .car_x3(w_car_x3),
         .car_x4(w_car_x4),
+        .car_x5(w_car_x5),
+        .car_x6(w_car_x6),
+        .car_x7(w_car_x7),
+        .car_x8(w_car_x8),
         .rplayer_x(player_x),
         .rplayer_y(player_y),
         .LED1(LED1),
@@ -66,6 +74,10 @@ module main(
         .car_x2(w_car_x2),
         .car_x3(w_car_x3),
         .car_x4(w_car_x4),
+        .car_x5(w_car_x5),
+        .car_x6(w_car_x6),
+        .car_x7(w_car_x7),
+        .car_x8(w_car_x8),
     );
    
     // Color generation
@@ -77,6 +89,10 @@ module main(
         .car_x2(w_car_x2),
         .car_x3(w_car_x3),
         .car_x4(w_car_x4),
+        .car_x5(w_car_x5),
+        .car_x6(w_car_x6),
+        .car_x7(w_car_x7),
+        .car_x8(w_car_x8),
         .VGA_R2(VGA_R2),
         .VGA_G2(VGA_G2),
         .VGA_B2(VGA_B2),

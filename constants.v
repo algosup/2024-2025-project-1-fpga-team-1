@@ -48,3 +48,24 @@
     parameter CAR_X3 = 508;  
     parameter CAR_X4 = 600;
 
+
+    parameter CAR_Y5 = 320/2;
+    parameter CAR_Y6 = 384/2 - CAR_HEIGHT;   
+    parameter CAR_Y7 = 416/2 - CAR_HEIGHT;  
+    parameter CAR_Y8 = 448/2 - CAR_HEIGHT;
+    parameter CAR_X5= 200/2;
+    parameter CAR_X6 = 400/2;   
+    parameter CAR_X7 = 508/2;  
+    parameter CAR_X8 = 600/2;
+
+
+
+    // Safe Zone
+    parameter SAFE_Y = 0;
+    parameter SAFE_Y2 = 448;
+    parameter SAFE_Y3 = 256;
+    parameter SAFE_X = 0;
+    parameter SAFE_WIDTH = 640;
+    parameter SAFE_HEIGHT = 32;
+
+

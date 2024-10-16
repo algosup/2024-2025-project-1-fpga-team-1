@@ -2,7 +2,7 @@
 module color_generation 
 (
     input CLK,         // Clock
-    input [9:0] player_x, player_y, car_x1, car_x2, car_x3, car_x4, // Player and car positions
+    input [9:0] player_x, player_y, car_x1, car_x2, car_x3, car_x4, car_x5, car_x6, car_x7, car_x8, // Player and car positions
     output VGA_R2, VGA_G2, VGA_B2, // VGA colors
     input [9:0] h_count, v_count, // VGA positions
     input temp_red, temp_green, temp_blue // temp colors
@@ -39,6 +39,41 @@ module color_generation
                 r_VGA_R2 <= 1;   // Red (Car_4)
                 r_VGA_G2 <= 0;
                 r_VGA_B2 <= 0;
+            end else if ((h_count >= car_x5) && (h_count < car_x5 + CAR_WIDTH) &&
+                        (v_count >= CAR_Y5) && (v_count < CAR_Y5 + CAR_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // Red (Car_5)
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
+            end else if ((h_count >= car_x6) && (h_count < car_x6 + CAR_WIDTH) &&
+                        (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // Red (Car_6)
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
+            // end else if ((h_count >= car_x7) && (h_count < car_x7 + CAR_WIDTH) &&
+            //             (v_count >= CAR_Y7) && (v_count < CAR_Y7 + CAR_HEIGHT)) begin
+            //     r_VGA_R2 <= 1;   // Red (Car_7)
+            //     r_VGA_G2 <= 0;
+            //     r_VGA_B2 <= 0;
+            // end else if ((h_count >= car_x8) && (h_count < car_x8 + CAR_WIDTH) &&
+            //             (v_count >= CAR_Y8) && (v_count < CAR_Y8 + CAR_HEIGHT)) begin
+            //     r_VGA_R2 <= 1;   // Red (Car_8)
+            //     r_VGA_G2 <= 0;
+            //     r_VGA_B2 <= 0;
+            end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
+                        (v_count >= SAFE_Y) && (v_count < SAFE_Y + SAFE_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // SAFE ZONE TOP
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 1;
+            end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
+                        (v_count >= SAFE_Y2) && (v_count < SAFE_Y2 + SAFE_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // SAFE ZONE BOTTOM
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 1;
+            end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
+                        (v_count >= SAFE_Y3) && (v_count < SAFE_Y3 + SAFE_HEIGHT)) begin
+                r_VGA_R2 <= 1;   // SAFE ZONE MIDDLE
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 1;
             end else begin
                 r_VGA_R2 <= temp_red;
                 r_VGA_G2 <= temp_green;
@@ -55,33 +90,6 @@ module color_generation
         assign VGA_R2 = r_VGA_R2;
         assign VGA_G2 = r_VGA_G2;
         assign VGA_B2 = r_VGA_B2;
-
-
-    // // Square generation positions
-    //     reg [9:0] square_x[0:89];
-    //     reg [9:0] square_y[0:89];
-
-    // integer i;
-    // generate
-    //     for (i = 0; i < 90; i = i + 1) begin
-    //         assign square_x[i] = 10 + (i % 18) * 35;
-    //         assign square_y[i] = 320 + (i / 18) * 32;
-    //     end
-    // endgenerate
-
-    // wire square_active[0:89];
-
-    // // Square active generation
-    // genvar i;
-    // generate
-    //     for (i = 0; i < 90; i = i + 1) begin : square_active_gen
-    //         assign square_active[i] = (h_count >= square_x[i]) && (h_count < square_x[i] + RECT_WIDTH) &&
-    //                                 (v_count >= square_y[i]) && (v_count < square_y[i] + RECT_HEIGHT);
-    //     end
-    // endgenerate
-
-
-    // reg [89:0] square_active;
 
     // Square color generation
     always @(posedge CLK) begin
