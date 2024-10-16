@@ -29,7 +29,6 @@ module main(
     output reg S2_E,
     output reg S2_F,
     output reg S2_G,
-    output reg LED1
 );
 
     // VGA signals
@@ -92,7 +91,6 @@ module main(
         .S2_E(S2_E),
         .S2_F(S2_F),
         .S2_G(S2_G),
-        .LED1(LED1)
     );
 
     // Car control module
@@ -126,30 +124,7 @@ module main(
         .VGA_B2(VGA_B2),
         .v_count(v_count),
         .h_count(h_count),
-        .temp_red(temp_red),
-        .temp_green(temp_green),
-        .temp_blue(temp_blue),
     );
-
-
-    // segment inc (
-    //     .CLK(CLK),
-    //     .INC(player_y),
-    //     .S1_A(S1_A),
-    //     .S1_B(S1_B),
-    //     .S1_C(S1_C),
-    //     .S1_D(S1_D),
-    //     .S1_E(S1_E),
-    //     .S1_F(S1_F),
-    //     .S1_G(S1_G),
-    //     .S2_A(S2_A),
-    //     .S2_B(S2_B),
-    //     .S2_C(S2_C),
-    //     .S2_D(S2_D),
-    //     .S2_E(S2_E),
-    //     .S2_F(S2_F),
-    //     .S2_G(S2_G),
-    // );
 
 
     

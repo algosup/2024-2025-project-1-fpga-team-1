@@ -5,7 +5,6 @@ module color_generation
     input [9:0] player_x, player_y, car_x1, car_x2, car_x3, car_x4, car_x5, car_x6, car_x7, car_x8, // Player and car positions
     output VGA_R2, VGA_G2, VGA_B2, // VGA colors
     input [9:0] h_count, v_count, // VGA positions
-    input temp_red, temp_green, temp_blue // temp colors
 );
 
     // VGA colors
@@ -61,29 +60,31 @@ module color_generation
             //     r_VGA_B2 <= 0;
             end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
                         (v_count >= SAFE_Y) && (v_count < SAFE_Y + SAFE_HEIGHT)) begin
-                r_VGA_R2 <= 0.9;   // SAFE ZONE TOP
-                r_VGA_G2 <= 0.9;
-                r_VGA_B2 <= 0.9;
+                r_VGA_R2 <= 1;   // SAFE ZONE TOP
+                r_VGA_G2 <= 1;
+                r_VGA_B2 <= 1;
             end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
                         (v_count >= SAFE_Y2) && (v_count < SAFE_Y2 + SAFE_HEIGHT)) begin
-                r_VGA_R2 <= 0.9;   // SAFE ZONE BOTTOM
-                r_VGA_G2 <= 0.9;
-                r_VGA_B2 <= 0.9;
+                r_VGA_R2 <= 1;   // SAFE ZONE BOTTOM
+                r_VGA_G2 <= 1;
+                r_VGA_B2 <= 1;
             end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
                         (v_count >= SAFE_Y3) && (v_count < SAFE_Y3 + SAFE_HEIGHT)) begin
-                r_VGA_R2 <= 0.9;   // SAFE ZONE MIDDLE
-                r_VGA_G2 <= 0.9;
-                r_VGA_B2 <= 0.9;
+                r_VGA_R2 <= 1;   // SAFE ZONE MIDDLE
+                r_VGA_G2 <= 1;
+                r_VGA_B2 <= 1;
             end else begin
-                r_VGA_R2 <= temp_red;
-                r_VGA_G2 <= temp_green;
-                r_VGA_B2 <= temp_blue;
+                r_VGA_R2 <= 0;
+                r_VGA_G2 <= 0;
+                r_VGA_B2 <= 0;
             end
         end else begin
             r_VGA_R2 <= 0;
             r_VGA_G2 <= 0;
             r_VGA_B2 <= 0;
         end
+
+
     end
 
     // VGA register to VGA output
@@ -91,13 +92,7 @@ module color_generation
         assign VGA_G2 = r_VGA_G2;
         assign VGA_B2 = r_VGA_B2;
 
-    // Square color generation
-    always @(posedge CLK) begin
-        temp_red = 0;
-        temp_green = 0;
-        temp_blue = 0;
 
-    end
 
 
 endmodule
