@@ -118,7 +118,7 @@ module player_control(
         //     is_collided <= 1;
         // end
         
-        /* 
+        
         is_collided_flag <= is_collided;
         if (is_collided == 1 && is_collided_flag ==0 )begin 
             speed_count <= 0;
@@ -139,17 +139,8 @@ module player_control(
             units <= 4'b0000;
             speed_count <= 0;
             r_life <= 4'b1111;
-        end */
-
-        if (is_collided || (SW1 && SW2 && SW3 && SW4)) begin
-            rplayer_x <= H_DISPLAY / 2;
-            rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
-            is_collided <= 0;
-            tens <= 4'b0000;
-            units <= 4'b0000;
-            speed_count <= 0;
-        end
-
+        end 
+        
         if (rplayer_y == 0) begin
             if (units == 4'b1001) begin
                 units <= 4'b0000;
