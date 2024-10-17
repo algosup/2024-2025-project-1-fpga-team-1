@@ -1,14 +1,14 @@
-/* module sprite_ram (
-    input wire CLK,                 // Horloge
-    input wire [7:0] addr,          // Adresse de la RAM (8 bits pour 256 pixels)
-    output reg [7:0] data_out       // Données de sortie (8 bits pour chaque pixel)
+module sprite_ram (
+    input wire CLK,                 // Clock
+    input wire [$clog2(1024)-1:0] addr,          // number of adress needed to access pixels in the sprite
+    output reg [8:0] data_out       // 9 bits by pixel (RGB 3 bits each)
 );
 
-    // Mémoire pour le sprite (16x16 = 256 octets, 8 bits par pixel)
-    reg [7:0] sprite_mem [0:255];
+
+    reg [8:0] sprite_mem [0:1024];
 
     initial begin
-        // Chargement du sprite (ici exemple avec des valeurs arbitraires)
+        // Inilialize sprite memory of the file
         $readmemh("sprite_data.mem", sprite_mem);
     end
 

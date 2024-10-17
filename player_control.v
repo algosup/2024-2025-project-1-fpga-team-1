@@ -21,6 +21,10 @@ module player_control(
     output reg S2_E,
     output reg S2_F,
     output reg S2_G,
+    output wire LED1,
+    output wire LED2,
+    output wire LED3,
+    output wire LED4
 );
 
     reg [31:0] speed_count = 0;    // Speed counter
@@ -29,10 +33,22 @@ module player_control(
     reg [3:0] units = 4'b0000;
     reg [3:0] tens = 4'b0000;
 
+
+    // Player position
     initial begin
         rplayer_x = 640/2;  // Player x position
         rplayer_y = 448;      // Player y position
     end
+
+
+    // Player life
+    reg [3:0] r_life = 4'b1111;
+    reg is_collided_flag = 0;
+    
+    assign LED1 = r_life[0];    
+    assign LED2 = r_life[1];
+    assign LED3 = r_life[2];
+    assign LED4 = r_life[3];
 
     always @(posedge CLK) begin
         if (speed_count < PLAYER_SPEED) begin
@@ -101,6 +117,30 @@ module player_control(
         //     (rplayer_y + PLAYER_HEIGHT > CAR_Y8) && (rplayer_y < CAR_Y8 + CAR_HEIGHT)) begin
         //     is_collided <= 1;
         // end
+        
+        /* 
+        is_collided_flag <= is_collided;
+        if (is_collided == 1 && is_collided_flag ==0 )begin 
+            speed_count <= 0;
+            is_collided <= 0;
+            r_life <= {r_life[2:0], 1'b0};
+            if (r_life == 4'b0001) begin
+                rplayer_x <= H_DISPLAY / 2;
+                rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
+                tens <= 4'b0000;
+                units <= 4'b0000;
+                r_life <= 4'b1111;
+            end 
+        end
+        if (SW1 && SW2 && SW3 && SW4) begin
+            rplayer_x <= H_DISPLAY / 2;
+            rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
+            tens <= 4'b0000;
+            units <= 4'b0000;
+            speed_count <= 0;
+            r_life <= 4'b1111;
+        end */
+
         if (is_collided || (SW1 && SW2 && SW3 && SW4)) begin
             rplayer_x <= H_DISPLAY / 2;
             rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
@@ -146,15 +186,8 @@ module player_control(
             4'b1001: {S2_A, S2_B, S2_C, S2_D, S2_E, S2_F, S2_G} = 7'b0000100;
             default: {S2_A, S2_B, S2_C, S2_D, S2_E, S2_F, S2_G} = 7'b0011000;
         endcase
-
-
     end
 
-
-
-
-
-
-
+    
 
 endmodule

@@ -29,6 +29,10 @@ module main(
     output reg S2_E,
     output reg S2_F,
     output reg S2_G,
+    output LED1,
+    output LED2,
+    output LED3,
+    output LED4
 );
 
     // VGA signals
@@ -91,6 +95,10 @@ module main(
         .S2_E(S2_E),
         .S2_F(S2_F),
         .S2_G(S2_G),
+        .LED1(LED1),
+        .LED2(LED2),
+        .LED3(LED3),
+        .LED4(LED4)
     );
 
     // Car control module
