@@ -207,6 +207,7 @@ Test priorities are indicated by the following colors:
 | Expected Result | FroggyRanck is stopped and cannot pass through the screen border |
 | Priority | 🔴 |
 |Test result|Screen border are done at bettom, left and top. But, in right, border is one grid after.|
+|Test result 2| It is patched|
 
 ### 13. FroggyRanck Collision: Car
 
