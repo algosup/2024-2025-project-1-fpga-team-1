@@ -58,6 +58,13 @@ module color_generation
             //     r_VGA_R2 <= 1;   // Red (Car_8)
             //     r_VGA_G2 <= 0;
             //     r_VGA_B2 <= 0;
+            // end else if ((h_count >= SPRITE_X && h_count < (SPRITE_X + SPRITE_SIZE)) &&
+            //     (v_count >= SPRITE_Y && v_count < (SPRITE_Y + SPRITE_SIZE))) begin
+            //     sprite_addr <= (v_count - SPRITE_Y) * SPRITE_SIZE + (h_count - SPRITE_X);
+            //     r_VGA_R2 <= sprite_data[23:16];  // 8 bits pour le rouge
+            //     r_VGA_G2 <= sprite_data[15:8];   // 8 bits pour le vert
+            //     r_VGA_B2 <= sprite_data[7:0];    // 8 bits pour le bleu
+            // end 
             end else if ((h_count >= SAFE_X) && (h_count < SAFE_X + SAFE_WIDTH) &&
                         (v_count >= SAFE_Y) && (v_count < SAFE_Y + SAFE_HEIGHT)) begin
                 r_VGA_R2 <= 1;   // SAFE ZONE TOP
@@ -73,19 +80,20 @@ module color_generation
                 r_VGA_R2 <= 1;   // SAFE ZONE MIDDLE
                 r_VGA_G2 <= 1;
                 r_VGA_B2 <= 1;
-            end else begin
-                r_VGA_R2 <= 0;
-                r_VGA_G2 <= 0;
-                r_VGA_B2 <= 0;
             end
-        end else begin
-            r_VGA_R2 <= 0;
+            else begin
+            r_VGA_R2 <= 0;   // Black background color (default)
             r_VGA_G2 <= 0;
             r_VGA_B2 <= 0;
+            end
         end
-
-
+    else begin
+        r_VGA_R2 <= 0;   // Black background color (default)
+        r_VGA_G2 <= 0;
+        r_VGA_B2 <= 0;
     end
+end
+
 
     // VGA register to VGA output
         assign VGA_R2 = r_VGA_R2;
@@ -93,6 +101,26 @@ module color_generation
         assign VGA_B2 = r_VGA_B2;
 
 
+    // // Position du sprite sur l'écran
+    // parameter SPRITE_X = 100;             // Position X de départ du sprite
+    // parameter SPRITE_Y = 100;             // Position Y de départ du sprite
+    // parameter SPRITE_SIZE = 16;           // Taille du sprite (16x16 pixels)
+
+    // // RAM pour les données du sprite
+    // wire [7:0] sprite_data;
+    // reg [7:0] sprite_addr;
+    
+    // // Instanciation de la RAM pour le sprite
+    // sprite_ram sprite_memory (
+    //     .CLK(CLK),
+    //     .addr(sprite_addr),
+    //     .data_out(sprite_data)
+    // );
+
+
 
 
 endmodule
+
+
+

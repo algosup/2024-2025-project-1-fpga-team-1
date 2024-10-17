@@ -101,7 +101,6 @@ module player_control(
         //     (rplayer_y + PLAYER_HEIGHT > CAR_Y8) && (rplayer_y < CAR_Y8 + CAR_HEIGHT)) begin
         //     is_collided <= 1;
         // end
-
         if (is_collided || (SW1 && SW2 && SW3 && SW4)) begin
             rplayer_x <= H_DISPLAY / 2;
             rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;

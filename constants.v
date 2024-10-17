@@ -27,7 +27,7 @@
 
     parameter CAR_1_SPEED = 2;
     parameter CAR_2_SPEED = 2;
-    parameter CAR_3_SPEED = 3;
+    parameter CAR_3_SPEED = 2;
     parameter CAR_4_SPEED = 2;
 
 
