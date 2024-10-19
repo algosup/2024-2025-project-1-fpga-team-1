@@ -123,10 +123,10 @@ module player_control(
         if (is_collided == 1 && is_collided_flag ==0 )begin 
             speed_count <= 0;
             is_collided <= 0;
-            r_life <= {r_life[2:0], 1'b0};
+            rplayer_x <= H_DISPLAY / 2;
+            rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
+            r_life <= (r_life >> 1);
             if (r_life == 4'b0001) begin
-                rplayer_x <= H_DISPLAY / 2;
-                rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
                 tens <= 4'b0000;
                 units <= 4'b0000;
                 r_life <= 4'b1111;
