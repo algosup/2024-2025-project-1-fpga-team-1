@@ -1,3 +1,7 @@
+// In this file we define the position of the cars on the screen
+// We add the speed of the cars to the position of the cars
+// And we add a speed_car parameter to increase the speed of the cars level by level
+
 `include "constants.v"
 module car_control (
     input CLK,         // Clock

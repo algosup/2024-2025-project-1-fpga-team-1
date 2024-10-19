@@ -1,3 +1,6 @@
+// In this file we define the VGA parameters to display the game on the screen
+
+
 `include "constants.v"
 
 module vga_control(

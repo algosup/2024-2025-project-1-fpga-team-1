@@ -1,5 +1,11 @@
 //Frog Ranck Game
 
+// Authors: Robin GOUMY
+// 
+// Main module for the Frog Rank Game
+// This module handles the main game logic and interfaces with the VGA display and input switches.
+
+
 `timescale 1ns / 1ps
 
 `include "constants.v"
@@ -15,6 +21,7 @@ module main(
     output  VGA_R2,     // VGA Red
     output  VGA_G2,     // VGA Green
     output  VGA_B2,     // VGA Blue
+    // 7-segment display
     output reg S1_A,
     output reg S1_B,
     output reg S1_C,
@@ -29,6 +36,7 @@ module main(
     output reg S2_E,
     output reg S2_F,
     output reg S2_G,
+    // LEDs
     output LED1,
     output LED2,
     output LED3,
@@ -140,7 +148,5 @@ module main(
         .h_count(h_count),
     );
 
-
-    
 endmodule
 

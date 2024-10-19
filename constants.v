@@ -1,3 +1,11 @@
+    // In this file we define all the constants that we will use in the game
+    // This way we can easily change the game parameters without having to change the code
+    // This file is included in all the modules that need to use the constants    
+    
+    
+    
+    
+    
     // Display VGA parameters
     parameter H_DISPLAY = 640;
     parameter V_DISPLAY = 480;
@@ -47,8 +55,6 @@
     parameter CAR_X2 = 400;   
     parameter CAR_X3 = 508;  
     parameter CAR_X4 = 600;
-
-
     parameter CAR_Y5 = 320/2;
     parameter CAR_Y6 = 384/2;   
     parameter CAR_Y7 = 416/2;  
