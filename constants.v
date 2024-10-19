@@ -23,12 +23,12 @@
     // Car parameters
     parameter CAR_WIDTH = 40;
     parameter CAR_HEIGHT = 32;
-    parameter CAR_CLOCK = 12500000/64;
+    parameter CAR_CLOCK = 12500000/32;
 
-    parameter CAR_1_SPEED = 2;
-    parameter CAR_2_SPEED = 2;
-    parameter CAR_3_SPEED = 2;
-    parameter CAR_4_SPEED = 2;
+    parameter CAR_1_SPEED = 4;
+    parameter CAR_2_SPEED = 4;
+    parameter CAR_3_SPEED = 4;
+    parameter CAR_4_SPEED = 4;
 
 
     // Wood parameters

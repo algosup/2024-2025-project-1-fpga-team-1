@@ -35,6 +35,9 @@ module main(
     output LED4
 );
 
+    // Speed counter
+    wire [4:0] w_speed_car;
+
     // VGA signals
     wire [9:0] h_count, v_count;
 
@@ -98,8 +101,10 @@ module main(
         .LED1(LED1),
         .LED2(LED2),
         .LED3(LED3),
-        .LED4(LED4)
+        .LED4(LED4),
+        .speed_car(w_speed_car)
     );
+
 
     // Car control module
     car_control car_control(
@@ -112,6 +117,7 @@ module main(
         .car_x6(w_car_x6),
         .car_x7(w_car_x7),
         .car_x8(w_car_x8),
+        .speed_car(w_speed_car),
     );
    
     // Color generation

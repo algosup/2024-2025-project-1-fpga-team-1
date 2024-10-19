@@ -24,10 +24,13 @@ module player_control(
     output wire LED1,
     output wire LED2,
     output wire LED3,
-    output wire LED4
+    output wire LED4,
+    output [4:0] speed_car,
 );
 
     reg [31:0] speed_count = 0;    // Speed counter
+
+    reg [4:0] r_speed_car;
 
     reg is_collided = 0;           // Collision flag
     reg [3:0] units = 4'b0000;
@@ -130,6 +133,7 @@ module player_control(
                 tens <= 4'b0000;
                 units <= 4'b0000;
                 r_life <= 4'b1111;
+                r_speed_car <= 0;
             end 
         end
         if (SW1 && SW2 && SW3 && SW4) begin
@@ -139,6 +143,7 @@ module player_control(
             units <= 4'b0000;
             speed_count <= 0;
             r_life <= 4'b1111;
+            r_speed_car <= 0;
         end 
         
         if (rplayer_y == 0) begin
@@ -149,6 +154,7 @@ module player_control(
                 end
             end else begin
                 units <= units + 1;
+                r_speed_car <= r_speed_car + 1;
             end
             rplayer_x <= H_DISPLAY / 2;
             rplayer_y <= V_DISPLAY - PLAYER_HEIGHT;
@@ -179,6 +185,7 @@ module player_control(
         endcase
     end
 
+    assign speed_car = r_speed_car;
     
 
 endmodule
