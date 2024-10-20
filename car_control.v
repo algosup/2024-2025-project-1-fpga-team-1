@@ -3,6 +3,7 @@
 // And we add a speed_car parameter to increase the speed of the cars level by level
 
 `include "constants.v"
+
 module car_control (
     input CLK,         // Clock
     output [9:0] car_x1, car_x2, car_x3, car_x4, car_x5, car_x6, car_x7, car_x8, // Car positions

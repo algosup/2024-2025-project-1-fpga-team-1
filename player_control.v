@@ -5,6 +5,7 @@
 // We define the speed of the cars level by level 
 // We define the level with the tens and units on the seven segment display
 
+`include "constants.v"
 
 module player_control(
     input wire CLK,         // Clock
@@ -90,7 +91,7 @@ module player_control(
                  speed_count <= 0;
             end 
         end
-    
+
         // Collision detection with the cars 1 to 6
         if ((rplayer_x + PLAYER_WIDTH > car_x1) && (rplayer_x < car_x1 + CAR_WIDTH) &&
             (rplayer_y + PLAYER_HEIGHT > CAR_Y1) && (rplayer_y < CAR_Y1 + CAR_HEIGHT)) begin
@@ -108,14 +109,14 @@ module player_control(
             (rplayer_y + PLAYER_HEIGHT > CAR_Y4) && (rplayer_y < CAR_Y4 + CAR_HEIGHT)) begin
             is_collided <= 1;
         end
-        if ((rplayer_x + PLAYER_WIDTH > car_x5) && (rplayer_x < car_x5 + CAR_WIDTH) &&
-            (rplayer_y + PLAYER_HEIGHT > CAR_Y5) && (rplayer_y < CAR_Y5 + CAR_HEIGHT)) begin
-            is_collided <= 1;
-        end
-        if ((rplayer_x + PLAYER_WIDTH > car_x6) && (rplayer_x < car_x6 + CAR_WIDTH) &&
-            (rplayer_y + PLAYER_HEIGHT > CAR_Y6) && (rplayer_y < CAR_Y6 + CAR_HEIGHT)) begin
-            is_collided <= 1;
-        end
+        // if ((rplayer_x + PLAYER_WIDTH > car_x5) && (rplayer_x < car_x5 + CAR_WIDTH) &&
+        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y5) && (rplayer_y < CAR_Y5 + CAR_HEIGHT)) begin
+        //     is_collided <= 1;
+        // end
+        // if ((rplayer_x + PLAYER_WIDTH > car_x6) && (rplayer_x < car_x6 + CAR_WIDTH) &&
+        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y6) && (rplayer_y < CAR_Y6 + CAR_HEIGHT)) begin
+        //     is_collided <= 1;
+        // end
         // if ((rplayer_x + PLAYER_WIDTH > car_x7) && (rplayer_x < car_x7 + CAR_WIDTH) &&
         //     (rplayer_y + PLAYER_HEIGHT > CAR_Y7) && (rplayer_y < CAR_Y7 + CAR_HEIGHT)) begin
         //     is_collided <= 1;

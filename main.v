@@ -16,11 +16,18 @@ module main(
     input  SW2,         // Down
     input  SW3,         // Left
     input  SW4,         // Right
-    output  VGA_HS,     // HSYNC
-    output  VGA_VS,     // VSYNC
-    output  VGA_R2,     // VGA Red
-    output  VGA_G2,     // VGA Green
-    output  VGA_B2,     // VGA Blue
+    // VGA signals
+    output  VGA_HS,     
+    output  VGA_VS,
+    output VGA_R0,   
+    output VGA_R1,     
+    output  VGA_R2, 
+    output VGA_G0,
+    output VGA_G1,   
+    output  VGA_G2,  
+    output VGA_B0,   
+    output VGA_B1,
+    output  VGA_B2,
     // 7-segment display
     output reg S1_A,
     output reg S1_B,
@@ -141,6 +148,12 @@ module main(
         .car_x6(w_car_x6),
         .car_x7(w_car_x7),
         .car_x8(w_car_x8),
+        .VGA_R0(VGA_R0),
+        .VGA_G0(VGA_G0),
+        .VGA_B0(VGA_B0),
+        .VGA_R1(VGA_R1),
+        .VGA_G1(VGA_G1),
+        .VGA_B1(VGA_B1),
         .VGA_R2(VGA_R2),
         .VGA_G2(VGA_G2),
         .VGA_B2(VGA_B2),

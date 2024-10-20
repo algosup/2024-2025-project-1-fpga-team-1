@@ -70,9 +70,9 @@ set_io -nowarn VGA_HS  26  # Synchronisation horizontale VGA (HS)
 set_io -nowarn VGA_VS  27  # Synchronisation verticale VGA (VS)
 
 # Canaux rouges (3 bits)
-set_io -nowarn VGA_R0  36  # Rouge, bit 0
-set_io -nowarn VGA_R1  37  # Rouge, bit 1
-set_io -nowarn VGA_R2  40  # Rouge, bit 2
+set_io -nowarn VGA_R0  28  # Rouge, bit 0
+set_io -nowarn VGA_R1  41  # Rouge, bit 1
+set_io -nowarn VGA_R2  42  # Rouge, bit 2
 
 # Canaux verts (3 bits)
 set_io -nowarn VGA_G0  29  # Vert, bit 0
@@ -80,9 +80,9 @@ set_io -nowarn VGA_G1  30  # Vert, bit 1
 set_io -nowarn VGA_G2  33  # Vert, bit 2
 
 # Canaux bleus (3 bits)
-set_io -nowarn VGA_B0  28  # Bleu, bit 0
-set_io -nowarn VGA_B1  41  # Bleu, bit 1
-set_io -nowarn VGA_B2  42  # Bleu, bit 2
+set_io -nowarn VGA_B0  36  # Bleu, bit 0
+set_io -nowarn VGA_B1  37  # Bleu, bit 1
+set_io -nowarn VGA_B2  40  # Bleu, bit 2
 
 # ------------ Connecteur PMOD ------------------------------------------------
 # Le connecteur PMOD est une extension pour ajouter des modules périphériques

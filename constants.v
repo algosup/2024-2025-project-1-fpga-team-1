@@ -47,18 +47,19 @@
 
 
     // Car parameters
-    parameter CAR_Y1 = 320;
-    parameter CAR_Y2 = 384 - CAR_HEIGHT;   
-    parameter CAR_Y3 = 416 - CAR_HEIGHT;  
-    parameter CAR_Y4 = 448 - CAR_HEIGHT;
+    parameter CAR_Y1 = 384;            
+    parameter CAR_Y2 = 352;   
+    parameter CAR_Y3 = 288; 
+    parameter CAR_Y4 = 256; 
+    parameter CAR_Y5 = 192;
+    parameter CAR_Y6 = 160;
+    parameter CAR_Y7 = 96;
+    parameter CAR_Y8 = 64;
+
     parameter CAR_X1 = 200;
     parameter CAR_X2 = 400;   
     parameter CAR_X3 = 508;  
     parameter CAR_X4 = 600;
-    parameter CAR_Y5 = 320/2;
-    parameter CAR_Y6 = 384/2;   
-    parameter CAR_Y7 = 416/2;  
-    parameter CAR_Y8 = 448/2;
     parameter CAR_X5= 200/2;
     parameter CAR_X6 = 400/2;   
     parameter CAR_X7 = 508/2;  
@@ -68,10 +69,10 @@
 
     // Safe Zone
     parameter SAFE_Y = 0;
-    parameter SAFE_Y2 = 448;
-    parameter SAFE_Y3 = 256;
+    parameter SAFE_Y2 = 416;
+    parameter SAFE_Y3 = 224;
     parameter SAFE_X = 0;
     parameter SAFE_WIDTH = 640;
-    parameter SAFE_HEIGHT = 32;
+    parameter SAFE_HEIGHT = 64;
 
 
