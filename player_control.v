@@ -109,22 +109,22 @@ module player_control(
             (rplayer_y + PLAYER_HEIGHT > CAR_Y4) && (rplayer_y < CAR_Y4 + CAR_HEIGHT)) begin
             is_collided <= 1;
         end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x5) && (rplayer_x < car_x5 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y5) && (rplayer_y < CAR_Y5 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x6) && (rplayer_x < car_x6 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y6) && (rplayer_y < CAR_Y6 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x7) && (rplayer_x < car_x7 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y7) && (rplayer_y < CAR_Y7 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x8) && (rplayer_x < car_x8 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y8) && (rplayer_y < CAR_Y8 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
+        if ((rplayer_x + PLAYER_WIDTH > car_x5) && (rplayer_x < car_x5 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y5) && (rplayer_y < CAR_Y5 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
+        if ((rplayer_x + PLAYER_WIDTH > car_x6) && (rplayer_x < car_x6 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y6) && (rplayer_y < CAR_Y6 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
+        if ((rplayer_x + PLAYER_WIDTH > car_x7) && (rplayer_x < car_x7 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y7) && (rplayer_y < CAR_Y7 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
+        if ((rplayer_x + PLAYER_WIDTH > car_x8) && (rplayer_x < car_x8 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y8) && (rplayer_y < CAR_Y8 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
         is_collided_flag <= is_collided;
         // If the player is collided with the cars then reset the player position and decrease the player life
         if (is_collided == 1 && is_collided_flag ==0 )begin 
