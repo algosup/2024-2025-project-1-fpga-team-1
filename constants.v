@@ -75,4 +75,20 @@
     parameter SAFE_WIDTH = 640;
     parameter SAFE_HEIGHT = 64;
 
+    // Road
+    parameter ROAD_x1 = 0;
+    parameter ROAD_y1 = 64;
+
+    parameter ROAD_x2 = 0;
+    parameter ROAD_y2 = 160;
+
+    parameter ROAD_x3 = 0;
+    parameter ROAD_y3 = 256;
+
+    parameter ROAD_x4 = 0;
+    parameter ROAD_y4 = 352;
+
+    parameter ROAD_width = 640;
+    parameter ROAD_height = 64;
+
 

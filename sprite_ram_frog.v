@@ -1,4 +1,4 @@
-// In this file we instantiate the sprite memory.
+// In this file we instantiate the frog sprite memory.
 
 
 module sprite_ram_frog
