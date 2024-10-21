@@ -16,8 +16,8 @@
   - [06. Car speed increased to every level](#06-car-speed-increased-to-every-level)
   - [07. Move FroggyRanck Up](#07-move-froggyranck-up)
   - [08. Move FroggyRanck Down](#08-move-froggyranck-down)
-  - [09. Move FroggyRanck Left](#09-move-froggyranck-left)
-  - [10. Move FroggyRanck Right](#10-move-froggyranck-right)
+  - [09. Move FroggyRanck Right](#09-move-froggyranck-right)
+  - [10. Move FroggyRanck Left](#10-move-froggyranck-left)
   - [11. Time deplacement](#11-time-deplacement)
   - [12. FroggyRanck Collision: Screen border](#12-froggyranck-collision-screen-border)
   - [13. FroggyRanck Collision: Car](#13-froggyranck-collision-car)
@@ -154,7 +154,7 @@ Test priorities are indicated by the following colors:
 | Priority |🔴|
 |Test result||
 
-### 09. Move FroggyRanck Left
+### 09. Move FroggyRanck Right
 
 | ID | T09 |
 | --- | --- |
@@ -166,7 +166,7 @@ Test priorities are indicated by the following colors:
 | Priority |🔴|
 |Test result||
 
-### 10. Move FroggyRanck Right
+### 10. Move FroggyRanck Left
 
 | ID | T10 |
 | --- | --- |
