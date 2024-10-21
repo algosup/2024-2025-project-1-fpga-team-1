@@ -3,9 +3,6 @@
     // This file is included in all the modules that need to use the constants    
     
     
-    
-    
-    
     // Display VGA parameters
     parameter H_DISPLAY = 640;
     parameter V_DISPLAY = 480;
@@ -17,10 +14,6 @@
     parameter V_BACK = 33;
     parameter H_SYNC_CYCLES = H_DISPLAY + H_FRONT + H_PULSE + H_BACK;
     parameter V_SYNC_CYCLES = V_DISPLAY + V_FRONT + V_PULSE + V_BACK;
-
-    // Maps parameters
-    parameter RECT_WIDTH = 17;
-    parameter RECT_HEIGHT = 2;
 
 
     // Player parameters
@@ -38,23 +31,18 @@
     parameter CAR_3_SPEED = 1;
     parameter CAR_4_SPEED = 1;
 
-
     // Wood parameters
     parameter WOOD_WIDTH = 40;
     parameter WOOD_HEIGHT = 32;
     parameter WOOD_SPEED = 12500000/2;
 
-
-
-    // Car parameters
+    // Car parameters for the 6 cars
     parameter CAR_Y1 = 384;            
     parameter CAR_Y2 = 352;   
     parameter CAR_Y3 = 288; 
     parameter CAR_Y4 = 256; 
     parameter CAR_Y5 = 192;
     parameter CAR_Y6 = 160;
-    parameter CAR_Y7 = 96;
-    parameter CAR_Y8 = 64;
 
     parameter CAR_X1 = 200;
     parameter CAR_X2 = 400;   
@@ -62,8 +50,7 @@
     parameter CAR_X4 = 600;
     parameter CAR_X5= 200/2;
     parameter CAR_X6 = 400/2;   
-    parameter CAR_X7 = 508/2;  
-    parameter CAR_X8 = 600/2;
+
 
 
 

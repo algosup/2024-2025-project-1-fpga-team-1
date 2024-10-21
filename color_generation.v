@@ -7,7 +7,7 @@
 module color_generation 
 (
     input CLK,         // Clock
-    input [9:0] player_x, player_y, car_x1, car_x2, car_x3, car_x4, car_x5, car_x6, car_x7, car_x8, // Player and car positions
+    input [9:0] player_x, player_y, car_x1, car_x2, car_x3, car_x4, car_x5, car_x6, // Player and car positions
     input VGA_R2, VGA_G2, VGA_B2, VGA_R0, VGA_R1, VGA_G0, VGA_G1, VGA_G2, VGA_B0, VGA_B1,    // VGA colors
     input [9:0] h_count, v_count, // VGA positions
 );
@@ -108,31 +108,21 @@ module color_generation
                 sprite_addr_car <= (v_count - CAR_Y4) * 36 + (h_count - car_x4);
                 if (sprite_data_car != 9'b000000000)
                     r_VGA <= sprite_data_car;
-            end else if ((h_count >= car_x5) && (h_count < car_x5 + CAR_WIDTH) &&
-                (v_count >= CAR_Y5) && (v_count < CAR_Y5 + CAR_HEIGHT)) begin
-                sprite_addr_car <= (v_count - CAR_Y5) * 36 + (36-(h_count - car_x5));
-                if (sprite_data_car != 9'b000000000)
-                    r_VGA <= sprite_data_car;
-            end else if ((h_count >= car_x6) && (h_count < car_x6 + CAR_WIDTH) &&
-                        (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
-                        sprite_addr_car <= (v_count - CAR_Y6) * 36 + (h_count - car_x6);
-                if (sprite_data_car != 9'b000000000)
-                    r_VGA <= sprite_data_car;
-            // end else if ((h_count >= car_x7) && (h_count < car_x7 + CAR_WIDTH) &&
-            //     (v_count >= CAR_Y7) && (v_count < CAR_Y7 + CAR_HEIGHT)) begin
-            //     sprite_addr_car <= (v_count - CAR_Y7) * 36 + (36-(h_count - car_x7));
+            // end else if ((h_count >= car_x5) && (h_count < car_x5 + CAR_WIDTH) &&
+            //     (v_count >= CAR_Y5) && (v_count < CAR_Y5 + CAR_HEIGHT)) begin
+            //     sprite_addr_car <= (v_count - CAR_Y5) * 36 + (36-(h_count - car_x5));
             //     if (sprite_data_car != 9'b000000000)
             //         r_VGA <= sprite_data_car;
-            // end else if ((h_count >= car_x8) && (h_count < car_x8 + CAR_WIDTH) &&
-            //     (v_count >= CAR_Y8) && (v_count < CAR_Y8 + CAR_HEIGHT)) begin
-            //     sprite_addr_car <= (v_count - CAR_Y8) * 36 + (h_count - car_x8);
+            // end else if ((h_count >= car_x6) && (h_count < car_x6 + CAR_WIDTH) &&
+            //             (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
+            //             sprite_addr_car <= (v_count - CAR_Y6) * 36 + (h_count - car_x6);
             //     if (sprite_data_car != 9'b000000000)
             //         r_VGA <= sprite_data_car;
             end
         end else begin
         r_VGA <= 9'b000000000;
         end
-        end
+    end
 
 
     // VGA register to VGA output
@@ -160,7 +150,7 @@ module color_generation
         .data_out(sprite_data_car)
     );
     
-    // Instanciation of the car sprite memory
+    // Instanciation of the road sprite memory
     sprite_ram_road sprite_road (
         .CLK(CLK),
         .addr(sprite_addr_road),

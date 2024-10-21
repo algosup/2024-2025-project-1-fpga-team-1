@@ -1,9 +1,9 @@
 //Frog Ranck Game
 
-// Authors: Robin GOUMY
+// Author: Robin GOUMY
 // 
 // Main module for the Frog Rank Game
-// This module handles the main game logic and interfaces with the VGA display and input switches.
+// This module handles the main game logic and interfaces with all module instances.
 
 
 `timescale 1ns / 1ps
@@ -69,8 +69,6 @@ module main(
     wire [9:0] w_car_x4 ;
     wire [9:0] w_car_x5 ;
     wire [9:0] w_car_x6 ;
-    wire [9:0] w_car_x7 ;
-    wire [9:0] w_car_x8 ;
 
     // VGA control module
     vga_control vga_control(
@@ -95,8 +93,6 @@ module main(
         .car_x4(w_car_x4),
         .car_x5(w_car_x5),
         .car_x6(w_car_x6),
-        .car_x7(w_car_x7),
-        .car_x8(w_car_x8),
         .rplayer_x(player_x),
         .rplayer_y(player_y),
         .S1_A(S1_A),
@@ -130,8 +126,6 @@ module main(
         .car_x4(w_car_x4),
         .car_x5(w_car_x5),
         .car_x6(w_car_x6),
-        .car_x7(w_car_x7),
-        .car_x8(w_car_x8),
         .speed_car(w_speed_car),
     );
    
@@ -146,8 +140,6 @@ module main(
         .car_x4(w_car_x4),
         .car_x5(w_car_x5),
         .car_x6(w_car_x6),
-        .car_x7(w_car_x7),
-        .car_x8(w_car_x8),
         .VGA_R0(VGA_R0),
         .VGA_G0(VGA_G0),
         .VGA_B0(VGA_B0),

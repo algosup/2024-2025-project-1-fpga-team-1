@@ -1,9 +1,9 @@
-// In this file we instantiate the grass sprite memory.
+// In this file we instantiate the ground sprite memory.
 
 
 module sprite_ram_ground
 #( parameter 
-    MEM_FILE="sprite_ground.mem" // File with the grass sprite 
+    MEM_FILE="sprite_ground.mem" // File with the ground sprite 
 ) (
     input wire CLK,                 // Clock
     input wire [9:0] addr,          // number of adress needed to access pixels in the sprite
