@@ -114,8 +114,8 @@ module color_generation
                 if (sprite_data_car != 9'b000000000)
                     r_VGA <= sprite_data_car;
             end else if ((h_count >= car_x6) && (h_count < car_x6 + CAR_WIDTH) &&
-                (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
-                sprite_addr_car <= (v_count - CAR_Y6) * 36 + (h_count - car_x6);
+                        (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
+                        sprite_addr_car <= (v_count - CAR_Y6) * 36 + (h_count - car_x6);
                 if (sprite_data_car != 9'b000000000)
                     r_VGA <= sprite_data_car;
             // end else if ((h_count >= car_x7) && (h_count < car_x7 + CAR_WIDTH) &&
@@ -132,7 +132,7 @@ module color_generation
         end else begin
         r_VGA <= 9'b000000000;
         end
-    end
+        end
 
 
     // VGA register to VGA output
