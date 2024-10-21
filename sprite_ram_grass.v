@@ -1,5 +1,14 @@
-// In this file we instantiate the grass sprite memory.
-
+// ***********************************************************************
+//
+// Sprite memory module for grass
+//
+// Description: In this file, we instantiate the memory of the sprites
+// of the grass. This memory stores the pixel data for the display
+// of the grass in the game. Each pixel is represented by 9 bits (3 bits
+// for each RGB component). The file containing the sprite of the grass
+// is loaded into this memory.
+//
+// *************************************************************************
 
 module sprite_ram_grass
 #( parameter 

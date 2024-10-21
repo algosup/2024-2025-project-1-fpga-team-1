@@ -1,9 +1,15 @@
-// In this file we define the player control module
-// We define the player position with the switches SW1, SW2, SW3, SW4
-// We define the collision detection with the cars and the player 
-// We define the player life with the LEDs
-// We define the speed of the cars level by level 
-// We define the level with the tens and units on the seven segment display
+// ********************************************************************
+//
+// Player control module for the game "Frog Rank"
+//
+// Description: In this file, we define the player control module. It manages the player's position using the switches
+// SW1, SW2, SW3 and SW4 for movements (up, down, left, right).
+// The module detects collisions between cars and the player.
+// It also controls the player's life using LEDs, and increases the speed of the cars at each level.
+// In addition, it displays the player's level using a seven-segment display
+// for tens and units.
+//
+// *************************************************************************
 
 `include "constants.v"
 

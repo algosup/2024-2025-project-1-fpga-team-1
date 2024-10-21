@@ -1,7 +1,19 @@
-    // In this file we define all the constants that we will use in the game
-    // This way we can easily change the game parameters without having to change the code
-    // This file is included in all the modules that need to use the constants    
-    
+// *******************************************************************
+//
+// Constants File for the Game "Frog Rank"
+//
+// Description: In this file, we define all the constants
+// used in the game. This allows to easily modify the parameters
+// of the game without having to change the source code in the different modules.
+// This file is included in all modules requiring the use
+// of these constants.
+//
+// The parameters defined here include the characteristics of the VGA display,
+// the dimensions and speed of the player, cars, as well as
+// the initial positions and dimensions of the different areas of the game
+// such as roads, grass and ground.
+//
+// **********************************************************************
     
     // Display VGA parameters
     parameter H_DISPLAY = 640;
@@ -30,11 +42,6 @@
     parameter CAR_2_SPEED = 1;
     parameter CAR_3_SPEED = 1;
     parameter CAR_4_SPEED = 1;
-
-    // Wood parameters
-    parameter WOOD_WIDTH = 40;
-    parameter WOOD_HEIGHT = 32;
-    parameter WOOD_SPEED = 12500000/2;
 
     // Car parameters for the 6 cars
     parameter CAR_Y1 = 384;            
