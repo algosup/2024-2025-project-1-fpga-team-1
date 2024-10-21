@@ -3,7 +3,7 @@
 | Author       | Alexis SANTOS |
 |--------------|---------------|
 |Created       |   9/26/2024   |
-|Last Modified |   10/09/2024  |
+|Last Modified |   10/17/2024  |
 
 <details>
 
@@ -11,7 +11,7 @@
 
 - [Test Plan](#test-plan)
 - [I. Introduction](#i-introduction)
-  - [A. Document purpose](#a-document-purpose)
+  - [Document purpose](#document-purpose)
 - [II. Quality Objectives](#ii-quality-objectives)
   - [A. Primary objectives](#a-primary-objectives)
   - [B. Secondary Objectives](#b-secondary-objectives)
@@ -33,22 +33,20 @@
 
 </details>
 
-
-
 ## I. Introduction
 
-The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] on a hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay, while adding features that enhance the user experience.
+The project aims to develop a faithful recreation of the arcade game Frogger using the Verilog[^2] on hardware supplied by Nandland.com, an FPGA / Go-board[^1]. The main objective is to offer an experience that captures the essence of Frogger's original gameplay while adding features that enhance the user experience.
 
-The project is aimed at a varied audience, from those familiar with the original Frogger game or its various copies, to those discovering it for the first time. With a dual objective, the product aims to serve as a pedagogical tool for learning to code in the Verilog language and as an entertainment game.
+The project is aimed at a varied audience, from those familiar with the original Frogger game or its various copies to those discovering it for the first time. With a dual objective, the product aims to serve as a pedagogical tool for learning to code in the Verilog language and as an entertainment game.
 
-Before create the game and test it, we need understand how worked this game. Frogger is basically a game about controlling a frog who has to return home. 
+Before creating the game and testing it, we need to understand how worked this game. Frogger is basically a game about controlling a frog who has to return home. 
 
 <p class="text-center"> <img src="/images/Frogger_Original_Game.jpg" alt="Original Frogger"> </p>
 
-To do this, as in the picture above, the frog must cross a busy road, then an equally busy river. The frog, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river and reach his goal of returning home.
+To do this, as in the picture above, the frog must cross a busy road, and then an equally busy river. The frog, must dodge the various cars to stay alive, jump on logs and turtle shells that can dive underwater to cross the river, and reach his goal of returning home.
 
 
-### A. Document purpose
+### Document purpose
 
 This document has been created to facilitate communication between team members on the various tests to be carried out on the project. It describes the approaches and methodologies that will be applied to Frogger's regression[^3], smoke[^4], Functionnal[^5], Unit[^6] tests and test case[^7]. It also identifies the Frogger's reactions to the various tests.
 
@@ -60,7 +58,7 @@ This document has been created to facilitate communication between team members 
 
 Testing the Frogger game program must validate, from the requirements point of view, that :
 
-* One of the backgrounds must match or represent the original frogger with the road and river.
+* One of the backgrounds must match or represent the original Frogger with the road and river.
 * Have a main character who functions in the same way as the original Frogger: moving from square to square on the 20x15 grid.
 * Have obstacles, like the cars in the original Frogger, which move square by square on the 20x15 grid.
 * Reset the game using all four switches simultaneously.
@@ -68,13 +66,13 @@ Testing the Frogger game program must validate, from the requirements point of v
 
 ### B. Secondary Objectives
 
-As we are also implementing a number of additional functionalities, we also need to test whether these functionalities work correctly, and whether they do not negatively impact the objectives already in place. Consequently, this test plan will also focus on the following aspects:
+As we are also implementing a number of additional functionalities, we also need to test whether these functionalities work correctly and whether they do not negatively impact the objectives already in place. Consequently, this test plan will also focus on the following aspects:
 
 * Use sprites for main characters and obstacles in 32x32 (VGA screen is 640x480, 640/20 = 32 and 480/15 = 32).
-* Add a win page which appears when all levels are finish.
-* Add a menu which allows to :
+* Add a winning page that appears when all levels are finished.
+* Add a menu that allows to :
   * Save the game
-  * Possibility to change Frog's apparence
+  * Possibility to change Frog's appearance
   * Display the score and current level compared to existing levels.
 * Add levels with specific frog and obstacle appearances, like : 
   * Halloween theme
@@ -118,7 +116,7 @@ Some parts do not require a test to exist in the project, such as :
 
 ## IV. Testing Strategy
 
-Our testing strategy uses a multi-faceted approach. Unit testing forms the basis, scrutinizing individual components to verify their functionality. Game testing sessions take center stage, offering a holistic evaluation of gameplay, user interactions and the overall user experience.
+Our testing strategy uses a multi-faceted approach. Unit testing forms the basis, scrutinizing individual components to verify their functionality. Game testing sessions take center stage, offering a holistic evaluation of gameplay, user interactions, and the overall user experience.
 
 ### A. Unit test
 
@@ -127,7 +125,7 @@ Unit testing is an important part of the process. These tests are developed in V
 These tests are developed throughout the project, in parallel with the development of the game, which corresponds to an exploratory testing approach.
 
 These unit tests meet three crucial objectives:
-* Code functionality: to check that each function works as expected in different scenarios. For example, we make sure that the scoring mechanisms work correctly when Frogger interacts with different elements such as obstacles or bonuses.
+* Code functionality: check that each function works as expected in different scenarios. For example, we make sure that the scoring mechanisms work correctly when Frogger interacts with different elements such as obstacles or bonuses.
 * Code quality: Evaluate code clarity and quality to promote maintainability and ease of collaboration between developers.
 * Code coverage: Guarantee comprehensive testing to prevent future modifications from unintentionally altering the code's original behavior.
 
