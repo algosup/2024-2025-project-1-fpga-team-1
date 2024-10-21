@@ -10,8 +10,8 @@ module car_control (
     input [4:0] speed_car, // Car speed
 );
 
-    reg [18:0] speed_count1 = 0;
-    reg [18:0] speed_count2 = 0;
+    reg [16:0] speed_count1 = 0;
+    reg [16:0] speed_count2 = 0;
 
     // Initial car positions
     reg [9:0] r_car_x1 = CAR_X1;
