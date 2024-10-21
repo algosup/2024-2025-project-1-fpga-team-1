@@ -1,5 +1,11 @@
 ## Test Cases
 
+| Author       | Alexis SANTOS |
+|--------------|---------------|
+|Created       |   9/26/2024   |
+|Last Modified |   10/21/2024  |
+
+
 <details>
 
 <summary> Table of content </summary>
@@ -23,19 +29,21 @@
   - [13. FroggyRanck Collision: Car](#13-froggyranck-collision-car)
   - [14. Level is indicated on the 7-segment display](#14-level-is-indicated-on-the-7-segment-display)
   - [15. Level score increased](#15-level-score-increased)
-  - [16. Display score on the screen](#16-display-score-on-the-screen)
-  - [17. Score increased when a level is complete](#17-score-increased-when-a-level-is-complete)
-  - [18. Score increased when positive bonuses has taken](#18-score-increased-when-positive-bonuses-has-taken)
-  - [19. Score reset when FroggyRanck hit a car](#19-score-reset-when-froggyranck-hit-a-car)
-  - [20. Score desincreased when negative bonuses has taken](#20-score-desincreased-when-negative-bonuses-has-taken)
-  - [21. Open Menu](#21-open-menu)
-  - [22. Close Menu](#22-close-menu)
-  - [23. Save Game](#23-save-game)
-  - [24. Show up level and score](#24-show-up-level-and-score)
-  - [25. Change FroggyRanck's appearance](#25-change-froggyrancks-appearance)
-  - [26. Display a register of bonuses](#26-display-a-register-of-bonuses)
-  - [27. Display Car sprite](#27-display-car-sprite)
-  - [28. Display FroggyRanck's sprite](#28-display-froggyrancks-sprite)
+  - [16. Display Car sprite](#16-display-car-sprite)
+  - [17. Display FroggyRanck's sprite](#17-display-froggyrancks-sprite)
+  - [18. Have four lives in game](#18-have-four-lives-in-game)
+  - [19. Game restarts after all lives have been consumed](#19-game-restarts-after-all-lives-have-been-consumed)
+  - [20. Display score on the screen](#20-display-score-on-the-screen)
+  - [21. Score increased when a level is complete](#21-score-increased-when-a-level-is-complete)
+  - [22. Score increased when positive bonuses has taken](#22-score-increased-when-positive-bonuses-has-taken)
+  - [23. Score reset when FroggyRanck hit a car](#23-score-reset-when-froggyranck-hit-a-car)
+  - [24. Score desincreased when negative bonuses has taken](#24-score-desincreased-when-negative-bonuses-has-taken)
+  - [25. Open Menu](#25-open-menu)
+  - [26. Close Menu](#26-close-menu)
+  - [27. Save Game](#27-save-game)
+  - [28. Show up level and score](#28-show-up-level-and-score)
+  - [29. Change FroggyRanck's appearance](#29-change-froggyrancks-appearance)
+  - [30. Display a register of bonuses](#30-display-a-register-of-bonuses)
 
 
 
@@ -68,7 +76,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Plug a micro USB cable to FPGA Board, <br> 2. Plug a VGA cable to FPGA Board |
 | Expected Result | The game starts |
 | Priority | 🔴 |
-|Test result||
+|Test result|Game has started|
 
 ### 02. Screen displayed
 
@@ -80,7 +88,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Look if screen responding. |
 | Expected Result | We have the game on the VGA screen or HDMI screen with an adaptator|
 | Priority |🔴|
-|Test result||
+|Test result|Game is displayed|
 
 ### 03. Stop the Game
 
@@ -92,7 +100,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Unplug micro USB cable or VGA cable |
 | Expected Result | The game stops |
 | Priority | 🔴 |
-|Test result||
+|Test result|Game is stoped|
 
 ### 04. Reset the game
 
@@ -104,7 +112,7 @@ Test priorities are indicated by the following colors:
 |Step(s)|1. Start the game,<br> 2. Move with FroggyRanck, <br> Press Switch 1, 2, 3 and 4 at the same time.|
 |Expected Result|Game is reset|
 |Priority|🔴|
-|Test result||
+|Test result|Game has been reset|
 
 ### 05. Car movement
 
@@ -116,19 +124,20 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Verify car's moves |
 | Expected Result | Cars move at different same speed. |
 | Priority |🔴|
-|Test result||
+|Test result|Car moved with a same speed and differents directions.|
 
 ### 06. Car speed increased to every level
 
 | ID | T06 |
 | --- | --- |
 | Name | Car speed increased to every level |
-| Test Description | Verify car have been more speedy at every level. |
+| Test Description | Verify car have been more speedy at every next level. |
 | Requirement(s) | The game is started |
 | Step(s) | 1. Start the game, <br> 2. Check car speed, <br> 3. Cross and win a level |
 | Expected Result | Compare car speed between two levels. |
 | Priority |🟠|
-|Test result||
+|Test result|For now, car don't been more speedy at every next level|
+|Test result 2|Cars have been more speedy at every next level now|
 
 ### 07. Move FroggyRanck Up
 
@@ -140,7 +149,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 1 in FPGA Board |
 | Expected Result | FroggyRanck moves up |
 | Priority |🔴|
-|Test result||
+|Test result|That worked|
 
 ### 08. Move FroggyRanck Down
 
@@ -152,7 +161,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 2 in FPGA Board |
 | Expected Result | FroggyRanck moves down |
 | Priority |🔴|
-|Test result||
+|Test result|That worked|
 
 ### 09. Move FroggyRanck Right
 
@@ -164,7 +173,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 3 in FPGA Board |
 | Expected Result | FroggyRanck moves left |
 | Priority |🔴|
-|Test result||
+|Test result|That worked|
 
 ### 10. Move FroggyRanck Left
 
@@ -176,19 +185,19 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Press Switch 4 in FPGA Board |
 | Expected Result | FroggyRanck moves right |
 | Priority |🔴|
-|Test result||
+|Test result|That worked|
 
 ### 11. Time deplacement
 
 | ID | T11 |
 | --- | --- |
 | Name | Time deplacement |
-| Test Description | Verify we can move every second and not less |
+| Test Description | Verify we can move every milliseconds and not less |
 | Requirement(s) | The game is started |
 | Step(s) | 1. Start the game, <br> 2. Move FroggyRanck as faster as possible. |
-| Expected Result | We can only move FroggyRanck every second and not less. |
+| Expected Result | We can only move FroggyRanck every milliseconds and not less. |
 | Priority |🟠|
-|Test result||
+|Test result|It is done. Deplacement are limited.|
 
 ### 12. FroggyRanck Collision: Screen border
 
@@ -200,7 +209,8 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Move toward screen limit |
 | Expected Result | FroggyRanck is stopped and cannot pass through the screen border |
 | Priority | 🔴 |
-|Test result||
+|Test result|Screen border are done at bettom, left and top. But, in right, border is one grid after.|
+|Test result 2| It is patched|
 
 ### 13. FroggyRanck Collision: Car
 
@@ -212,7 +222,7 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Move toward a car |
 | Expected Result | FroggyRanck is killed by the car and it return to the beginning of level |
 | Priority | 🔴 |
-|Test result||
+|Test result|This is done|
 
 ### 14. Level is indicated on the 7-segment display
 
@@ -224,7 +234,7 @@ Test priorities are indicated by the following colors:
 |Step(s)|1. Start the game,<br> Check 7-segment display|
 |Expected Result|At the first level, 7-segment display need to indicat "01".|
 |Priority|🔴|
-|Test result||
+|Test result|Level count worked|
 
 ### 15. Level score increased
 
@@ -233,14 +243,63 @@ Test priorities are indicated by the following colors:
 | Name | Level score increased |
 | Test Description | Verify the level score have been modified when a level is finished |
 | Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if level score have been increased |
-| Expected Result | Level score has been increased by 1.|
+| Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if level score have been increased <br> 4. Win until level 10. <br> 5. Check if level score have been increased to 10.|
+| Expected Result | Level score has been increased by 1 until 10 and more.|
 | Priority |🔴|
-|Test result||
+|Test result|level score worked correctly|
 
-### 16. Display score on the screen 
+### 16. Display Car sprite 
 
 | ID | T16 |
+| --- | --- |
+| Name | Display Car sprite |
+| Test Description | Verify the cars sprite are displayed. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. See cars sprite |
+| Expected Result | cars sprite are one we have drawn on 32x32 or 32x64. |
+| Priority |🟡|
+|Test result|We have a sprite for all car|
+
+### 17. Display FroggyRanck's sprite 
+
+| ID | T17 |
+| --- | --- |
+| Name | Display FroggyRanck sprite |
+| Test Description | Verify the FroggyRanck sprite is displayed. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. See FroggyRanck sprite |
+| Expected Result | FroggyRanck sprite is one we have drawn on 32x32. |
+| Priority |🟡|
+|Test result|We have a sprite for the FroggyRanck|
+
+### 18. Have four lives in game  
+
+| ID | T18 |
+| --- | --- |
+| Name | Have four lives in game  |
+| Test Description | Verify FroggyRanck have four lives. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. hit a car, <br> 3. Look if a LED has been turned off (LED corresponded to lives score)|
+| Expected Result | a LED has been turned off.  |
+| Priority |🟡|
+|Test result|LED has been turned off correctly.|
+
+
+### 19. Game restarts after all lives have been consumed   
+
+| ID | T19 |
+| --- | --- |
+| Name | Game restarts after all lives have been consumed |
+| Test Description | Verify game has been restart after all lives have been used. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Play for have at least a level completed, <br> 3. hit egnouth car for consumed all lives, <br> 4. Look if car speed and level score have been reset|
+| Expected Result | Car speed and level score have been reset |
+| Priority |🟡|
+|Test result|When we played and we losed all lives. LED, level score, car speed and FroggyRanck position have been reset. So the game has been corectly reset.|
+
+### 20. Display score on the screen 
+
+| ID | T20 |
 | --- | --- |
 | Name | Display score on the screen |
 | Test Description | Verify score is displayed on the screen |
@@ -250,21 +309,21 @@ Test priorities are indicated by the following colors:
 | Priority |🟠|
 |Test result||
 
-### 17. Score increased when a level is complete
+### 21. Score increased when a level is complete
 
-| ID | T17 |
+| ID | T21 |
 | --- | --- |
 | Name | Score increased when a level is complete |
 | Test Description | Verify the score have been modified when we finish a level |
 | Requirement(s) | The game is started |
 | Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if score have been increased |
 | Expected Result | Score has been increased by 100 points. |
-| Priority |🟠|*
+| Priority |🟠|
 |Test result||
 
-### 18. Score increased when positive bonuses has taken
+### 22. Score increased when positive bonuses has taken
 
-| ID | T18 |
+| ID | T22 |
 | --- | --- |
 | Name | Score increased when positive bonuses has taken |
 | Test Description | Verify the score have been modified when a positive bonuses has taken. |
@@ -274,9 +333,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟡|
 |Test result||
 
-### 19. Score reset when FroggyRanck hit a car
+### 23. Score reset when FroggyRanck hit a car
 
-| ID | T19 |
+| ID | T23 |
 | --- | --- |
 | Name | Score desincreased when FroggyRanck hit a car |
 | Test Description | Verify the score have been modified when FroggyRanck hit a car. |
@@ -286,9 +345,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟠|
 |Test result||
 
-### 20. Score desincreased when negative bonuses has taken
+### 24. Score desincreased when negative bonuses has taken
 
-| ID | T20 |
+| ID | T24 |
 | --- | --- |
 | Name | Score desincreased when negative bonuses has taken |
 | Test Description | Verify the score have been modified when a negative bonuses has taken. |
@@ -298,9 +357,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟡|
 |Test result||
 
-### 21. Open Menu
+### 25. Open Menu
 
-| ID | T21 |
+| ID | T25 |
 | --- | --- |
 | Name | Open Menu |
 | Test Description | Verify Menu is oppened when FPGA board's Switch 1 and 2 are pressed |
@@ -310,9 +369,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟠|
 |Test result||
 
-### 22. Close Menu
+### 26. Close Menu
 
-| ID | T22 |
+| ID | T26 |
 | --- | --- |
 | Name | Close Menu |
 | Test Description | Verify Menu is closed when FPGA board's Switch 1 and 2 are pressed |
@@ -322,9 +381,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟠|
 |Test result||
 
-### 23. Save Game
+### 27. Save Game
 
-| ID | T23 |
+| ID | T27 |
 | --- | --- |
 | Name | Save Game |
 | Test Description | Verify game is saved when FPGA board's Switch 1 is pressed |
@@ -334,9 +393,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟠|
 |Test result||
 
-### 24. Show up level and score
+### 28. Show up level and score
 
-| ID | T24 |
+| ID | T28 |
 | --- | --- |
 | Name | Show up level and score |
 | Test Description | Verify level and score are displayed on a big display when FPGA board's switch 2 is pressed. |
@@ -346,9 +405,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟢|
 |Test result||
 
-### 25. Change FroggyRanck's appearance
+### 29. Change FroggyRanck's appearance
 
-| ID | T25 |
+| ID | T29 |
 | --- | --- |
 | Name | Change FroggyRanck's appearance |
 | Test Description | Verify FroggyRanck could change appearance with a display of sprite when FPGA board's switch 3 is pressed. |
@@ -358,9 +417,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟢|
 |Test result||
 
-### 26. Display a register of bonuses
+### 30. Display a register of bonuses
 
-| ID | T26 |
+| ID | T30 |
 | --- | --- |
 | Name | Display a register of bonuses |
 | Test Description | Verify a display with different bonuses and explication is displayed when FPGA board's switch 4 is pressed. |
@@ -368,28 +427,4 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. Open Menu, <br> 3. Press switch 4. |
 | Expected Result | A display with a register of bonuses and description of them next to sprit. |
 | Priority | 🟢|
-|Test result||
-
-### 27. Display Car sprite 
-
-| ID | T27 |
-| --- | --- |
-| Name | Display Car sprite |
-| Test Description | Verify the cars sprite are displayed. |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. See cars sprite |
-| Expected Result | cars sprite are one we have drawn on 32x32 or 32x64. |
-| Priority |🟡|
-|Test result||
-
-### 28. Display FroggyRanck's sprite 
-
-| ID | T28 |
-| --- | --- |
-| Name | Display FroggyRanck sprite |
-| Test Description | Verify the FroggyRanck sprite is displayed. |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. See FroggyRanck sprite |
-| Expected Result | FroggyRanck sprite is one we have drawn on 32x32. |
-| Priority |🟡|
 |Test result||
