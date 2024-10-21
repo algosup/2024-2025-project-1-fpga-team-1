@@ -1,0 +1,105 @@
+# -----------------------------------------------------------------------------
+# Fichier de contrainte (.pcf) pour la Go Board FPGA
+# Par Juan Gonzalez (Obijuan), révisé avec explications pour chaque section
+# Date : Avril 2016
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Informations utiles sur la Go Board et son schéma de broches :
+# Site Web de la Go Board: https://www.nandland.com/goboard/introduction.html
+# Pinout de la carte: https://www.nandland.com/goboard/images/Go_Board_V1.pdf
+# -----------------------------------------------------------------------------
+
+# ------------ LEDs utilisateurs ----------------------------------------------
+# Chaque LED (LED1 à LED4) est assignée à une broche physique sur le FPGA.
+# Elles sont numérotées sur la carte et associées à des broches FPGA spécifiques.
+
+set_io -nowarn LED1  56  # LED 1 est connectée à la broche 56
+set_io -nowarn LED2  57  # LED 2 est connectée à la broche 57
+set_io -nowarn LED3  59  # LED 3 est connectée à la broche 59
+set_io -nowarn LED4  60  # LED 4 est connectée à la broche 60
+
+# ------------ Boutons poussoirs utilisateurs ----------------------------------
+# Il y a 4 boutons poussoirs (SW1 à SW4) sur la carte, connectés aux broches.
+
+set_io -nowarn SW1  53  # Bouton SW1 est sur la broche 53
+set_io -nowarn SW2  51  # Bouton SW2 est sur la broche 51
+set_io -nowarn SW3  54  # Bouton SW3 est sur la broche 54
+set_io -nowarn SW4  52  # Bouton SW4 est sur la broche 52
+
+# ------------ Affichage 7 segments --------------------------------------------
+# Chaque segment (A à G) des deux afficheurs 7 segments (S1 et S2) est connecté 
+# à une broche FPGA. Chaque segment contrôle une partie de l'affichage.
+
+# Afficheur S1 (Premier afficheur 7 segments)
+set_io -nowarn S1_A  3    # Segment A de S1
+set_io -nowarn S1_B  4    # Segment B de S1
+set_io -nowarn S1_C  93   # Segment C de S1
+set_io -nowarn S1_D  91   # Segment D de S1
+set_io -nowarn S1_E  90   # Segment E de S1
+set_io -nowarn S1_F  1    # Segment F de S1
+set_io -nowarn S1_G  2    # Segment G de S1
+
+# Afficheur S2 (Deuxième afficheur 7 segments)
+set_io -nowarn S2_A  100  # Segment A de S2
+set_io -nowarn S2_B  99   # Segment B de S2
+set_io -nowarn S2_C  97   # Segment C de S2
+set_io -nowarn S2_D  95   # Segment D de S2
+set_io -nowarn S2_E  94   # Segment E de S2
+set_io -nowarn S2_F  8    # Segment F de S2
+set_io -nowarn S2_G  96   # Segment G de S2
+
+# -------------------------- Horloge système ----------------------------------
+# La broche utilisée pour la connexion de l'horloge du système (CLK).
+
+set_io -nowarn CLK 15     # L'horloge est connectée à la broche 15
+
+# -------------------------- UART ---------------------------------------------
+# L'UART (interface de communication série) est utilisée pour envoyer et recevoir
+# des données via des broches spécifiques pour la communication série.
+
+set_io -nowarn RX  73     # Réception des données (RX) sur la broche 73
+set_io -nowarn TX  74     # Transmission des données (TX) sur la broche 74
+
+# -------------------------- VGA ----------------------------------------------
+# Le signal VGA est utilisé pour l'affichage vidéo. Il inclut des signaux de 
+# synchronisation horizontale et verticale, ainsi que des signaux pour les couleurs
+# rouge, vert et bleu.
+
+set_io -nowarn VGA_HS  26  # Synchronisation horizontale VGA (HS)
+set_io -nowarn VGA_VS  27  # Synchronisation verticale VGA (VS)
+
+# Canaux rouges (3 bits)
+set_io -nowarn VGA_R0  28  # Rouge, bit 0
+set_io -nowarn VGA_R1  41  # Rouge, bit 1
+set_io -nowarn VGA_R2  42  # Rouge, bit 2
+
+# Canaux verts (3 bits)
+set_io -nowarn VGA_G0  29  # Vert, bit 0
+set_io -nowarn VGA_G1  30  # Vert, bit 1
+set_io -nowarn VGA_G2  33  # Vert, bit 2
+
+# Canaux bleus (3 bits)
+set_io -nowarn VGA_B0  36  # Bleu, bit 0
+set_io -nowarn VGA_B1  37  # Bleu, bit 1
+set_io -nowarn VGA_B2  40  # Bleu, bit 2
+
+# ------------ Connecteur PMOD ------------------------------------------------
+# Le connecteur PMOD est une extension pour ajouter des modules périphériques
+# à la carte FPGA. Il suit une numérotation standard pour ses broches.
+
+# Voici la correspondance des broches PMOD pour la Go Board.
+# PMOD1 à PMOD4 sont les premières broches et PMOD7 à PMOD10 les suivantes.
+
+set_io -nowarn PMOD1   65  # Broche PMOD1
+set_io -nowarn PMOD2   64  # Broche PMOD2
+set_io -nowarn PMOD3   63  # Broche PMOD3
+set_io -nowarn PMOD4   62  # Broche PMOD4
+set_io -nowarn PMOD7   78  # Broche PMOD7
+set_io -nowarn PMOD8   79  # Broche PMOD8
+set_io -nowarn PMOD9   80  # Broche PMOD9
+set_io -nowarn PMOD10  81  # Broche PMOD10
+
+# -----------------------------------------------------------------------------
+# Fin du fichier de contrainte pour la Go Board FPGA.
+# -----------------------------------------------------------------------------
