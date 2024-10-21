@@ -29,19 +29,20 @@
   - [13. FroggyRanck Collision: Car](#13-froggyranck-collision-car)
   - [14. Level is indicated on the 7-segment display](#14-level-is-indicated-on-the-7-segment-display)
   - [15. Level score increased](#15-level-score-increased)
-  - [16. Display score on the screen](#16-display-score-on-the-screen)
-  - [17. Score increased when a level is complete](#17-score-increased-when-a-level-is-complete)
-  - [18. Score increased when positive bonuses has taken](#18-score-increased-when-positive-bonuses-has-taken)
-  - [19. Score reset when FroggyRanck hit a car](#19-score-reset-when-froggyranck-hit-a-car)
-  - [20. Score desincreased when negative bonuses has taken](#20-score-desincreased-when-negative-bonuses-has-taken)
-  - [21. Open Menu](#21-open-menu)
-  - [22. Close Menu](#22-close-menu)
-  - [23. Save Game](#23-save-game)
-  - [24. Show up level and score](#24-show-up-level-and-score)
-  - [25. Change FroggyRanck's appearance](#25-change-froggyrancks-appearance)
-  - [26. Display a register of bonuses](#26-display-a-register-of-bonuses)
-  - [27. Display Car sprite](#27-display-car-sprite)
-  - [28. Display FroggyRanck's sprite](#28-display-froggyrancks-sprite)
+  - [16. Display Car sprite](#16-display-car-sprite)
+  - [17. Display FroggyRanck's sprite](#17-display-froggyrancks-sprite)
+  - [18. Game restarts after all lives have been consumed](#18-game-restarts-after-all-lives-have-been-consumed)
+  - [19. Display score on the screen](#19-display-score-on-the-screen)
+  - [20. Score increased when a level is complete](#20-score-increased-when-a-level-is-complete)
+  - [21. Score increased when positive bonuses has taken](#21-score-increased-when-positive-bonuses-has-taken)
+  - [22. Score reset when FroggyRanck hit a car](#22-score-reset-when-froggyranck-hit-a-car)
+  - [23. Score desincreased when negative bonuses has taken](#23-score-desincreased-when-negative-bonuses-has-taken)
+  - [24. Open Menu](#24-open-menu)
+  - [25. Close Menu](#25-close-menu)
+  - [26. Save Game](#26-save-game)
+  - [27. Show up level and score](#27-show-up-level-and-score)
+  - [28. Change FroggyRanck's appearance](#28-change-froggyrancks-appearance)
+  - [29. Display a register of bonuses](#29-display-a-register-of-bonuses)
 
 
 
@@ -245,141 +246,9 @@ Test priorities are indicated by the following colors:
 | Priority |🔴|
 |Test result|level score worked correctly|
 
-### 16. Display score on the screen 
+### 16. Display Car sprite 
 
 | ID | T16 |
-| --- | --- |
-| Name | Display score on the screen |
-| Test Description | Verify score is displayed on the screen |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Check if we have a score indicator on the screen. |
-| Expected Result | We have a score display with a number associate |
-| Priority |🟠|
-|Test result||
-
-### 17. Score increased when a level is complete
-
-| ID | T17 |
-| --- | --- |
-| Name | Score increased when a level is complete |
-| Test Description | Verify the score have been modified when we finish a level |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if score have been increased |
-| Expected Result | Score has been increased by 100 points. |
-| Priority |🟠|
-|Test result||
-
-### 18. Score increased when positive bonuses has taken
-
-| ID | T18 |
-| --- | --- |
-| Name | Score increased when positive bonuses has taken |
-| Test Description | Verify the score have been modified when a positive bonuses has taken. |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Take a positive bonuses <br> 3. Look if score have been increased |
-| Expected Result | Score has been increased by some points in link to bonuses description. |
-| Priority |🟡|
-|Test result||
-
-### 19. Score reset when FroggyRanck hit a car
-
-| ID | T19 |
-| --- | --- |
-| Name | Score desincreased when FroggyRanck hit a car |
-| Test Description | Verify the score have been modified when FroggyRanck hit a car. |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Hit a car <br> 3. Look if score have been reset |
-| Expected Result | Score has been reset to 0. |
-| Priority |🟠|
-|Test result||
-
-### 20. Score desincreased when negative bonuses has taken
-
-| ID | T20 |
-| --- | --- |
-| Name | Score desincreased when negative bonuses has taken |
-| Test Description | Verify the score have been modified when a negative bonuses has taken. |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Take a negative bonuses <br> 3. Look if score have been desincreased |
-| Expected Result | Score has been desincreased by some points in link to bonuses description.|
-| Priority |🟡|
-|Test result||
-
-### 21. Open Menu
-
-| ID | T21 |
-| --- | --- |
-| Name | Open Menu |
-| Test Description | Verify Menu is oppened when FPGA board's Switch 1 and 2 are pressed |
-| Requirement(s) | The game is started |
-| Step(s) | 1. Start the game, <br> 2. Press Switch 1 and 2 at the same time.|
-| Expected Result | Menu is opened |
-| Priority |🟠|
-|Test result||
-
-### 22. Close Menu
-
-| ID | T22 |
-| --- | --- |
-| Name | Close Menu |
-| Test Description | Verify Menu is closed when FPGA board's Switch 1 and 2 are pressed |
-| Requirement(s) | The game is started, Menu is oppened |
-| Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1 and 2 at the same time.|
-| Expected Result | Menu is Close |
-| Priority |🟠|
-|Test result||
-
-### 23. Save Game
-
-| ID | T23 |
-| --- | --- |
-| Name | Save Game |
-| Test Description | Verify game is saved when FPGA board's Switch 1 is pressed |
-| Requirement(s) | The game is started, Menu is oppened |
-| Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1.|
-| Expected Result | Game has been save and a Text "Game Saved" is displayed.|
-| Priority |🟠|
-|Test result||
-
-### 24. Show up level and score
-
-| ID | T24 |
-| --- | --- |
-| Name | Show up level and score |
-| Test Description | Verify level and score are displayed on a big display when FPGA board's switch 2 is pressed. |
-| Requirement(s) | The game is started, menu is opened |
-| Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press Switch 2. |
-| Expected Result | A display with score and level is showed. |
-| Priority |🟢|
-|Test result||
-
-### 25. Change FroggyRanck's appearance
-
-| ID | T25 |
-| --- | --- |
-| Name | Change FroggyRanck's appearance |
-| Test Description | Verify FroggyRanck could change appearance with a display of sprite when FPGA board's switch 3 is pressed. |
-| Requirement(s) | The game is started, menu is opened |
-| Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press switch 3.|
-| Expected Result | A display with FroggyRanck's appearance is showed with possibility to selec one of them. |
-| Priority |🟢|
-|Test result||
-
-### 26. Display a register of bonuses
-
-| ID | T26 |
-| --- | --- |
-| Name | Display a register of bonuses |
-| Test Description | Verify a display with different bonuses and explication is displayed when FPGA board's switch 4 is pressed. |
-| Requirement(s) | The game is started, Menu is oppened |
-| Step(s) | 1. Start the game, <br> 2. Open Menu, <br> 3. Press switch 4. |
-| Expected Result | A display with a register of bonuses and description of them next to sprit. |
-| Priority | 🟢|
-|Test result||
-
-### 27. Display Car sprite 
-
-| ID | T27 |
 | --- | --- |
 | Name | Display Car sprite |
 | Test Description | Verify the cars sprite are displayed. |
@@ -389,9 +258,9 @@ Test priorities are indicated by the following colors:
 | Priority |🟡|
 |Test result||
 
-### 28. Display FroggyRanck's sprite 
+### 17. Display FroggyRanck's sprite 
 
-| ID | T28 |
+| ID | T17 |
 | --- | --- |
 | Name | Display FroggyRanck sprite |
 | Test Description | Verify the FroggyRanck sprite is displayed. |
@@ -399,4 +268,148 @@ Test priorities are indicated by the following colors:
 | Step(s) | 1. Start the game, <br> 2. See FroggyRanck sprite |
 | Expected Result | FroggyRanck sprite is one we have drawn on 32x32. |
 | Priority |🟡|
+|Test result||
+
+### 18. Game restarts after all lives have been consumed   
+
+| ID | T18 |
+| --- | --- |
+| Name | Game restarts after all lives have been consumed |
+| Test Description | Verify game has been restart after all lives have been used. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Play for have at least a level completed, <br> 3. hit egnouth car for consumed all lives, <br> 4. Look if car speed and level score have been reset|
+| Expected Result | Car speed and level score have been reset |
+| Priority |🟡|
+|Test result||
+
+### 19. Display score on the screen 
+
+| ID | T19 |
+| --- | --- |
+| Name | Display score on the screen |
+| Test Description | Verify score is displayed on the screen |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Check if we have a score indicator on the screen. |
+| Expected Result | We have a score display with a number associate |
+| Priority |🟠|
+|Test result||
+
+### 20. Score increased when a level is complete
+
+| ID | T20 |
+| --- | --- |
+| Name | Score increased when a level is complete |
+| Test Description | Verify the score have been modified when we finish a level |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Win a level <br> 3. Look if score have been increased |
+| Expected Result | Score has been increased by 100 points. |
+| Priority |🟠|
+|Test result||
+
+### 21. Score increased when positive bonuses has taken
+
+| ID | T21 |
+| --- | --- |
+| Name | Score increased when positive bonuses has taken |
+| Test Description | Verify the score have been modified when a positive bonuses has taken. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Take a positive bonuses <br> 3. Look if score have been increased |
+| Expected Result | Score has been increased by some points in link to bonuses description. |
+| Priority |🟡|
+|Test result||
+
+### 22. Score reset when FroggyRanck hit a car
+
+| ID | T22 |
+| --- | --- |
+| Name | Score desincreased when FroggyRanck hit a car |
+| Test Description | Verify the score have been modified when FroggyRanck hit a car. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Hit a car <br> 3. Look if score have been reset |
+| Expected Result | Score has been reset to 0. |
+| Priority |🟠|
+|Test result||
+
+### 23. Score desincreased when negative bonuses has taken
+
+| ID | T23 |
+| --- | --- |
+| Name | Score desincreased when negative bonuses has taken |
+| Test Description | Verify the score have been modified when a negative bonuses has taken. |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Take a negative bonuses <br> 3. Look if score have been desincreased |
+| Expected Result | Score has been desincreased by some points in link to bonuses description.|
+| Priority |🟡|
+|Test result||
+
+### 24. Open Menu
+
+| ID | T24 |
+| --- | --- |
+| Name | Open Menu |
+| Test Description | Verify Menu is oppened when FPGA board's Switch 1 and 2 are pressed |
+| Requirement(s) | The game is started |
+| Step(s) | 1. Start the game, <br> 2. Press Switch 1 and 2 at the same time.|
+| Expected Result | Menu is opened |
+| Priority |🟠|
+|Test result||
+
+### 25. Close Menu
+
+| ID | T25 |
+| --- | --- |
+| Name | Close Menu |
+| Test Description | Verify Menu is closed when FPGA board's Switch 1 and 2 are pressed |
+| Requirement(s) | The game is started, Menu is oppened |
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1 and 2 at the same time.|
+| Expected Result | Menu is Close |
+| Priority |🟠|
+|Test result||
+
+### 26. Save Game
+
+| ID | T26 |
+| --- | --- |
+| Name | Save Game |
+| Test Description | Verify game is saved when FPGA board's Switch 1 is pressed |
+| Requirement(s) | The game is started, Menu is oppened |
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br>3. Press Switch 1.|
+| Expected Result | Game has been save and a Text "Game Saved" is displayed.|
+| Priority |🟠|
+|Test result||
+
+### 27. Show up level and score
+
+| ID | T27 |
+| --- | --- |
+| Name | Show up level and score |
+| Test Description | Verify level and score are displayed on a big display when FPGA board's switch 2 is pressed. |
+| Requirement(s) | The game is started, menu is opened |
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press Switch 2. |
+| Expected Result | A display with score and level is showed. |
+| Priority |🟢|
+|Test result||
+
+### 28. Change FroggyRanck's appearance
+
+| ID | T28 |
+| --- | --- |
+| Name | Change FroggyRanck's appearance |
+| Test Description | Verify FroggyRanck could change appearance with a display of sprite when FPGA board's switch 3 is pressed. |
+| Requirement(s) | The game is started, menu is opened |
+| Step(s) | 1. Start the game, <br> 2. Open menu, <br> 3. Press switch 3.|
+| Expected Result | A display with FroggyRanck's appearance is showed with possibility to selec one of them. |
+| Priority |🟢|
+|Test result||
+
+### 29. Display a register of bonuses
+
+| ID | T29 |
+| --- | --- |
+| Name | Display a register of bonuses |
+| Test Description | Verify a display with different bonuses and explication is displayed when FPGA board's switch 4 is pressed. |
+| Requirement(s) | The game is started, Menu is oppened |
+| Step(s) | 1. Start the game, <br> 2. Open Menu, <br> 3. Press switch 4. |
+| Expected Result | A display with a register of bonuses and description of them next to sprit. |
+| Priority | 🟢|
 |Test result||
