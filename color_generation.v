@@ -39,27 +39,6 @@ module color_generation
     // VGA colors
     reg [8:0] r_VGA;    
  
-    // task display_car;
-    //     input [9:0] h_count;
-    //     input [9:0] v_count;
-    //     input [9:0] car_x;
-    //     input [8:0] CAR_Y;
-    //     input [8:0] sprite_data_car;
-    //     output [10:0] sprite_addr_car;
-    //     output reg [8:0] r_VGA_car;
-
-    //     begin
-    //         if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) && 
-    //             (v_count >= CAR_Y) && (v_count < CAR_Y + CAR_HEIGHT)) begin
-    //             sprite_addr_car = (v_count - CAR_Y) * 36 + (h_count - car_x);
-    //             if (sprite_data_car != 9'b000000000) begin
-    //                 r_VGA_car = sprite_data_car;
-    //             end
-    //         end
-    //     end
-    // endtask
-    
-
     // Generation of VGA for player movement 
     always @(posedge CLK) begin   
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
@@ -104,14 +83,6 @@ module color_generation
                 r_background <= 9'b000000000;   // Black (Background)
             end
             r_VGA <= r_background;
-            // display_car(h_count, v_count, car_x1, CAR_Y1, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x2, CAR_Y2, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x3, CAR_Y3, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x4, CAR_Y4, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x5, CAR_Y5, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x6, CAR_Y6, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x7, CAR_Y7, sprite_data_car, sprite_addr_car, r_VGA);
-            // display_car(h_count, v_count, car_x8, CAR_Y8, sprite_data_car, sprite_addr_car, r_VGA);
             if ((h_count >= player_x) && (h_count < player_x + PLAYER_WIDTH) &&
                 (v_count >= player_y) && (v_count < player_y + PLAYER_HEIGHT)) begin
                 sprite_addr_frog <= (v_count - player_y) * 32 + (h_count - player_x);
@@ -132,21 +103,21 @@ module color_generation
                 sprite_addr_car <= (v_count - CAR_Y3) * 36 + (36-(h_count - car_x3));
                 if (sprite_data_car != 9'b000000000)
                     r_VGA <= sprite_data_car;
-            // end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
-            //     (v_count >= CAR_Y4) && (v_count < CAR_Y4 + CAR_HEIGHT)) begin
-            //     sprite_addr_car <= (v_count - CAR_Y4) * 36 + (h_count - car_x4);
-            //     if (sprite_data_car != 9'b000000000)
-            //         r_VGA <= sprite_data_car;
-            // end else if ((h_count >= car_x5) && (h_count < car_x5 + CAR_WIDTH) &&
-            //     (v_count >= CAR_Y5) && (v_count < CAR_Y5 + CAR_HEIGHT)) begin
-            //     sprite_addr_car <= (v_count - CAR_Y5) * 36 + (36-(h_count - car_x5));
-            //     if (sprite_data_car != 9'b000000000)
-            //         r_VGA <= sprite_data_car;
-            // end else if ((h_count >= car_x6) && (h_count < car_x6 + CAR_WIDTH) &&
-            //     (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
-            //     sprite_addr_car <= (v_count - CAR_Y6) * 36 + (h_count - car_x6);
-            //     if (sprite_data_car != 9'b000000000)
-            //         r_VGA <= sprite_data_car;
+            end else if ((h_count >= car_x4) && (h_count < car_x4 + CAR_WIDTH) &&
+                (v_count >= CAR_Y4) && (v_count < CAR_Y4 + CAR_HEIGHT)) begin
+                sprite_addr_car <= (v_count - CAR_Y4) * 36 + (h_count - car_x4);
+                if (sprite_data_car != 9'b000000000)
+                    r_VGA <= sprite_data_car;
+            end else if ((h_count >= car_x5) && (h_count < car_x5 + CAR_WIDTH) &&
+                (v_count >= CAR_Y5) && (v_count < CAR_Y5 + CAR_HEIGHT)) begin
+                sprite_addr_car <= (v_count - CAR_Y5) * 36 + (36-(h_count - car_x5));
+                if (sprite_data_car != 9'b000000000)
+                    r_VGA <= sprite_data_car;
+            end else if ((h_count >= car_x6) && (h_count < car_x6 + CAR_WIDTH) &&
+                (v_count >= CAR_Y6) && (v_count < CAR_Y6 + CAR_HEIGHT)) begin
+                sprite_addr_car <= (v_count - CAR_Y6) * 36 + (h_count - car_x6);
+                if (sprite_data_car != 9'b000000000)
+                    r_VGA <= sprite_data_car;
             // end else if ((h_count >= car_x7) && (h_count < car_x7 + CAR_WIDTH) &&
             //     (v_count >= CAR_Y7) && (v_count < CAR_Y7 + CAR_HEIGHT)) begin
             //     sprite_addr_car <= (v_count - CAR_Y7) * 36 + (36-(h_count - car_x7));

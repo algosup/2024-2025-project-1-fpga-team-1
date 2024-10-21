@@ -10,8 +10,8 @@ module car_control (
     input [4:0] speed_car, // Car speed
 );
 
-    reg [31:0] speed_count1 = 0;
-    reg [31:0] speed_count2 = 0;
+    reg [18:0] speed_count1 = 0;
+    reg [18:0] speed_count2 = 0;
 
     // Initial car positions
     reg [9:0] r_car_x1 = CAR_X1;
@@ -20,8 +20,8 @@ module car_control (
     reg [9:0] r_car_x4 = CAR_X4;
     reg [9:0] r_car_x5 = CAR_X5;
     reg [9:0] r_car_x6 = CAR_X6;
-    reg [9:0] r_car_x7 = CAR_X7;
-    reg [9:0] r_car_x8 = CAR_X8;
+    // reg [9:0] r_car_x7 = CAR_X7;
+    // reg [9:0] r_car_x8 = CAR_X8;
 
 
     // Car movement speed
@@ -35,8 +35,8 @@ module car_control (
             r_car_x4 <= r_car_x4 - CAR_3_SPEED - speed_car;
             r_car_x5 <= r_car_x5 + CAR_1_SPEED + speed_car;
             r_car_x6 <= r_car_x6 - CAR_2_SPEED - speed_car;
-            r_car_x7 <= r_car_x7 + CAR_3_SPEED + speed_car;
-            r_car_x8 <= r_car_x8 - CAR_4_SPEED - speed_car;
+            // r_car_x7 <= r_car_x7 + CAR_3_SPEED + speed_car;
+            // r_car_x8 <= r_car_x8 - CAR_4_SPEED - speed_car;
             speed_count1 <= 0;
         end
     end

@@ -39,7 +39,7 @@ module player_control(
     output [4:0] speed_car,
 );
 
-    reg [31:0] speed_count = 0;    // Speed counter
+    reg [21:0] speed_count = 0;    // Speed counter
 
     reg [4:0] r_speed_car;
 
@@ -105,18 +105,18 @@ module player_control(
             (rplayer_y + PLAYER_HEIGHT > CAR_Y3) && (rplayer_y < CAR_Y3 + CAR_HEIGHT)) begin
             is_collided <= 1;
         end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x4) && (rplayer_x < car_x4 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y4) && (rplayer_y < CAR_Y4 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x5) && (rplayer_x < car_x5 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y5) && (rplayer_y < CAR_Y5 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
-        // if ((rplayer_x + PLAYER_WIDTH > car_x6) && (rplayer_x < car_x6 + CAR_WIDTH) &&
-        //     (rplayer_y + PLAYER_HEIGHT > CAR_Y6) && (rplayer_y < CAR_Y6 + CAR_HEIGHT)) begin
-        //     is_collided <= 1;
-        // end
+        if ((rplayer_x + PLAYER_WIDTH > car_x4) && (rplayer_x < car_x4 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y4) && (rplayer_y < CAR_Y4 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
+        if ((rplayer_x + PLAYER_WIDTH > car_x5) && (rplayer_x < car_x5 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y5) && (rplayer_y < CAR_Y5 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
+        if ((rplayer_x + PLAYER_WIDTH > car_x6) && (rplayer_x < car_x6 + CAR_WIDTH) &&
+            (rplayer_y + PLAYER_HEIGHT > CAR_Y6) && (rplayer_y < CAR_Y6 + CAR_HEIGHT)) begin
+            is_collided <= 1;
+        end
         // if ((rplayer_x + PLAYER_WIDTH > car_x7) && (rplayer_x < car_x7 + CAR_WIDTH) &&
         //     (rplayer_y + PLAYER_HEIGHT > CAR_Y7) && (rplayer_y < CAR_Y7 + CAR_HEIGHT)) begin
         //     is_collided <= 1;
