@@ -1,9 +1,9 @@
 // In this file we instantiate the frog sprite memory.
 
 
-module sprite_ram_road
+module sprite_ram_grass
 #( parameter 
-    MEM_FILE="sprite_road.mem" // File with the sprite road
+    MEM_FILE="sprite_grass.mem" // File with the sprite grass
 ) (
     input wire CLK,                 // Clock
     input wire [9:0] addr,          // number of adress needed to access pixels in the sprite

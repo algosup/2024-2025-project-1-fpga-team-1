@@ -10,7 +10,7 @@ module sprite_ram_car
     output reg [8:0] data_out       // 9 bits by pixel (RGB 3 bits each)
 );
 
-    // Sprite memory of 1024 pixels of 9 bits each
+    // Sprite memory of 1152 pixels of 9 bits each
     reg [8:0] sprite_mem [1151:0];
 
     initial begin

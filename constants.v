@@ -92,3 +92,20 @@
     parameter ROAD_height = 64;
 
 
+
+    // GRASS
+    parameter GRASS_x1 = 0;
+    parameter GRASS_Y1 = 128;
+
+    parameter GRASS_x2 = 0;
+    parameter GRASS_Y2 = 224;
+
+    
+    parameter GRASS_x3 = 0;
+    parameter GRASS_Y3 = 320;
+
+    parameter GRASS_width = 640;
+    parameter GRASS_height = 32;
+
+
+
