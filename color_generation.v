@@ -1,6 +1,16 @@
-// In this file we define the colors of the player, the cars, the map and the background
-// This way we can easily change the colors of the game without having to change the code
-// In this file we instantiate the sprite memory and we define the position of the sprite on the screen
+// **********************************************************************
+//
+// Color Generation Module for the Game "Frog Rank"
+//
+// Description: This module manages the display of sprites and the generation
+// of colors for the player, cars, road, grass, and ground.
+// The positions of the objects on the screen (player, cars) are provided
+// as input, and VGA colors are generated accordingly. This module
+// also allows to easily change the game colors without modifying
+// the main code by using the memory of the sprites for the different
+// visual elements of the game.
+//
+// **********************************************************************
 
 `include "constants.v"
 

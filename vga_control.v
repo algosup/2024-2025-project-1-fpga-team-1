@@ -1,6 +1,13 @@
-// In this file we define the VGA parameters to display the game on the screen.
-// We define the horizontal and vertical counters to generate the HSYNC and VSYNC signals.
-
+// ***********************************************************************
+//
+// VGA Control Module
+//
+// Description: In this file, we define the VGA parameters to
+// display the game on the screen. We define the horizontal and
+// vertical counters to generate the HSYNC and VSYNC signals needed to control
+// the VGA display.
+//
+// *************************************************************************
 
 `include "constants.v"
 

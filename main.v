@@ -1,10 +1,18 @@
-//Frog Ranck Game
-
+// *******************************************************************
+//
+// Main Module for the Game "Frog Rank"
 // Author: Robin GOUMY
-// 
-// Main module for the Frog Rank Game
-// This module handles the main game logic and interfaces with all module instances.
-
+//
+// Description: This code represents the main module of the game "Frog Rank".
+// It manages the interactions between the player (via switches SW1 to SW4),
+// the cars, the VGA display and the 7-segment display.
+// The module contains several sub-modules that control
+// the movement of the player and the cars, the VGA display,
+// and the generation of colors. The LEDs and the 7-segment display
+// allow to give additional visual information
+// to the player.
+//
+// **********************************************************************
 
 `timescale 1ns / 1ps
 

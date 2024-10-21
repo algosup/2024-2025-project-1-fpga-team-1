@@ -1,5 +1,14 @@
-// In this file we instantiate the road sprite memory.
-
+// ***********************************************************************
+//
+// Sprite memory module for road
+//
+// Description: In this file, we instantiate the memory of the sprites
+// of the road. This memory stores the pixel data for the display
+// of the road in the game. Each pixel is represented by 9 bits (3 bits
+// for each RGB component). The file containing the sprite of the road
+// is loaded into this memory.
+//
+// *************************************************************************
 
 module sprite_ram_road
 #( parameter 

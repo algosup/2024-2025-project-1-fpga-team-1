@@ -1,5 +1,14 @@
-// In this file we instantiate the ground sprite memory.
-
+// ***********************************************************************
+//
+// Sprite memory module for ground
+//
+// Description: In this file, we instantiate the memory of the sprites
+// of the ground. This memory stores the pixel data for the display
+// of the ground in the game. Each pixel is represented by 9 bits (3 bits
+// for each RGB component). The file containing the sprite of the ground
+// is loaded into this memory.
+//
+// *************************************************************************
 
 module sprite_ram_ground
 #( parameter 

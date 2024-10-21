@@ -1,5 +1,14 @@
-// In this file we instantiate the car sprite memory.
-
+// ***********************************************************************
+//
+// Sprite memory module for cars
+//
+// Description: In this file, we instantiate the memory of the sprites
+// of the cars. This memory stores the pixel data for the display
+// of the cars in the game. Each pixel is represented by 9 bits (3 bits
+// for each RGB component). The file containing the sprite of the cars
+// is loaded into this memory.
+//
+// *************************************************************************
 
 module sprite_ram_car
 #( parameter 

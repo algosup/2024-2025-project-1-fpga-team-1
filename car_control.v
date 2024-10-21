@@ -1,6 +1,15 @@
-// In this file we define the position of the cars on the screen
-// We add the speed of the cars to the position of the cars
-// And we add a speed_car parameter to increase the speed of the cars level by level
+// *******************************************************************
+//
+// Car Control Module for the Game "Frog Rank"
+//
+// Description: This module manages the positions and movements of the cars
+// on the screen. It adjusts the position of each car according to the speed
+// and an additional parameter `speed_car` that increases the speed of the
+// cars as the levels progress. The initial position
+// of the cars is defined and updated at each clock cycle to simulate
+// the continuous movement of the cars on the screen.
+//
+// **********************************************************************
 
 `include "constants.v"
 
