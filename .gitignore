@@ -1,0 +1,60 @@
+# Ignorer les fichiers temporaires des éditeurs
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Ignorer les fichiers de sauvegarde
+*~
+*.orig
+
+# Ignorer les fichiers générés par les systèmes d'exploitation
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de configuration personnels des éditeurs
+.idea/
+.vscode/
+*.code-workspace
+
+# Ignorer les fichiers PDF générés (par exemple, après conversion des fichiers LaTeX ou Markdown)
+*.pdf
+
+# Ignorer les fichiers Microsoft Office
+*.docx
+*.xlsx
+*.pptx
+
+# Ignorer les fichiers de formats intermédiaires
+*.aux
+*.toc
+*.out
+*.log
+
+# Ignorer les fichiers de compilation Latex
+*.dvi
+*.ps
+*.fls
+*.fdb_latexmk
+
+# Ignorer les archives compressées
+*.zip
+*.tar.gz
+*.rar
+
+# Ignorer les fichiers de sortie Markdown ou HTML convertis
+*.html
+*.md
+*.md~
+
+# Ignorer les captures d'écran ou les images locales qui ne doivent pas être suivies
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Ignorer les fichiers d'import ou d'export de logiciels de diagramme (si utilisés)
+*.drawio
+*.vsdx
