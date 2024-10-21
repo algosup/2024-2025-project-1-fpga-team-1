@@ -3,7 +3,7 @@
 | Author       | Léna De Germain |
 |--------------|-----------------|
 |Created       |    9/26/2024    |
-|Last Modified |    10/06/2024    |
+|Last Modified |    10/21/2024   |
 
 ---
 
@@ -135,9 +135,22 @@ The player can view their level on the [Go Board](#vi-glossary) using the [2-dig
 
 Mostly the obstacle is vehicles like a car and they appear from the left or the right of the screen and move horizontally on the screen. When the level increases there a more cars at different speeds to make the game more difficult. At the begining, only one car can appears on a horizontal row and the number increase for each levels passed. They can have a lot of design or the width can be changed.
 
+<u>Car Sprite</u>
+
+![car-1](images/voiture_1.png)
+
+<u>Optional Feature</u>
+
+![car-2](images/car_2%20-%20Copy.png)
+![truck](images/truck.png)
+
 ### D. Added Mechanics <u>(Optional Feature)</u>
 
-#### 1. Menu
+#### 1.Life Systhem
+
+The frog has four lives, and the player can see the number of lives remaining on the FPGA board. The four LEDs on the FPGA board represent the frog's lives. Each time the frog hits an obstacle, one LED turns off, indicating the loss of a life. The lives are reset after a game over (i.e., when all four LEDs are turned off).
+
+#### 2. Menu
 
 Menu is useful to save or make a pause on game, we could also add some possibility like this :
 
@@ -149,7 +162,7 @@ Menu is useful to save or make a pause on game, we could also add some possibili
 |Possibility to change Frog's Appearance| SW3 |
 |Have a Register of Different Bonuses| SW4 |
 
-#### 2. Score
+#### 3. Score
 Score able to compare two player if they want to know which one have the bigest score
 
 |Action|number of points won|
@@ -160,7 +173,7 @@ Score able to compare two player if they want to know which one have the bigest 
 |hit a obstacle | reset the score at 0 |
 
 
-#### 3. Bonus
+#### 4. Bonus
 
 The bonus can appear randomly on the screen at frequency 5%, he can only have one bonus by level.
 
