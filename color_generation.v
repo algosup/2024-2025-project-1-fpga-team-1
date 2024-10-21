@@ -29,6 +29,10 @@ module color_generation
     wire [8:0] sprite_data_grass;
     reg  [9:0] sprite_addr_grass;
 
+    // sprite for the ground
+    wire [8:0] sprite_data_ground;
+    reg  [9:0] sprite_addr_ground;
+
     // Background color
     reg [9:0] r_background = 9'b000000000; 
 
@@ -38,18 +42,18 @@ module color_generation
     // task display_car;
     //     input [9:0] h_count;
     //     input [9:0] v_count;
-    //     input [2:0] car_x;
-    //     input [2:0] CAR_Y;
+    //     input [9:0] car_x;
+    //     input [8:0] CAR_Y;
     //     input [8:0] sprite_data_car;
     //     output [10:0] sprite_addr_car;
-    //     output reg [8:0] r_VGA;
+    //     output reg [8:0] r_VGA_car;
 
     //     begin
     //         if ((h_count >= car_x) && (h_count < car_x + CAR_WIDTH) && 
     //             (v_count >= CAR_Y) && (v_count < CAR_Y + CAR_HEIGHT)) begin
     //             sprite_addr_car = (v_count - CAR_Y) * 36 + (h_count - car_x);
     //             if (sprite_data_car != 9'b000000000) begin
-    //                 r_VGA = sprite_data_car;
+    //                 r_VGA_car = sprite_data_car;
     //             end
     //         end
     //     end
@@ -59,11 +63,8 @@ module color_generation
     // Generation of VGA for player movement 
     always @(posedge CLK) begin   
         if (h_count < H_DISPLAY && v_count < V_DISPLAY) begin
-            if(((h_count >= SAFE_X)  && (h_count < SAFE_X  + SAFE_WIDTH))     && 
-              (((v_count >= SAFE_Y)  && (v_count < SAFE_Y  + SAFE_HEIGHT))    || 
-               ((v_count >= SAFE_Y2) && (v_count < SAFE_Y2 + SAFE_HEIGHT))))  begin
-                r_background <= 9'b111111111;   // White (Safe zone)
-            end else if ((h_count >= ROAD_x1) && (h_count <= ROAD_x1 + ROAD_width) &&
+            
+            if ((h_count >= ROAD_x1) && (h_count <= ROAD_x1 + ROAD_width) &&
                         (v_count >= ROAD_y1) && (v_count <= ROAD_y1 + ROAD_height)) begin
                 sprite_addr_road <= ((v_count % 32) * 32) + (h_count % 32);
                     r_background <= sprite_data_road;
@@ -91,6 +92,14 @@ module color_generation
                         (v_count >= GRASS_Y3) && (v_count <= GRASS_Y3 + GRASS_height)) begin
                 sprite_addr_grass <= ((v_count % 32) * 32) + (h_count % 32);
                     r_background <= sprite_data_grass;
+            end else if ((h_count >= GROUND_x1) && (h_count <= GROUND_x1 + GROUND_width) &&
+                        (v_count >= GROUND_Y1) && (v_count <= GROUND_Y1 + GROUND_height)) begin
+                sprite_addr_ground <= ((v_count % 32) * 32) + (h_count % 32);
+                    r_background <= sprite_data_ground;
+            end else if ((h_count >= GROUND_x2) && (h_count <= GROUND_x2 + GROUND_width) &&
+                        (v_count >= GROUND_Y2) && (v_count <= GROUND_Y2 + GROUND_height)) begin
+                sprite_addr_ground <= ((v_count % 32) * 32) + (h_count % 32);
+                    r_background <= sprite_data_ground;
             end else begin
                 r_background <= 9'b000000000;   // Black (Background)
             end
@@ -193,6 +202,13 @@ module color_generation
         .CLK(CLK),
         .addr(sprite_addr_grass),
         .data_out(sprite_data_grass)
+    );
+
+    // Instanciation of the ground sprite memory
+    sprite_ram_ground sprite_ground (
+        .CLK(CLK),
+        .addr(sprite_addr_ground),
+        .data_out(sprite_data_ground)
     );
 
     endmodule

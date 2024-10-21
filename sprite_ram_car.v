@@ -3,7 +3,7 @@
 
 module sprite_ram_car
 #( parameter 
-    MEM_FILE="sprite_car.mem" // File with the sprite frog
+    MEM_FILE="sprite_car.mem" // File with the car sprite 
 ) (
     input wire CLK,                 // Clock
     input wire [10:0] addr,          // number of adress needed to access pixels in the sprite

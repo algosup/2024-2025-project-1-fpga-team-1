@@ -22,4 +22,4 @@ def convert_image_to_3bit_text(image_path, output_path):
             file.write('\n')
 
 if __name__ == "__main__":
-    convert_image_to_3bit_text('grass.png', 'output6.txt')
+    convert_image_to_3bit_text('path.png', 'output7.txt')

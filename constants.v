@@ -107,5 +107,15 @@
     parameter GRASS_width = 640;
     parameter GRASS_height = 32;
 
+    // GROUND
+    parameter GROUND_x1 = 0;
+    parameter GROUND_Y1 = 0;
+
+    parameter GROUND_x2 = 0;
+    parameter GROUND_Y2 = 416;
+
+    parameter GROUND_width = 640;
+    parameter GROUND_height = 64;
+
 
 
