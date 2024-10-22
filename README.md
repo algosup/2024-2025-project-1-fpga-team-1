@@ -16,7 +16,7 @@ This project is an ALGOSUP project, driven by the students. This project aims to
 
 ## What Is FroggyRanck
 
-You follow the adventure of Ranck in the the frog world. Your goal is simple, help Ranck to pass the road without crossing the paths to cars.
+You follow the adventure of Ranck, a frog who has been separated from his love and needs to browse the city and its dangerous roads. Your goal is simple, help Ranck to pass the road without crossing the paths to cars.
 
 ## How To Install
 
@@ -24,14 +24,14 @@ You follow the adventure of Ranck in the the frog world. Your goal is simple, he
 
 ## How To Use
 
-To play FroggyRanck, feel free to check the documentation here: [User Manual]()
+To play FroggyRanck, feel free to check the documentation here: [User Manual](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/User_Manual.pdf)
 
 ## Project documents
 
 - [Project Charter]()
 - [Functional Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Functionnal_Specification.md)
 - [Technical Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/thecnical_Specification.md)
-- [User Manual]()
+- [User Manual](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/User_Manual.pdf)
 - [Test Plan](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Test_Plan.md)
 - [Management]()
 
