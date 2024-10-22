@@ -45,6 +45,7 @@ All session reports are available below:
 - [10/16/2024](./Report/10.16.2024.md)
 - [10/17/2024](./Report/10.17.2024.md)
 - [10/21/2024](./Report/10.21.2024.md)
+- [10/24/2024](./Report/10.24.2024.md)
 
 </details>
 

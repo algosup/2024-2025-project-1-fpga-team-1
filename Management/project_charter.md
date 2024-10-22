@@ -8,6 +8,7 @@ Creation Date: 09/27/2024 <br> Last update: 09/27/2024
 <summary>Table of Contents</summary>
 
 - [1. Project Overview](#1-project-overview)
+      - [Story](#story)
 - [2. Project Scope](#2-project-scope)
 - [3. Project Deliverable](#3-project-deliverable)
 - [4. Cost](#4-cost)
@@ -18,6 +19,10 @@ Creation Date: 09/27/2024 <br> Last update: 09/27/2024
 ## 1. Project Overview
 
 This project is an ALGOSUP project, driven by the students. This project aims to create a Frogger game with a FPGA Go Board coded with Verilog. It's a game whose the aim is to cross the map from bottom to top, avoiding obstacles.
+
+**Story**
+
+Ranck is a frog who has been separated from his love and needs to browse the city and its dangerous roads.
 
 ## 2. Project Scope
 
