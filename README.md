@@ -20,7 +20,15 @@ You follow the adventure of Ranck, a frog who has been separated from his love a
 
 ## How To Install
 
-//TODO
+On Mac OS
+
+1. Install Verilog compiler like [APIO](https://nandland.com/set-up-apio-fpga-build-and-
+program/)
+2. Download all the source code on this [link](https://github.com/algosup/2024-2025-project-
+1-fpga-team-1).
+3. Plug the GO BOARD into your computer.
+4. Open a command line prompt inside the game repository.
+5. Type “apio upload” inside the prompt.
 
 ## How To Use
 
@@ -28,12 +36,12 @@ To play FroggyRanck, feel free to check the documentation here: [User Manual](ht
 
 ## Project documents
 
-- [Project Charter]()
+- [Project Charter](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Management/project_charter.md)
 - [Functional Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Functionnal_Specification.md)
 - [Technical Specifications](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/thecnical_Specification.md)
 - [User Manual](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/User_Manual.pdf)
 - [Test Plan](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Test_Plan.md)
-- [Management]()
+- [Management](https://github.com/algosup/2024-2025-project-1-fpga-team-1/blob/main/Management/documents_management_links.md)
 
 ## MIT License
 
